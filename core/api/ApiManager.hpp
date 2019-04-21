@@ -3,7 +3,7 @@
 #include <QNetworkAccessManager>
 #include <QNetworkReply>
 
-#include "ApiRequest.hpp"
+#include "core/api/ApiRequest.hpp"
 
 class ApiManager : public QObject
 {

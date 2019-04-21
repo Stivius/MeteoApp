@@ -1,9 +1,14 @@
 <RCC>
     <qresource prefix="/">
         <file>main.qml</file>
-        <file>CurrentWeather.qml</file>
-        <file>SensorWeather.qml</file>
-        <file>HistoricalWeather.qml</file>
-        <file>Resources.qml</file>
+        <file>CommonSettings.qml</file>
+        <file>bluetooth/ui/BluetoothWindowSettings.qml</file>
+        <file>bluetooth/ui/ConnectWidget.qml</file>
+        <file>bluetooth/ui/CustomTextWidget.qml</file>
+        <file>bluetooth/ui/MessageCenter.qml</file>
+        <file>bluetooth/ui/SearchDevicesButton.qml</file>
+        <file>bluetooth/ui/SensorWeather.qml</file>
+        <file>weather/ui/CurrentWeather.qml</file>
+        <file>historical/ui/HistoricalWeather.qml</file>
     </qresource>
 </RCC>

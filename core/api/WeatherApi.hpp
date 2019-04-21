@@ -2,9 +2,9 @@
 
 #include <QObject>
 
-#include "ApiManager.hpp"
-#include "WeatherData.hpp"
-#include "WeatherInfo.hpp"
+#include "core/api/ApiManager.hpp"
+#include "core/api/WeatherInfo.hpp"
+#include "core/model/WeatherData.hpp"
 
 class WeatherApi : public QObject
 {

@@ -2,7 +2,7 @@
 
 #include <QObject>
 
-#include "WeatherData.hpp"
+#include "core/model/WeatherData.hpp"
 
 class WeatherJsonParser : public QObject
 {

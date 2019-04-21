@@ -2,9 +2,9 @@
 
 #include <QSettings>
 
-class Config
+class ApiConfig
 {
-    Q_DISABLE_COPY(Config)
+    Q_DISABLE_COPY(ApiConfig)
 
 public:
     static QString currentWeatherApi();

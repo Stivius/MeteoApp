@@ -5,7 +5,7 @@
 #include <QUrlQuery>
 #include <map>
 
-#include "WeatherInfo.hpp"
+#include "core/api/WeatherInfo.hpp"
 
 namespace Resources
 {

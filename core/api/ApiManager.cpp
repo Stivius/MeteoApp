@@ -1,7 +1,6 @@
 #include "ApiManager.hpp"
 
-#include <QtNetwork>
-#include <QUrl>
+#include <QJsonDocument>
 
 ApiManager::ApiManager(QObject* parent) :
     QObject(parent)

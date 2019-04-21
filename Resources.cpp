@@ -1,13 +1,14 @@
 #include "Resources.hpp"
-#include "Config.hpp"
+
+#include "core/api/ApiConfig.hpp"
 
 QString Resources::getCollection(WeatherInfo info)
 {
     switch (info)
     {
-        case WeatherInfo::Current: return Config::currentWeatherApi();
-        case WeatherInfo::Hourly: return Config::hourlyForecstApi();
-        case WeatherInfo::Daily: return Config::hourlyForecstApi();
+        case WeatherInfo::Current: return ApiConfig::currentWeatherApi();
+        case WeatherInfo::Hourly: return ApiConfig::hourlyForecstApi();
+        case WeatherInfo::Daily: return ApiConfig::hourlyForecstApi();
     }
 
     return QString{};

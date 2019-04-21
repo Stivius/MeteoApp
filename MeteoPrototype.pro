@@ -1,4 +1,4 @@
-QT += quick widgets positioning
+QT += quick widgets positioning charts bluetooth
 CONFIG += c++17
 
 # The following define makes your compiler emit warnings if you use
@@ -13,15 +13,23 @@ DEFINES += QT_DEPRECATED_WARNINGS
 #DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0
 
 SOURCES += \
-        main.cpp \
-        api/ApiManager.cpp \
-        api/ApiRequest.cpp \
-        api/WeatherApi.cpp \
-        api/WeatherJsonParser.cpp \
-        model/WeatherModel.cpp \
-        model/GeoPositioning.cpp \
-        Resources.cpp \
-        Config.cpp
+    bluetooth/model/BluetoothBaseClass.cpp \
+    bluetooth/model/ConnectionHandler.cpp \
+    bluetooth/model/CustomFormatDataParser.cpp \
+    bluetooth/model/DeviceFinder.cpp \
+    bluetooth/model/DeviceHandler.cpp \
+    bluetooth/model/DeviceInfo.cpp \
+    bluetooth/model/JsonFormatDataParser.cpp \
+    bluetooth/model/receiveddataparser.cpp \
+    core/api/ApiManager.cpp \
+    core/api/ApiRequest.cpp \
+    core/api/WeatherApi.cpp \
+    core/api/WeatherJsonParser.cpp \
+    core/api/ApiConfig.cpp \
+    core/model/GeoPositioning.cpp \
+    core/model/WeatherModel.cpp \
+    main.cpp \
+    Resources.cpp
 
 RESOURCES += qml.qrc
 
@@ -37,13 +45,22 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 HEADERS += \
-    api/ApiManager.hpp \
-    api/ApiRequest.hpp \
-    api/WeatherInfo.hpp \
-    api/WeatherApi.hpp \
-    api/WeatherJsonParser.hpp \
-    model/GeoPositioning.hpp \
-    model/WeatherModel.hpp \
-    model/WeatherData.hpp \
-    Resources.hpp \
-    Config.hpp
+    bluetooth/model/BluetoothBaseClass.hpp \
+    bluetooth/model/ConnectionHandler.hpp \
+    bluetooth/model/CustomFormatDataParser.hpp \
+    bluetooth/model/DeviceFinder.hpp \
+    bluetooth/model/DeviceHandler.hpp \
+    bluetooth/model/DeviceInfo.hpp \
+    bluetooth/model/IReceivedDataParser.hpp \
+    bluetooth/model/JsonFormatDataParser.hpp \
+    bluetooth/model/simulator-config.hpp \
+    core/api/ApiManager.hpp \
+    core/api/ApiRequest.hpp \
+    core/api/WeatherApi.hpp \
+    core/api/WeatherInfo.hpp \
+    core/api/WeatherJsonParser.hpp \
+    core/api/ApiConfig.hpp \
+    core/model/GeoPositioning.hpp \
+    core/model/WeatherData.hpp \
+    core/model/WeatherModel.hpp \
+    Resources.hpp

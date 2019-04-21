@@ -2,8 +2,8 @@
 
 #include <QObject>
 
-#include "WeatherApi.hpp"
-#include "GeoPositioning.hpp"
+#include "core/api/WeatherApi.hpp"
+#include "core/model/GeoPositioning.hpp"
 
 class WeatherModel : public QObject
 {
