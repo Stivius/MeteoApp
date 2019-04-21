@@ -1,5 +1,4 @@
-#ifndef JSONFORMATDATAPARSER_H
-#define JSONFORMATDATAPARSER_H
+#pragma once
 
 #include "IReceivedDataParser.hpp"
 
@@ -30,5 +29,3 @@ private:
     float m_pressure;
     float m_temperature;
 };
-
-#endif // JSONFORMATDATAPARSER_H

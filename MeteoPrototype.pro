@@ -1,6 +1,8 @@
 QT += quick widgets positioning charts bluetooth
 CONFIG += c++17
 
+#QMAKE_CXXFLAGS += /std:c++17
+#Uncomment for passing MSVC build
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
 # depend on your compiler). Refer to the documentation for the
@@ -29,7 +31,8 @@ SOURCES += \
     core/model/GeoPositioning.cpp \
     core/model/WeatherModel.cpp \
     main.cpp \
-    Resources.cpp
+    Resources.cpp \
+    bluetooth/model/ChunkedDataParser.cpp
 
 RESOURCES += qml.qrc
 
@@ -44,11 +47,11 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-copydata.commands = $(COPY_DIR) $$PWD/settings.conf $$OUT_PWD
-first.depends = $(first) copydata
-export(first.depends)
-export(copydata.commands)
-QMAKE_EXTRA_TARGETS += first copydata
+#copydata.commands = $(COPY_DIR) $$PWD/settings.conf $$OUT_PWD
+#first.depends = $(first) copydata
+#export(first.depends)
+#export(copydata.commands)
+#QMAKE_EXTRA_TARGETS += first copydata
 
 HEADERS += \
     bluetooth/model/BluetoothBaseClass.hpp \
@@ -69,4 +72,6 @@ HEADERS += \
     core/model/GeoPositioning.hpp \
     core/model/WeatherData.hpp \
     core/model/WeatherModel.hpp \
-    Resources.hpp
+    Resources.hpp \
+    bluetooth/model/ChunkedDataParser.hpp \
+    bluetooth/model/BluetoothModelResources.hpp

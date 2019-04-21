@@ -21,7 +21,7 @@ std::pair<int, int> CustomFormatDataParser::getKeyIndexes(
      ,   const QString& _searchKeyEnd
 )
  {
-     int keyBegin = _dataSource.indexOf(_searchKeyBegin, 0) + _searchKeyBegin.length();
+     int keyBegin = _dataSource.indexOf( _searchKeyBegin, 0 ) + _searchKeyBegin.length();
      int keyEnd = _dataSource.indexOf( _searchKeyEnd, 0 );
 
      return { keyBegin, keyEnd };
@@ -29,7 +29,7 @@ std::pair<int, int> CustomFormatDataParser::getKeyIndexes(
 
 float CustomFormatDataParser::getFloatFromRange( const QString& _dataSource, int _keyBegin, int _keyEnd )
 {
-    QStringRef subString(&_dataSource, _keyBegin, _keyEnd - _keyBegin);
+    QStringRef subString( &_dataSource, _keyBegin, _keyEnd - _keyBegin );
     return subString.toFloat();
 }
 
