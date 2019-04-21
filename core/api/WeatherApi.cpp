@@ -2,6 +2,7 @@
 #include "WeatherJsonParser.hpp"
 
 #include "Resources.hpp"
+#include "ApiConfig.hpp"
 
 WeatherApi::WeatherApi(QObject* parent) :
     QObject(parent)
@@ -11,23 +12,22 @@ WeatherApi::WeatherApi(QObject* parent) :
 // Hourly and Daily API are unstable and should not be used
 void WeatherApi::requestCityWeather(const QString& city, WeatherInfo info)
 {
-    auto collection = Resources::getCollection(info);
+    auto service = Resources::getApiService(info);
+    std::map<QString, QString> params = {{"q", city}, {"units", "metric"}, {"appid", ApiConfig::apiKey()}};
 
-    auto url = Resources::formRequestUrl(collection, {{"q", city}, {"units", "metric"}, {"appid", "4bdac748869ecbd195cb05e9bce26006"}});
-
-    sendRequest(url);
+    sendRequest(Resources::formRequestUrl(service, params));
 }
 
 // Hourly and Daily API are unstable and should not be used
 void WeatherApi::requestWeatherByCoordinates(double latitude, double longitude, WeatherInfo info)
 {
-    auto collection = Resources::getCollection(info);
     auto lat = QString::number(latitude);
     auto lon = QString::number(longitude);
 
-    auto url = Resources::formRequestUrl(collection, {{"lat", lat}, {"lon", lon}, {"units", "metric"}, {"appid", "4bdac748869ecbd195cb05e9bce26006"}});
+    auto service = Resources::getApiService(info);
+    std::map<QString, QString> params = {{"lat", lat}, {"lon", lon}, {"units", "metric"}, {"appid", ApiConfig::apiKey()}};
 
-    sendRequest(url);
+    sendRequest(Resources::formRequestUrl(service, params));
 }
 
 void WeatherApi::sendRequest(const QUrl& url)
@@ -35,6 +35,7 @@ void WeatherApi::sendRequest(const QUrl& url)
     auto request = QSharedPointer<ApiRequest>::create(url);
 
     connect(request.get(), &ApiRequest::received, this, &WeatherApi::processResponse);
+    connect(request.get(), &ApiRequest::error, this, &WeatherApi::error);
 
     m_manager.sendRequest(request);
 }
@@ -52,4 +53,9 @@ void WeatherApi::processResponse(const QJsonDocument& data)
     {
         emit currentWeatherReceived(result.front());
     }
+}
+
+void WeatherApi::error(const QString& error)
+{
+    qDebug() << error;
 }

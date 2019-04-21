@@ -2,7 +2,7 @@
 
 #include "core/api/ApiConfig.hpp"
 
-QString Resources::getCollection(WeatherInfo info)
+QString Resources::getApiService(WeatherInfo info)
 {
     switch (info)
     {

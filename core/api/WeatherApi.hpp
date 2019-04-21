@@ -28,6 +28,7 @@ private:
 
 private slots:
     void processResponse(const QJsonDocument& data);
+    void error(const QString& error);
 
 private:
     ApiManager m_manager;

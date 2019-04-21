@@ -44,6 +44,12 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
+copydata.commands = $(COPY_DIR) $$PWD/settings.conf $$OUT_PWD
+first.depends = $(first) copydata
+export(first.depends)
+export(copydata.commands)
+QMAKE_EXTRA_TARGETS += first copydata
+
 HEADERS += \
     bluetooth/model/BluetoothBaseClass.hpp \
     bluetooth/model/ConnectionHandler.hpp \

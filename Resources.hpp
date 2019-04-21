@@ -20,6 +20,6 @@ namespace Resources
         const QString ApiKey = "ApiKey";
     }
 
-    QString getCollection(WeatherInfo info);
+    QString getApiService(WeatherInfo info);
     QUrl formRequestUrl(const QString& apiSerivce, const std::map<QString, QString>& params);
 }
