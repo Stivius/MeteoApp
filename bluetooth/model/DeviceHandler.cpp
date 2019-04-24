@@ -12,7 +12,7 @@ static const QString CC2540_RW_CHAR{"0000ffe1-0000-1000-8000-00805f9b34fb"};
 namespace BluetoothDescriptors {
     static const QByteArray EnableNotificationValue = QByteArray::fromHex( "0100" );
     static const QByteArray EnableIndicationValue = QByteArray::fromHex( "0200" );
-
+    static const QByteArray EmptyValue = QByteArray::fromHex( "0000" );
 }
 
 DeviceHandler::DeviceHandler(
@@ -220,7 +220,7 @@ void DeviceHandler::updtateWeatherData(const QLowEnergyCharacteristic& c, const 
 
 void DeviceHandler::confirmedDescriptorWrite(const QLowEnergyDescriptor& d, const QByteArray &value)
 {
-    if ( d.isValid() && d == m_notificationDesc && value == QByteArray::fromHex ("0000" ) )
+    if ( d.isValid() && d == m_notificationDesc && value != BluetoothDescriptors::EnableNotificationValue )
     {
         m_control->disconnectFromDevice();
         delete m_service;
@@ -232,11 +232,14 @@ void DeviceHandler::disconnectService()
 {
     m_foundBleWeatherService = false;
 
-    if (m_notificationDesc.isValid() && m_service
-            && m_notificationDesc.value() == QByteArray::fromHex("0100")) {
-        m_service->writeDescriptor(m_notificationDesc, QByteArray::fromHex("0000"));
-    } else {
-        if (m_control)
+    if (        m_notificationDesc.isValid() && m_service
+            &&   m_notificationDesc.value() == BluetoothDescriptors::EnableNotificationValue )
+    {
+        m_service->writeDescriptor( m_notificationDesc, QByteArray::fromHex ( BluetoothDescriptors::EmptyValue ) ) ;
+    }
+    else
+    {
+        if ( m_control )
             m_control->disconnectFromDevice();
 
         delete m_service;
