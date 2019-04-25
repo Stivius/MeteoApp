@@ -8,6 +8,7 @@
 #include "bluetooth/model/DeviceHandler.hpp"
 #include "bluetooth/model/CustomFormatDataParser.hpp"
 #include "bluetooth/model/JsonFormatDataParser.hpp"
+#include "core/model/QMLWeaterData.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -21,6 +22,7 @@ int main(int argc, char *argv[])
 
     qmlRegisterUncreatableType<DeviceHandler>("DeviceHandler", 1, 0, "AddressType", "Enum is not a type");
     qmlRegisterType<WeatherModel>("CurrentWeather", 1, 0, "CurrentWeather");
+    qmlRegisterType<AWeatherData>("WeatherData", 1, 0, "WeatherData");
     qmlRegisterSingletonType(QUrl("qrc:/CommonSettings.qml"), "CommonSettings", 1, 0, "CommonSettings" );
     qmlRegisterSingletonType(QUrl("qrc:/bluetooth/ui/BluetoothWindowSettings.qml"), "BluetoothWindowSettings", 1, 0, "BluetoothWindowSettings" );
 

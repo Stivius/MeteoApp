@@ -8,34 +8,67 @@ Item {
     Column {
         anchors.centerIn: parent
 
-        spacing: 10
+        BigForecastIcon {
+            id: forecastIcon
+            width: 500//parent.width -12
+            height: 600//2 * (parent.height - 25 - 12) / 2
 
-        Text {
-            text: qsTr("City: ") + model.city
+            weatherIcon: (model.icon)
+            topText: (model.minTemperature + "°/" + model.maxTemperature) + "°"
+            bottomText: (model.description)
         }
 
-        Text {
-            text: qsTr("Condition: ") + model.condition
-        }
+        Row {
+            id: iconRow
+            spacing: 6
 
-        Text {
-            text: qsTr("Description: ") + model.description
-        }
+            width: 500
+            height: 200
 
-        Text {
-            text: qsTr("Temperature: ") + model.temperature
-        }
+            property real iconWidth: iconRow.width / 4 - 10
+            property real iconHeight: iconRow.height
 
-        Text {
-            text: qsTr("Pressure: ") + model.pressure
-        }
+            ForecastIcon {
+                id: forecast0
+                width: iconRow.iconWidth
+                height: iconRow.iconHeight
 
-        Text {
-            text: qsTr("Humdity: ") + model.humidity
+                topText: model.forecast[1].dayOfWeek
+                bottomText: model.forecast[1].minTemperature + "°/" + model.forecast[0].maxTemperature + "°"
+                weatherIcon: model.forecast[1].weatherIcon
+            }
+            ForecastIcon {
+                id: forecast1
+                width: iconRow.iconWidth
+                height: iconRow.iconHeight
+
+                topText: model.forecast[2].dayOfWeek
+                bottomText: model.forecast[2].minTemperature + "°/" + model.forecast[1].maxTemperature + "°"
+                weatherIcon: model.forecast[2].weatherIcon
+            }
+            ForecastIcon {
+                id: forecast2
+                width: iconRow.iconWidth
+                height: iconRow.iconHeight
+
+                topText: model.forecast[3].dayOfWeek
+                bottomText: model.forecast[3].minTemperature + "°/" + model.forecast[2].maxTemperature + "°"
+                weatherIcon: model.forecast[3].weatherIcon
+            }
+            ForecastIcon {
+                id: forecast3
+                width: iconRow.iconWidth
+                height: iconRow.iconHeight
+
+                topText: model.forecast[4].dayOfWeek
+                bottomText: model.forecast[4].minTemperature + "°/" + model.forecast[3].maxTemperature + "°"
+                weatherIcon: model.forecast[4].weatherIcon
+            }
         }
 
         ComboBox {
             id: cityList
+            y: 500
             model: ["Current", "London", "Kharkiv", "Kiev"]
 
             onCurrentTextChanged: {
@@ -43,7 +76,8 @@ Item {
                     model.requestCurrentGeoWeather();
                 }
                 else {
-                    model.requestCityWeather(cityList.currentText)
+                    model.requestCityWeather(cityList.currentText);
+                    model.requestCityForecast(cityList.currentText);
                 }
             }
         }

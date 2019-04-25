@@ -18,7 +18,9 @@ public:
     explicit WeatherApi(QObject* parent = nullptr);
 
     // Hourly and Daily API are unstable and should not be used
-    void requestCityWeather(const QString& city, WeatherInfo info = WeatherInfo::Current);
+    void requestCityWeather(const QString& city);
+
+    void requestCityForecast(const QString& city);
 
     // Hourly and Daily API are unstable and should not be used
     void requestWeatherByCoordinates(double latitude, double longitude, WeatherInfo info = WeatherInfo::Current);

@@ -37,13 +37,23 @@ WeatherData WeatherJsonParser::parseJsonObject(const QJsonObject& data)
 
     auto weatherInfo = data["weather"].toArray().first().toObject();
 
+    QDateTime date = QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(data["dt"].toDouble()*1000));
+    weather.dayOfTheWeek = date.date().toString(QStringLiteral("ddd"));
     weather.city = data["name"].toString();
     weather.condition = weatherInfo["main"].toString();
     weather.description = weatherInfo["description"].toString();
+    weather.weatherIcon = weatherInfo["icon"].toString();
 
     weather.temperature = data["main"]["temp"].toDouble();
     weather.temperatureMin = data["main"]["temp_min"].toDouble();
     weather.temperatureMax = data["main"]["temp_max"].toDouble();
+
+    if(!weather.temperatureMin)
+    {
+        weather.temperatureMin = data["temp"]["min"].toDouble();
+        weather.temperatureMax = data["temp"]["max"].toDouble();
+    }
+
     weather.pressure = data["main"]["pressure"].toInt();
     weather.humidity = data["main"]["humidity"].toInt();
 

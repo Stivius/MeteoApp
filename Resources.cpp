@@ -8,7 +8,7 @@ QString Resources::getApiService(WeatherInfo info)
     {
         case WeatherInfo::Current: return ApiConfig::currentWeatherApi();
         case WeatherInfo::Hourly: return ApiConfig::hourlyForecstApi();
-        case WeatherInfo::Daily: return ApiConfig::hourlyForecstApi();
+        case WeatherInfo::Daily: return ApiConfig::dailyForecstApi();
     }
 
     return QString{};

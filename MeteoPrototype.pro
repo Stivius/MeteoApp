@@ -27,6 +27,7 @@ SOURCES += \
     core/api/WeatherJsonParser.cpp \
     core/api/ApiConfig.cpp \
     core/model/GeoPositioning.cpp \
+    core/model/QMLWeatherData.cpp \
     core/model/WeatherModel.cpp \
     main.cpp \
     Resources.cpp
@@ -44,11 +45,11 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-copydata.commands = $(COPY_DIR) $$PWD/settings.conf $$OUT_PWD
-first.depends = $(first) copydata
-export(first.depends)
-export(copydata.commands)
-QMAKE_EXTRA_TARGETS += first copydata
+#copydata.commands = $(COPY_DIR) $$PWD/settings.conf $$OUT_PWD
+#first.depends = $(first) copydata
+#export(first.depends)
+#export(copydata.commands)
+#QMAKE_EXTRA_TARGETS += first copydata
 
 HEADERS += \
     bluetooth/model/BluetoothBaseClass.hpp \
@@ -67,6 +68,24 @@ HEADERS += \
     core/api/WeatherJsonParser.hpp \
     core/api/ApiConfig.hpp \
     core/model/GeoPositioning.hpp \
+    core/model/QMLWeaterData.hpp \
     core/model/WeatherData.hpp \
     core/model/WeatherModel.hpp \
-    Resources.hpp
+    Resources.hpp \
+    core/model/privateweatheraccessor.hpp
+
+DISTFILES += \
+    icons/README.txt \
+    icons/qt_attribution.json \
+    icons/weather-few-clouds.png \
+    icons/weather-fog.png \
+    icons/weather-haze.png \
+    icons/weather-icy.png \
+    icons/weather-overcast.png \
+    icons/weather-showers.png \
+    icons/weather-sleet.png \
+    icons/weather-snow.png \
+    icons/weather-storm.png \
+    icons/weather-sunny-very-few-clouds.png \
+    icons/weather-sunny.png \
+    icons/weather-thundershower.png
