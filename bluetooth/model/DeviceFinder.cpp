@@ -8,7 +8,7 @@ DeviceFinder::DeviceFinder(DeviceHandler* handler, QObject* parent):
     m_deviceHandler(handler)
 {
     m_deviceDiscoveryAgent = new QBluetoothDeviceDiscoveryAgent( this );
-    m_deviceDiscoveryAgent->setLowEnergyDiscoveryTimeout( 5000 );
+    m_deviceDiscoveryAgent->setLowEnergyDiscoveryTimeout( FindTimeout );
 
     connectSignals();
 }

@@ -39,6 +39,7 @@ signals:
 
 private:
 
+    static constexpr size_t FindTimeout = 5000;
     void connectSignals();
 
 private:
