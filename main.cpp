@@ -6,8 +6,6 @@
 #include "bluetooth/model/ConnectionHandler.hpp"
 #include "bluetooth/model/DeviceFinder.hpp"
 #include "bluetooth/model/DeviceHandler.hpp"
-#include "bluetooth/model/CustomFormatDataParser.hpp"
-#include "bluetooth/model/JsonFormatDataParser.hpp"
 #include "bluetooth/model/ChunkedDataParser.hpp"
 
 int main(int argc, char *argv[])

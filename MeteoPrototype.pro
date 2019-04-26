@@ -1,7 +1,7 @@
 QT += quick widgets positioning charts bluetooth
 CONFIG += c++17
 
-#QMAKE_CXXFLAGS += /std:c++17
+QMAKE_CXXFLAGS += /std:c++17
 #Uncomment for passing MSVC build
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -17,11 +17,9 @@ DEFINES += QT_DEPRECATED_WARNINGS
 SOURCES += \
     bluetooth/model/BluetoothBaseClass.cpp \
     bluetooth/model/ConnectionHandler.cpp \
-    bluetooth/model/CustomFormatDataParser.cpp \
     bluetooth/model/DeviceFinder.cpp \
     bluetooth/model/DeviceHandler.cpp \
     bluetooth/model/DeviceInfo.cpp \
-    bluetooth/model/JsonFormatDataParser.cpp \
     bluetooth/model/receiveddataparser.cpp \
     core/api/ApiManager.cpp \
     core/api/ApiRequest.cpp \
@@ -56,12 +54,10 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 HEADERS += \
     bluetooth/model/BluetoothBaseClass.hpp \
     bluetooth/model/ConnectionHandler.hpp \
-    bluetooth/model/CustomFormatDataParser.hpp \
     bluetooth/model/DeviceFinder.hpp \
     bluetooth/model/DeviceHandler.hpp \
     bluetooth/model/DeviceInfo.hpp \
     bluetooth/model/IReceivedDataParser.hpp \
-    bluetooth/model/JsonFormatDataParser.hpp \
     bluetooth/model/simulator-config.hpp \
     core/api/ApiManager.hpp \
     core/api/ApiRequest.hpp \
