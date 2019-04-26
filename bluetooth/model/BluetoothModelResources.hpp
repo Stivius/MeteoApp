@@ -1,29 +1,29 @@
 #pragma once
 #include <QString>
-
+#include <QObject>
 
 namespace Resources :: BluetoothMessages::Errors
 {
-    const QString BLuetoothAdaptorIsPoweredOff  = "Bluetooth adaptor is turned off";
-    const QString IoError                       = "Device reading/writing failed ";
-    const QString UnknownError                  = "An unknown error has occurred.";
-    const QString CantFoundAnyBleDevices        = "No Low Energy devices found.";
-    const QString CantConnectToDevice           = "Cannot connect to remote device.";
-    const QString BleControllerDisconnected     = "LowEnergy controller disconnected";
-    const QString CantFindWeatherService        = "Weather service not found.";
-    const QString WrPropertyNotFound            = "WR Property not found.";
-    const QString InvalidDeviceDescrpitor       = "Invalid CC2540 descriptor";
-    const QString InvalidCharacteristic         = "Invalid notification/indication for read characteristic";
+    const QString BLuetoothAdaptorIsPoweredOff  = QObject::tr( "Bluetooth adaptor is turned off"                                     );
+    const QString IoError                       = QObject::tr( "Device reading/writing failed "                                      );
+    const QString UnknownError                  = QObject::tr( "An unknown error has occurred."                                      );
+    const QString CantFoundAnyBleDevices        = QObject::tr( "No Low Energy devices found."                                        );
+    const QString CantConnectToDevice           = QObject::tr( "Cannot connect to remote device."                                    );
+    const QString BleControllerDisconnected     = QObject::tr( "LowEnergy controller disconnected"                                   );
+    const QString CantFindWeatherService        = QObject::tr( "Weather service not found."                                          );
+    const QString WrPropertyNotFound            = QObject::tr( "WR Property not found."                                              );
+    const QString InvalidDeviceDescrpitor       = QObject::tr( "Invalid CC2540 descriptor"                                           );
+    const QString InvalidCharacteristic         = QObject::tr( "Invalid notification/indication for read characteristic"             );
 }
 namespace Resources :: BluetoothMessages::Info
 {
-    const QString ScanningMoreDevices           = "Low Energy device found. Scanning more..." ;
-    const QString ScanningDone                  = "Scanning done.";
-    const QString ScanningForDevices            = "Scanning for devices...";
-    const QString ConnectedTo                   = "Connected to: %1";
-    const QString SearchServices                = "Controller connected. Search services...";
-    const QString ServiceDiscovered             =  "Weather station discovered. Waiting for service scan to be done..." ;
-    const QString ScanHasDone                   = "Service scan has done.";
-    const QString DiscoveringServices           = "Discovering services...";
-    const QString ServiceDiscoveredState        = "Service discovered.";
+    const QString ScanningMoreDevices           = QObject::tr( "Low Energy device found. Scanning more..."                           );
+    const QString ScanningDone                  = QObject::tr( "Scanning done."                                                      );
+    const QString ScanningForDevices            = QObject::tr( "Scanning for devices..."                                             );
+    const QString ConnectedTo                   = QObject::tr( "Connected to: %1"                                                    );
+    const QString SearchServices                = QObject::tr( "Controller connected. Search services..."                            );
+    const QString ServiceDiscovered             = QObject::tr(  "Weather station discovered. Waiting for service scan to be done..." );
+    const QString ScanHasDone                   = QObject::tr( "Service scan has done."                                              );
+    const QString DiscoveringServices           = QObject::tr( "Discovering services..."                                             );
+    const QString ServiceDiscoveredState        = QObject::tr( "Service discovered."                                                 );
 }
