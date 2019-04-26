@@ -37,7 +37,7 @@ void DeviceFinder::startSearch()
 void DeviceFinder::addDevice(const QBluetoothDeviceInfo& device)
 {
     // If device is LowEnergy-device, add it to the list
-    if ( device.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration )
+    if ( isBleDevice( device ) )
     {
         m_devices.append( new DeviceInfo( device ) );
         setInfo( Resources::BluetoothMessages::Info::ScanningMoreDevices );
@@ -132,4 +132,9 @@ void DeviceFinder::connectSignals()
         ,   this
         ,   &DeviceFinder::scanFinished
     );
+}
+
+bool DeviceFinder::isBleDevice( const QBluetoothDeviceInfo& deviceInfo )
+{
+    return deviceInfo.coreConfigurations() & QBluetoothDeviceInfo::LowEnergyCoreConfiguration;
 }

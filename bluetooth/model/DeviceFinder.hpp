@@ -40,7 +40,10 @@ signals:
 private:
 
     static constexpr size_t FindTimeout = 5000;
+
     void connectSignals();
+
+    bool isBleDevice( const QBluetoothDeviceInfo& deviceInfo );
 
 private:
     DeviceHandler* m_deviceHandler;

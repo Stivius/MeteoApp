@@ -78,10 +78,12 @@ private:
     );
 
 private:
-    QLowEnergyController* m_control = nullptr;
-    QLowEnergyService* m_service = nullptr;
-    QLowEnergyDescriptor m_notificationDesc;
-    DeviceInfo* m_currentDevice = nullptr;
+
+    void connectLowEnergyControllerSignals();
+
+    bool isNotificationDescriptorValid( const QLowEnergyDescriptor& descriptor, const QByteArray& value );
+
+private:
 
     bool m_foundBleWeatherService;
     bool m_isMeasuring;
@@ -90,7 +92,11 @@ private:
     float m_humidityValue;
     float m_pressureValue;
 
+    std::unique_ptr<QLowEnergyController> m_control;
+    std::unique_ptr<QLowEnergyService> m_service;
+    std::unique_ptr<QLowEnergyDescriptor> m_notificationDesc;
     std::unique_ptr<IReceivedDataParser> m_resultsParser;
-    QLowEnergyController::RemoteAddressType m_addressType = QLowEnergyController::PublicAddress;
 
+    QLowEnergyController::RemoteAddressType m_addressType = QLowEnergyController::PublicAddress;
+    DeviceInfo* m_currentDevice = nullptr;
 };
