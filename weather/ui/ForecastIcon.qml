@@ -7,10 +7,6 @@ Item {
     property string weatherIcon: "01d"
     property string bottomText: "22*/23*"
 
-    function getIconHeight(){
-            return
-        }
-
     Text { 
         id: dayText
         horizontalAlignment: Text.AlignHCenter
