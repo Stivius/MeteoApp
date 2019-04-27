@@ -6,8 +6,7 @@
 #include "bluetooth/model/ConnectionHandler.hpp"
 #include "bluetooth/model/DeviceFinder.hpp"
 #include "bluetooth/model/DeviceHandler.hpp"
-#include "bluetooth/model/CustomFormatDataParser.hpp"
-#include "bluetooth/model/JsonFormatDataParser.hpp"
+#include "bluetooth/model/ChunkedDataParser.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -16,7 +15,7 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     ConnectionHandler connectionHandler;
-    DeviceHandler deviceHandler( std::make_unique<JsonFormatDataParser>() );
+    DeviceHandler deviceHandler( std::make_unique<ChunkedDataParser>() );
     DeviceFinder deviceFinder(&deviceHandler);
 
     qmlRegisterUncreatableType<DeviceHandler>("DeviceHandler", 1, 0, "AddressType", "Enum is not a type");
