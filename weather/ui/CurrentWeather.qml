@@ -2,6 +2,9 @@ import QtQuick 2.0
 import QtQuick.Controls 2.5
 
 import CurrentWeather 1.0
+import CommonSettings 1.0
+
+import WeatherWindowSettings 1.0
 
 Item {
 
@@ -10,8 +13,8 @@ Item {
 
         BigForecastIcon {
             id: forecastIcon
-            width: 500//parent.width -12
-            height: 600//2 * (parent.height - 25 - 12) / 2
+            width: WeatherWindowSettings.bigIconWidth
+            height: WeatherWindowSettings.bigIconHeight
 
             weatherIcon: (model.icon)
             topText: (model.minTemperature + "°/" + model.maxTemperature) + "°"
@@ -22,11 +25,11 @@ Item {
             id: iconRow
             spacing: 6
 
-            width: 500
-            height: 200
+            width: WeatherWindowSettings.rowWidth
+            height: WeatherWindowSettings.rowHeight
 
-            property real iconWidth: iconRow.width / 4 - 10
-            property real iconHeight: iconRow.height
+            property real iconWidth: WeatherWindowSettings.rowIconWidth
+            property real iconHeight: WeatherWindowSettings.rowIconHeight
 
             ForecastIcon {
                 id: forecast0

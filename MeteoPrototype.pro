@@ -76,7 +76,6 @@ HEADERS += \
 
 DISTFILES += \
     icons/README.txt \
-    icons/qt_attribution.json \
     icons/weather-few-clouds.png \
     icons/weather-fog.png \
     icons/weather-haze.png \

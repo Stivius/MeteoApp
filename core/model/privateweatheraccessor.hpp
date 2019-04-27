@@ -1,5 +1,4 @@
-#ifndef PRIVATEWEATHERACCESSOR_H
-#define PRIVATEWEATHERACCESSOR_H
+#pragma once
 
 #include <QtCore/QObject>
 #include <QtCore/QString>
@@ -18,5 +17,3 @@ public:
     std::vector<std::unique_ptr<AWeatherData>> forecast;
     std::unique_ptr<QQmlListProperty<AWeatherData>> fcProp;
 };
-
-#endif // PRIVATEWEATHERACCESSOR_H

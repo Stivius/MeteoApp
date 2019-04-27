@@ -37,7 +37,7 @@ WeatherData WeatherJsonParser::parseJsonObject(const QJsonObject& data)
 
     auto weatherInfo = data["weather"].toArray().first().toObject();
 
-    QDateTime date = QDateTime::fromMSecsSinceEpoch(static_cast<qint64>(data["dt"].toDouble()*1000));
+    QDateTime date = QDateTime::fromMSecsSinceEpoch(toMSSinceEpoch(data["dt"]));
     weather.dayOfTheWeek = date.date().toString(QStringLiteral("ddd"));
     weather.city = data["name"].toString();
     weather.condition = weatherInfo["main"].toString();
@@ -62,4 +62,9 @@ WeatherData WeatherJsonParser::parseJsonObject(const QJsonObject& data)
     weather.cloudiness = data["clouds"]["all"].toInt();
 
     return weather;
+}
+
+qint64 WeatherJsonParser::toMSSinceEpoch(QJsonValue&& value) const
+{
+    return static_cast<qint64>(value.toDouble()*1000);
 }

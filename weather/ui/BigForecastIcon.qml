@@ -1,5 +1,6 @@
 import QtQuick 2.0
-
+import WeatherWindowSettings 1.0
+import FontSizes 1.0
 Item {
     id: current
 
@@ -10,7 +11,7 @@ Item {
 
     Text {
         text: current.topText
-        font.pointSize: 28
+        font.pointSize: FontSizes.largeFontSize
         anchors {
             top: current.top
             left: current.left
@@ -30,7 +31,7 @@ Item {
 
     Text {
         text: current.bottomText
-        font.pointSize: 23
+        font.pointSize: FontSizes.mediumFontSize
         wrapMode: Text.WordWrap
         width: parent.width
         horizontalAlignment: Text.AlignRight

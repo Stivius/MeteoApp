@@ -24,8 +24,9 @@ int main(int argc, char *argv[])
     qmlRegisterType<WeatherModel>("CurrentWeather", 1, 0, "CurrentWeather");
     qmlRegisterType<AWeatherData>("WeatherData", 1, 0, "WeatherData");
     qmlRegisterSingletonType(QUrl("qrc:/CommonSettings.qml"), "CommonSettings", 1, 0, "CommonSettings" );
+    qmlRegisterSingletonType(QUrl("qrc:/FontSizes.qml"), "FontSizes", 1, 0, "FontSizes" );
     qmlRegisterSingletonType(QUrl("qrc:/bluetooth/ui/BluetoothWindowSettings.qml"), "BluetoothWindowSettings", 1, 0, "BluetoothWindowSettings" );
-
+    qmlRegisterSingletonType(QUrl("qrc:/weather/ui/WeatherWindowSettings.qml"), "WeatherWindowSettings", 1, 0, "WeatherWindowSettings" );
     QQmlApplicationEngine engine;
 
     engine.rootContext()->setContextProperty("connectionHandler", &connectionHandler);

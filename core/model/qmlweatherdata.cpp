@@ -90,25 +90,25 @@ void AWeatherData::setCondition(const QString &value)
     emit dataChanged();
 }
 
-void AWeatherData::setMaxTemperature(const int &value)
+void AWeatherData::setMaxTemperature(int value)
 {
     m_maxTemperature = value;
     emit dataChanged();
 }
 
-void AWeatherData::setMinTemperature(const int &value)
+void AWeatherData::setMinTemperature(int value)
 {
     m_minTemperature = value;
     emit dataChanged();
 }
 
-void AWeatherData::setPressure(const double &value)
+void AWeatherData::setPressure(double value)
 {
     m_pressure = value;
     emit dataChanged();
 }
 
-void AWeatherData::setHumidity(const int &value)
+void AWeatherData::setHumidity(int value)
 {
     m_humidity = value;
     emit dataChanged();

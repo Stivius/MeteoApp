@@ -12,7 +12,6 @@
         <file>historical/ui/HistoricalWeather.qml</file>
         <file>weather/ui/BigForecastIcon.qml</file>
         <file>weather/ui/WeatherIcon.qml</file>
-        <file>icons/qt_attribution.json</file>
         <file>icons/README.txt</file>
         <file>icons/weather-few-clouds.png</file>
         <file>icons/weather-fog.png</file>
@@ -27,5 +26,7 @@
         <file>icons/weather-sunny.png</file>
         <file>icons/weather-thundershower.png</file>
         <file>weather/ui/ForecastIcon.qml</file>
+        <file>weather/ui/WeatherWindowSettings.qml</file>
+        <file>FontSizes.qml</file>
     </qresource>
 </RCC>

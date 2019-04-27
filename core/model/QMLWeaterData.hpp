@@ -1,5 +1,4 @@
-#ifndef AWEATHERDATA_H
-#define AWEATHERDATA_H
+#pragma once
 
 #include <QtCore/QObject>
 #include <QtCore/QString>
@@ -55,10 +54,10 @@ public:
     void setWeatherIcon(const QString &value);
     void setWeatherDescription(const QString &value);
     void setCondition(const QString &value);
-    void setMaxTemperature(const int &value);
-    void setMinTemperature(const int &value);
-    void setPressure(const double &value);
-    void setHumidity(const int &value);
+    void setMaxTemperature(int value);
+    void setMinTemperature(int value);
+    void setPressure(double value);
+    void setHumidity(int value);
 
 signals:
     void dataChanged();
@@ -76,5 +75,3 @@ private:
 };
 
 Q_DECLARE_METATYPE(AWeatherData)
-
-#endif // AWEATHERDATA_H

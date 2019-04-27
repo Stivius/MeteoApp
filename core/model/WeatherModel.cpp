@@ -1,5 +1,5 @@
 #include "WeatherModel.hpp"
-
+#include <memory>
 static void forecastAppend(QQmlListProperty<AWeatherData> *prop, AWeatherData *val)
 {
     Q_UNUSED(val);
@@ -170,7 +170,7 @@ void WeatherModel::updateForecast(const WeatherDataCollection& data)
     m_WeatherAccessor->forecast.clear();
     for(const auto& n_weater : data)
     {
-        std::unique_ptr<AWeatherData> tempData(new AWeatherData());
+        auto tempData = std::make_unique<AWeatherData>(new AWeatherData());
         tempData->setCity(n_weater.city);
         tempData->setDayOfWeek(n_weater.dayOfTheWeek);
         tempData->setPressure(n_weater.pressure);
