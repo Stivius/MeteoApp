@@ -1,4 +1,4 @@
-#include "QMLWeaterData.hpp"
+#include "QMLWeatherData.hpp"
 
 AWeatherData::AWeatherData(QObject *parent) :
         QObject(parent)

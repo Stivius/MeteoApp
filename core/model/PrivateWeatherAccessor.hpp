@@ -5,7 +5,8 @@
 #include <QtNetwork/QNetworkReply>
 #include <QtQml/QQmlListProperty>
 #include <QtNetwork>
-#include "QMLWeaterData.hpp"
+
+#include "core/model/QMLWeatherData.hpp"
 
 class PrivateWeatherAccessor
 {

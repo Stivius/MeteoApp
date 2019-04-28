@@ -4,7 +4,8 @@
 
 #include "core/api/WeatherApi.hpp"
 #include "core/model/GeoPositioning.hpp"
-#include "privateweatheraccessor.hpp"
+#include "core/model/QMLWeatherData.hpp"
+#include "core/model/PrivateWeatherAccessor.hpp"
 
 class WeatherModel : public QObject
 {

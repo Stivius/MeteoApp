@@ -12,7 +12,6 @@
         <file>historical/ui/HistoricalWeather.qml</file>
         <file>weather/ui/BigForecastIcon.qml</file>
         <file>weather/ui/WeatherIcon.qml</file>
-        <file>icons/README.txt</file>
         <file>icons/weather-few-clouds.png</file>
         <file>icons/weather-fog.png</file>
         <file>icons/weather-haze.png</file>
