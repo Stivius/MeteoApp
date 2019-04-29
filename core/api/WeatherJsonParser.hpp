@@ -14,5 +14,6 @@ public:
 
 private:
     WeatherData parseJsonObject(const QJsonObject& data);
+    qint64 toMSSinceEpoch(QJsonValue&& value) const;
 
 };

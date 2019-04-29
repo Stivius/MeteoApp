@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import BluetoothWindowSettings 1.0
+import FontSizes 1.0
 
 Rectangle {
     id: viewContainer
@@ -14,7 +15,7 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
         verticalAlignment: Text.AlignVCenter
         color: BluetoothWindowSettings.textColor
-        font.pixelSize: BluetoothWindowSettings.mediumFontSize
+        font.pixelSize: FontSizes.mediumFontSize
         text: qsTr("FOUND DEVICES")
 
         Rectangle {
@@ -58,7 +59,7 @@ Rectangle {
 
             Text {
                 id: device
-                font.pixelSize: BluetoothWindowSettings.smallFontSize
+                font.pixelSize: FontSizes.smallFontSize
                 text: modelData.deviceName
                 anchors.top: parent.top
                 anchors.topMargin: parent.height * 0.1
@@ -69,7 +70,7 @@ Rectangle {
 
             Text {
                 id: deviceAddress
-                font.pixelSize: BluetoothWindowSettings.smallFontSize
+                font.pixelSize: FontSizes.smallFontSize
                 text: modelData.deviceAddress
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: parent.height * 0.1
@@ -91,7 +92,7 @@ Rectangle {
         onClicked: deviceFinder.startSearch()
         Text {
             anchors.centerIn: parent
-            font.pixelSize: BluetoothWindowSettings.tinyFontSize
+            font.pixelSize: FontSizes.tinyFontSize
             text: qsTr("START SEARCH")
             color: searchButton.enabled? BluetoothWindowSettings.textColor: BluetoothWindowSettings.disabledTextColor
         }

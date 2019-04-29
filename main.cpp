@@ -7,6 +7,7 @@
 #include "bluetooth/model/DeviceFinder.hpp"
 #include "bluetooth/model/DeviceHandler.hpp"
 #include "bluetooth/model/ChunkedDataParser.hpp"
+#include "core/model/QMLWeatherData.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -20,9 +21,11 @@ int main(int argc, char *argv[])
 
     qmlRegisterUncreatableType<DeviceHandler>("DeviceHandler", 1, 0, "AddressType", "Enum is not a type");
     qmlRegisterType<WeatherModel>("CurrentWeather", 1, 0, "CurrentWeather");
+    qmlRegisterType<AWeatherData>("WeatherData", 1, 0, "WeatherData");
     qmlRegisterSingletonType(QUrl("qrc:/CommonSettings.qml"), "CommonSettings", 1, 0, "CommonSettings" );
+    qmlRegisterSingletonType(QUrl("qrc:/FontSizes.qml"), "FontSizes", 1, 0, "FontSizes" );
     qmlRegisterSingletonType(QUrl("qrc:/bluetooth/ui/BluetoothWindowSettings.qml"), "BluetoothWindowSettings", 1, 0, "BluetoothWindowSettings" );
-
+    qmlRegisterSingletonType(QUrl("qrc:/weather/ui/WeatherWindowSettings.qml"), "WeatherWindowSettings", 1, 0, "WeatherWindowSettings" );
     QQmlApplicationEngine engine;
 
     engine.rootContext()->setContextProperty("connectionHandler", &connectionHandler);

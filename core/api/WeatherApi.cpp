@@ -10,10 +10,25 @@ WeatherApi::WeatherApi(QObject* parent) :
 }
 
 // Hourly and Daily API are unstable and should not be used
-void WeatherApi::requestCityWeather(const QString& city, WeatherInfo info)
+void WeatherApi::requestCityWeather(const QString& city)
 {
-    auto service = Resources::getApiService(info);
+    auto service = Resources::getApiService(WeatherInfo::Current);
     std::map<QString, QString> params = {{"q", city}, {"units", "metric"}, {"appid", ApiConfig::apiKey()}};
+
+    sendRequest(Resources::formRequestUrl(service, params));
+}
+
+void WeatherApi::requestCityForecast(const QString& city)
+{
+    auto service = Resources::getApiService(WeatherInfo::Daily);
+    std::map<QString, QString> params =
+    {
+          {"q", city}
+        , {"units", "metric"}
+        , {"cnt", "5"}
+        , {"appid"
+        , ApiConfig::apiKey()}
+    };
 
     sendRequest(Resources::formRequestUrl(service, params));
 }

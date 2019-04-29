@@ -1,7 +1,7 @@
 QT += quick widgets positioning charts bluetooth
 CONFIG += c++17
 
-QMAKE_CXXFLAGS += /std:c++17
+#QMAKE_CXXFLAGS += /std:c++17
 #Uncomment for passing MSVC build
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -30,7 +30,8 @@ SOURCES += \
     core/model/WeatherModel.cpp \
     main.cpp \
     Resources.cpp \
-    bluetooth/model/ChunkedDataParser.cpp
+    bluetooth/model/ChunkedDataParser.cpp \
+    core/model/QMLWeatherData.cpp
 
 RESOURCES += qml.qrc
 
@@ -70,4 +71,20 @@ HEADERS += \
     core/model/WeatherModel.hpp \
     Resources.hpp \
     bluetooth/model/ChunkedDataParser.hpp \
-    bluetooth/model/BluetoothModelResources.hpp
+    bluetooth/model/BluetoothModelResources.hpp \
+    core/model/QMLWeatherData.hpp \
+    core/model/PrivateWeatherAccessor.hpp
+
+DISTFILES += \
+    icons/weather-few-clouds.png \
+    icons/weather-fog.png \
+    icons/weather-haze.png \
+    icons/weather-icy.png \
+    icons/weather-overcast.png \
+    icons/weather-showers.png \
+    icons/weather-sleet.png \
+    icons/weather-snow.png \
+    icons/weather-storm.png \
+    icons/weather-sunny-very-few-clouds.png \
+    icons/weather-sunny.png \
+    icons/weather-thundershower.png

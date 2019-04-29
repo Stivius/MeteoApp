@@ -1,13 +1,16 @@
 #pragma once
 
 #include <QString>
+#include <QDateTime>
 #include <vector>
 
 struct WeatherData
 {
     QString city;
     QString condition;
+    QString dayOfTheWeek;
     QString description;
+    QString weatherIcon;
     double temperature;
     double temperatureMin;
     double temperatureMax;
