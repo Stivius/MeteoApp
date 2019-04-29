@@ -8,6 +8,9 @@
         <file>bluetooth/ui/MessageCenter.qml</file>
         <file>bluetooth/ui/SearchDevicesButton.qml</file>
         <file>bluetooth/ui/SensorWeather.qml</file>
+        <file>bluetooth/ui/resources/icons/gauge.png</file>
+        <file>bluetooth/ui/resources/icons/humidity.png</file>
+        <file>bluetooth/ui/resources/icons/thermometer.png</file>
         <file>weather/ui/CurrentWeather.qml</file>
         <file>historical/ui/HistoricalWeather.qml</file>
         <file>weather/ui/BigForecastIcon.qml</file>

@@ -6,6 +6,7 @@ Rectangle {
     color: baseColor
     onEnabledChanged: checkColor()
     radius: BluetoothWindowSettings.buttonRadius
+    border.color: Qt.lighter( baseColor )
 
     property color baseColor: BluetoothWindowSettings.buttonColor
     property color pressedColor: BluetoothWindowSettings.buttonPressedColor
