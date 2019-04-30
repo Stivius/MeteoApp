@@ -7,46 +7,48 @@ Item {
 
     Image {
         id: img
+        cache: false
+        asynchronous: true
         source: {
             switch (weatherIcon) {
             case "01d":
             case "01n":
-                 "qrc:/icons/weather-sunny.png"
+                 "image://weathericonsprovider/weather-sunny"
                 break;
             case "02d":
             case "02n":
-                "qrc:/icons/weather-sunny-very-few-clouds.png"
+                "image://weathericonsprovider/weather-sunny-very-few-clouds"
                 break;
             case "03d":
             case "03n":
-                "qrc:/icons/weather-few-clouds.png"
+                "image://weathericonsprovider/weather-few-clouds"
                 break;
             case "04d":
             case "04n":
-                "qrc:/icons/weather-overcast.png"
+                "image://weathericonsprovider/weather-overcast"
                 break;
             case "09d":
             case "09n":
-                "qrc:/icons/weather-showers.png"
+                "image://weathericonsprovider/weather-showers"
                 break;
             case "10d":
             case "10n":
-                "qrc:/icons/weather-showers.png"
+                "image://weathericonsprovider/weather-showers"
                 break;
             case "11d":
             case "11n":
-                "qrc:/icons/weather-thundershower.png"
+                "image://weathericonsprovider/weather-thundershower"
                 break;
             case "13d":
             case "13n":
-                "qrc:/icons/weather-snow.png"
+                "image://weathericonsprovider/weather-snow"
                 break;
             case "50d":
             case "50n":
-                "qrc:/icons/weather-fog.png"
+                "image://weathericonsprovider/weather-fog"
                 break;
             default:
-                "qrc:/icons/weather-unknown.png"
+                "image://weathericonsprovider/weather-unknown"
                 break;
             }
         }

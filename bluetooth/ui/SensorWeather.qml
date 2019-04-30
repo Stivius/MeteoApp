@@ -11,30 +11,41 @@ Rectangle {
 
     color: BluetoothWindowSettings.backgroundColor
 
-    ColumnLayout {
+    GridLayout {
         id: columnLayout
         anchors.fill: parent
-        anchors.margins:10
+        flow: GridLayout.TopToBottom
 
-        CustomTextWidget {
-            id:temperatureWidget
-            widgetName:  qsTr("Temperature:");
-            displayedText: deviceHandler.temperature
-        }
+        GridLayout
+        {
+            Layout.margins: BluetoothWindowSettings.fieldMargin
+            flow: GridLayout.TopToBottom;
+                CustomTextWidget {
+                    id:temperatureWidget
+                    Layout.preferredHeight: BluetoothWindowSettings.fieldHeight
+                    Layout.preferredWidth: BluetoothWindowSettings.fieldHeight
+                    iconPath:"resources/icons/thermometer.png"
+                    displayedText: deviceHandler.temperature
+                }
 
-        CustomTextWidget {
-            id:humidityWidget
-            widgetName:  qsTr("Humidity:");
-            displayedText: deviceHandler.humidity
-        }
+                CustomTextWidget {
+                    id:humidityWidget
+                    Layout.preferredHeight: BluetoothWindowSettings.fieldHeight
+                    Layout.preferredWidth: BluetoothWindowSettings.fieldHeight
+                    iconPath:"resources/icons/humidity.png"
+                    displayedText: deviceHandler.humidity
+                }
 
-        CustomTextWidget {
-            id:pressureWidget
-            widgetName:  qsTr("Pressure:");
-            displayedText: deviceHandler.pressure
-        }
-
+                CustomTextWidget {
+                    id:pressureWidget
+                    Layout.preferredHeight: BluetoothWindowSettings.fieldHeight
+                    Layout.preferredWidth: BluetoothWindowSettings.fieldHeight
+                    iconPath:"resources/icons/gauge.png"
+                    displayedText: deviceHandler.pressure
+                }
+            }
         ConnectWidget {
+            Layout.margins: BluetoothWindowSettings.fieldMargin
             Layout.fillWidth: true
             Layout.fillHeight: true
         }

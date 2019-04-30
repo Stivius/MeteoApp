@@ -8,6 +8,7 @@
 #include "bluetooth/model/DeviceHandler.hpp"
 #include "bluetooth/model/ChunkedDataParser.hpp"
 #include "core/model/QMLWeatherData.hpp"
+#include "iconproviders/WeatherIconsProvider.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -31,6 +32,8 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("connectionHandler", &connectionHandler);
     engine.rootContext()->setContextProperty("deviceFinder", &deviceFinder);
     engine.rootContext()->setContextProperty("deviceHandler", &deviceHandler);
+
+    engine.addImageProvider( "weathericonsprovider", new WeatherIconsProvider() );
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
