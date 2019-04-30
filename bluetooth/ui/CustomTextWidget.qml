@@ -2,14 +2,12 @@ import QtQuick 2.9
 import BluetoothWindowSettings 1.0
 import FontSizes 1.0
 
-Text {
-    property string widgetName:""
-    property string displayedText;
-
-    text: qsTr(widgetName);
-    font.pixelSize: FontSizes.largeFontSize
-    color: BluetoothWindowSettings.textColor
-
+Image {
+    property string iconPath:""
+    property string displayedText:""
+    source: iconPath;
+    asynchronous: true;
+    cache: true;
     Text {
         text: parent.displayedText;
         font.pixelSize: FontSizes.largeFontSize

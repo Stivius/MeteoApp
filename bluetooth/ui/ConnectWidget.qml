@@ -7,7 +7,8 @@ Rectangle {
     width: parent.width - BluetoothWindowSettings.fieldMargin*2
     color: BluetoothWindowSettings.viewColor
     radius: BluetoothWindowSettings.buttonRadius
-
+    border.color: Qt.lighter(BluetoothWindowSettings.viewColor)
+    border.width: parent.width * 0.01
     Text {
         id: title
         width: parent.width
@@ -73,7 +74,7 @@ Rectangle {
                 font.pixelSize: FontSizes.smallFontSize
                 text: modelData.deviceAddress
                 anchors.bottom: parent.bottom
-                anchors.bottomMargin: parent.height * 0.1
+                anchors.bottomMargin: parent.height * 0.2
                 anchors.rightMargin: parent.height * 0.1
                 anchors.right: parent.right
                 color: Qt.darker(BluetoothWindowSettings.textColor)
@@ -85,8 +86,8 @@ Rectangle {
         id:searchButton
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
-        anchors.bottomMargin:  BluetoothWindowSettings.fieldMargin
-        width: parent.width
+        anchors.bottomMargin:  BluetoothWindowSettings.fieldMargin *.2
+        width: parent.width - parent.border.width
         height: BluetoothWindowSettings.fieldHeight
         enabled: !deviceFinder.scanning
         onClicked: deviceFinder.startSearch()
