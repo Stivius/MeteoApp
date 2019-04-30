@@ -27,5 +27,6 @@
         <file>weather/ui/ForecastIcon.qml</file>
         <file>weather/ui/WeatherWindowSettings.qml</file>
         <file>FontSizes.qml</file>
+        <file>settings.conf</file>
     </qresource>
 </RCC>

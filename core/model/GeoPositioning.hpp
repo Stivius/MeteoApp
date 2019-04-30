@@ -14,7 +14,6 @@ signals:
 
 public:
     explicit GeoPositioning(QObject *parent = nullptr);
-    ~GeoPositioning();
 
     void requestUpdates();
 

@@ -22,7 +22,6 @@ Item {
 
     WeatherIcon {
         weatherIcon: current.weatherIcon
-        useServerIcon: false
         anchors.centerIn: parent
         anchors.verticalCenterOffset: -15
         width: current.smallSide
