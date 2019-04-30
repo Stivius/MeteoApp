@@ -21,17 +21,19 @@ SOURCES += \
     bluetooth/model/DeviceHandler.cpp \
     bluetooth/model/DeviceInfo.cpp \
     bluetooth/model/receiveddataparser.cpp \
+    bluetooth/model/ChunkedDataParser.cpp \
     core/api/ApiManager.cpp \
     core/api/ApiRequest.cpp \
     core/api/WeatherApi.cpp \
     core/api/WeatherJsonParser.cpp \
     core/api/ApiConfig.cpp \
+    core/model/QMLWeatherData.cpp\
     core/model/GeoPositioning.cpp \
     core/model/WeatherModel.cpp \
     main.cpp \
     Resources.cpp \
-    bluetooth/model/ChunkedDataParser.cpp \
-    core/model/QMLWeatherData.cpp
+    iconproviders/WeatherIconsProvider.cpp \
+    iconproviders/ResourcesIcons.cpp
 
 RESOURCES += qml.qrc
 
@@ -60,6 +62,8 @@ HEADERS += \
     bluetooth/model/DeviceInfo.hpp \
     bluetooth/model/IReceivedDataParser.hpp \
     bluetooth/model/simulator-config.hpp \
+    bluetooth/model/BluetoothModelResources.hpp\
+    bluetooth/model/ChunkedDataParser.hpp\
     core/api/ApiManager.hpp \
     core/api/ApiRequest.hpp \
     core/api/WeatherApi.hpp \
@@ -69,11 +73,11 @@ HEADERS += \
     core/model/GeoPositioning.hpp \
     core/model/WeatherData.hpp \
     core/model/WeatherModel.hpp \
-    Resources.hpp \
-    bluetooth/model/ChunkedDataParser.hpp \
-    bluetooth/model/BluetoothModelResources.hpp \
     core/model/QMLWeatherData.hpp \
-    core/model/PrivateWeatherAccessor.hpp
+    core/model/PrivateWeatherAccessor.hpp\
+    iconproviders/WeatherIconsProvider.hpp\
+    Resources.hpp \
+    iconproviders/ResourcesIcons.hpp
 
 DISTFILES += \
     icons/weather-few-clouds.png \
