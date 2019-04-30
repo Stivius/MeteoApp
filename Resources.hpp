@@ -11,7 +11,7 @@ namespace Resources
 {
     namespace Settings
     {
-        const QString File = "settings.conf";
+        const QString File = ":/settings.conf";
 
         const QString CurrentWeatherApiService = "CurrentWeatherApi";
         const QString HourlyForecastApiService = "HourlyForecastApi";

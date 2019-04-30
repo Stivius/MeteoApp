@@ -18,6 +18,7 @@
         <file>weather/ui/ForecastIcon.qml</file>
         <file>weather/ui/WeatherWindowSettings.qml</file>
         <file>FontSizes.qml</file>
+        <file>settings.conf</file>
         <file>iconproviders/icons/old-icons/weather-few-clouds.png</file>
         <file>iconproviders/icons/old-icons/weather-fog.png</file>
         <file>iconproviders/icons/old-icons/weather-haze.png</file>

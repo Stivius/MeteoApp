@@ -13,10 +13,6 @@ GeoPositioning::GeoPositioning(QObject *parent) :
             &GeoPositioning::positionError);
 }
 
-GeoPositioning::~GeoPositioning()
-{
-}
-
 void GeoPositioning::requestUpdates()
 {
     m_positioningSource->requestUpdate();

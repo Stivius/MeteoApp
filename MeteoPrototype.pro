@@ -20,7 +20,6 @@ SOURCES += \
     bluetooth/model/DeviceFinder.cpp \
     bluetooth/model/DeviceHandler.cpp \
     bluetooth/model/DeviceInfo.cpp \
-    bluetooth/model/receiveddataparser.cpp \
     bluetooth/model/ChunkedDataParser.cpp \
     core/api/ApiManager.cpp \
     core/api/ApiRequest.cpp \
@@ -30,10 +29,10 @@ SOURCES += \
     core/model/QMLWeatherData.cpp\
     core/model/GeoPositioning.cpp \
     core/model/WeatherModel.cpp \
-    main.cpp \
-    Resources.cpp \
     iconproviders/WeatherIconsProvider.cpp \
-    iconproviders/ResourcesIcons.cpp
+    iconproviders/ResourcesIcons.cpp \
+    main.cpp \
+    Resources.cpp
 
 RESOURCES += qml.qrc
 
@@ -48,11 +47,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-#copydata.commands = $(COPY_DIR) $$PWD/settings.conf $$OUT_PWD
-#first.depends = $(first) copydata
-#export(first.depends)
-#export(copydata.commands)
-#QMAKE_EXTRA_TARGETS += first copydata
+include(android-openssl.pri)
 
 HEADERS += \
     bluetooth/model/BluetoothBaseClass.hpp \
@@ -61,6 +56,8 @@ HEADERS += \
     bluetooth/model/DeviceHandler.hpp \
     bluetooth/model/DeviceInfo.hpp \
     bluetooth/model/IReceivedDataParser.hpp \
+    bluetooth/model/ChunkedDataParser.hpp \
+    bluetooth/model/BluetoothModelResources.hpp \
     bluetooth/model/simulator-config.hpp \
     bluetooth/model/BluetoothModelResources.hpp\
     bluetooth/model/ChunkedDataParser.hpp\
@@ -74,21 +71,7 @@ HEADERS += \
     core/model/WeatherData.hpp \
     core/model/WeatherModel.hpp \
     core/model/QMLWeatherData.hpp \
-    core/model/PrivateWeatherAccessor.hpp\
-    iconproviders/WeatherIconsProvider.hpp\
-    Resources.hpp \
-    iconproviders/ResourcesIcons.hpp
-
-DISTFILES += \
-    icons/weather-few-clouds.png \
-    icons/weather-fog.png \
-    icons/weather-haze.png \
-    icons/weather-icy.png \
-    icons/weather-overcast.png \
-    icons/weather-showers.png \
-    icons/weather-sleet.png \
-    icons/weather-snow.png \
-    icons/weather-storm.png \
-    icons/weather-sunny-very-few-clouds.png \
-    icons/weather-sunny.png \
-    icons/weather-thundershower.png
+    core/model/PrivateWeatherAccessor.hpp \
+    iconproviders/WeatherIconsProvider.hpp \
+    iconproviders/ResourcesIcons.hpp \
+    Resources.hpp
