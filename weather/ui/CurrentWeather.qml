@@ -5,12 +5,31 @@ import CurrentWeather 1.0
 import CommonSettings 1.0
 
 import WeatherWindowSettings 1.0
+import ApplicationTheme 1.0
+import ThemeController 1.0
 
-Item {
+Rectangle{
+    anchors.fill: parent
 
+    color: CommonSettings.backgroundColor
+
+    Switch {
+        id:switchItem;
+        anchors.right: parent.right
+        anchors.top: parent.top
+        Component.onCompleted:
+        {
+            switchItem.checked = ThemeController.currentAppTheme!= AppThemeEnum.Light;
+        }
+        onClicked:
+        {
+            var newTheme = switchItem.checked? AppThemeEnum.Dark : AppThemeEnum.Light
+            ThemeController.changeTheme( newTheme )
+            console.log("Clicked, checked = ", newTheme )
+        }
+       }
     Column {
         anchors.centerIn: parent
-
         BigForecastIcon {
             id: forecastIcon
             width: WeatherWindowSettings.bigIconWidth
@@ -71,7 +90,6 @@ Item {
 
         ComboBox {
             id: cityList
-            y: 500
             model: ["Current", "London", "Kharkiv", "Kiev"]
 
             onCurrentTextChanged: {
@@ -85,6 +103,7 @@ Item {
             }
         }
     }
+
     CurrentWeather {
         id: model
     }

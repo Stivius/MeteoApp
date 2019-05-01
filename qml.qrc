@@ -32,5 +32,37 @@
         <file>iconproviders/icons/old-icons/weather-sunny-very-few-clouds.png</file>
         <file>iconproviders/icons/old-icons/weather-thundershower.png</file>
         <file>iconproviders/icons/old-icons/weather-unknown.png</file>
+        <file>iconproviders/icons/dark-theme/weather-cloudy.jpg</file>
+        <file>iconproviders/icons/dark-theme/weather-few-clouds.png</file>
+        <file>iconproviders/icons/dark-theme/weather-fog.png</file>
+        <file>iconproviders/icons/dark-theme/weather-haze.png</file>
+        <file>iconproviders/icons/dark-theme/weather-icy.png</file>
+        <file>iconproviders/icons/dark-theme/weather-overcast.png</file>
+        <file>iconproviders/icons/dark-theme/weather-showers.png</file>
+        <file>iconproviders/icons/dark-theme/weather-sleet.png</file>
+        <file>iconproviders/icons/dark-theme/weather-smol rain.png</file>
+        <file>iconproviders/icons/dark-theme/weather-snow.png</file>
+        <file>iconproviders/icons/dark-theme/weather-storm.png</file>
+        <file>iconproviders/icons/dark-theme/weather-sunny.png</file>
+        <file>iconproviders/icons/dark-theme/weather-sunny-very-few-clouds.png</file>
+        <file>iconproviders/icons/dark-theme/weather-thundershower.png</file>
+        <file>iconproviders/icons/dark-theme/weather-unknown.png</file>
+        <file>iconproviders/icons/light-theme/weather-cloudy day.jpg</file>
+        <file>iconproviders/icons/light-theme/weather-few-clouds.png</file>
+        <file>iconproviders/icons/light-theme/weather-fog.png</file>
+        <file>iconproviders/icons/light-theme/weather-haze.png</file>
+        <file>iconproviders/icons/light-theme/weather-icy.png</file>
+        <file>iconproviders/icons/light-theme/weather-overcast.png</file>
+        <file>iconproviders/icons/light-theme/weather-showers.png</file>
+        <file>iconproviders/icons/light-theme/weather-sleet.png</file>
+        <file>iconproviders/icons/light-theme/weather-smol rain day.png</file>
+        <file>iconproviders/icons/light-theme/weather-snow.png</file>
+        <file>iconproviders/icons/light-theme/weather-storm.png</file>
+        <file>iconproviders/icons/light-theme/weather-sunny.png</file>
+        <file>iconproviders/icons/light-theme/weather-sunny-very-few-clouds.png</file>
+        <file>iconproviders/icons/light-theme/weather-thundershower.png</file>
+        <file>iconproviders/icons/light-theme/weather-unknown.png</file>
+        <file>CornDemo-Regular.ttf</file>
+        <file>ThemeController.qml</file>
     </qresource>
 </RCC>
