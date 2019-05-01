@@ -56,8 +56,6 @@ HEADERS += \
     bluetooth/model/DeviceHandler.hpp \
     bluetooth/model/DeviceInfo.hpp \
     bluetooth/model/IReceivedDataParser.hpp \
-    bluetooth/model/ChunkedDataParser.hpp \
-    bluetooth/model/BluetoothModelResources.hpp \
     bluetooth/model/simulator-config.hpp \
     bluetooth/model/BluetoothModelResources.hpp\
     bluetooth/model/ChunkedDataParser.hpp\
@@ -71,7 +69,9 @@ HEADERS += \
     core/model/WeatherData.hpp \
     core/model/WeatherModel.hpp \
     core/model/QMLWeatherData.hpp \
-    core/model/PrivateWeatherAccessor.hpp \
-    iconproviders/WeatherIconsProvider.hpp \
+    core/model/PrivateWeatherAccessor.hpp\
+    iconproviders/WeatherIconsProvider.hpp\
+    Resources.hpp \
     iconproviders/ResourcesIcons.hpp \
-    Resources.hpp
+    iconproviders/ApplicationTheme.hpp
+

@@ -2,17 +2,12 @@
 
 #include <QString>
 #include <QUrl>
-
-enum class ApplicationTheme
-{
-        Light
-    ,   Dark
-};
+#include "ApplicationTheme.hpp "
 
 namespace Icons::Resources::Utility
 {
 
-    QUrl getIconUrl( const QString& iconId, ApplicationTheme theme );
+    QString getIconPath( const QString& iconId, ApplicationTheme::Theme theme );
 }
 
 namespace Icons::Keys
@@ -28,20 +23,28 @@ namespace Icons::Keys
     const QString Unknown            { "weather-unknown"               };
 }
 
-namespace Icons::Paths::OldIcons
+namespace Icons::Paths::ThemePath
 {
-    const QUrl FewClouds            { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-few-clouds.png" )              };
-    const QUrl Fog                  { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-fog.png" )                     };
-    const QUrl Haze                 { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-haze.png" )                    };
-    const QUrl Icy                  { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-icy.png" )                     };
-    const QUrl Overcast             { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-overcast.png" )                };
-    const QUrl Showers              { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-showers.png" )                 };
-    const QUrl Sleet                { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-sleet.png" )                   };
-    const QUrl Snow                 { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-snow.png" )                    };
-    const QUrl Storm                { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-storm.png" )                   };
-    const QUrl Sunny                { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-sunny.png" )                   };
-    const QUrl SunnyVeryFewClouds   { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-sunny-very-few-clouds.png" )   };
-    const QUrl ThunderShower        { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-thundershower.png" )           };
-    const QUrl Unknown              { QUrl::fromLocalFile( ":/iconproviders/icons/old-icons/weather-unknown.png")                  };
+    const QString DarkTheme = "dark-theme";
+    const QString LightTheme = "light-theme";
+    const QString OldIcons = "old-icons";
+    const QString MatchRegex = "PROVIDER_FOLDER";
+}
+
+namespace Icons::Paths
+{
+    const QUrl FewClouds            { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-few-clouds.png" )              };
+    const QUrl Fog                  { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-fog.png" )                     };
+    const QUrl Haze                 { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-haze.png" )                    };
+    const QUrl Icy                  { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-icy.png" )                     };
+    const QUrl Overcast             { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-overcast.png" )                };
+    const QUrl Showers              { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-showers.png" )                 };
+    const QUrl Sleet                { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-sleet.png" )                   };
+    const QUrl Snow                 { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-snow.png" )                    };
+    const QUrl Storm                { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-storm.png" )                   };
+    const QUrl Sunny                { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-sunny.png" )                   };
+    const QUrl SunnyVeryFewClouds   { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-sunny-very-few-clouds.png" )   };
+    const QUrl ThunderShower        { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-thundershower.png" )           };
+    const QUrl Unknown              { QUrl::fromLocalFile( ":/iconproviders/icons/PROVIDER_FOLDER/weather-unknown.png")                  };
 }
 

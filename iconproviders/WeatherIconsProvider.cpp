@@ -2,7 +2,7 @@
 
 WeatherIconsProvider::WeatherIconsProvider()
     :   QQuickImageProvider{ QQuickImageProvider::Image }
-    ,   m_currentTheme{ ApplicationTheme::Light }
+    ,   currentTheme{ ApplicationTheme::Theme::Dark }
 {
 }
 
@@ -15,7 +15,7 @@ QImage WeatherIconsProvider::requestImage(
 {
     Q_UNUSED( size );
 
-    QImage result ( Icons::Resources::Utility::getIconUrl( id, m_currentTheme ).toLocalFile() );
+    QImage result ( Icons::Resources::Utility::getIconPath( id, currentTheme ) );
 
     if( isImageNeedResize( requestedSize ) )
     {
@@ -27,6 +27,17 @@ QImage WeatherIconsProvider::requestImage(
     }
 
     return  result;
+}
+
+void WeatherIconsProvider::setTheme( ApplicationTheme::Theme newTheme )
+{
+    currentTheme = newTheme;
+    emit themeChanged( newTheme );
+}
+
+ApplicationTheme::Theme WeatherIconsProvider::getTheme() const
+{
+    return currentTheme;
 }
 
 

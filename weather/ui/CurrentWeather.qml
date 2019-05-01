@@ -5,12 +5,38 @@ import CurrentWeather 1.0
 import CommonSettings 1.0
 
 import WeatherWindowSettings 1.0
+import ApplicationTheme 1.0
 
 Item {
+    Switch {
+        id:switchItem;
+        anchors.right: parent.right
+        anchors.top: parent.top
+        text: qsTr("Black theme");
+        Component.onCompleted:
+        {
+            var isCheked = weatherIconsProvider.CurrentTheme != AppThemeEnum.Light ? true:false
+            switchItem.checked = isCheked;
+        }
+        onClicked:
+        {
+            var newTheme = switchItem.checked? AppThemeEnum.Dark : AppThemeEnum.Light
+            weatherIconsProvider.CurrentTheme = newTheme
 
+            console.log("Clicked, checked = ", newTheme )
+        }
+        Connections
+        {
+            target: weatherIconsProvider
+            onThemeChanged:
+            {
+                var isCheked = weatherIconsProvider.CurrentTheme != AppThemeEnum.Light ? true:false;
+                switchItem.checked = isCheked;
+            }
+        }
+       }
     Column {
         anchors.centerIn: parent
-
         BigForecastIcon {
             id: forecastIcon
             width: WeatherWindowSettings.bigIconWidth
@@ -71,7 +97,6 @@ Item {
 
         ComboBox {
             id: cityList
-            y: 500
             model: ["Current", "London", "Kharkiv", "Kiev"]
 
             onCurrentTextChanged: {
@@ -85,6 +110,7 @@ Item {
             }
         }
     }
+
     CurrentWeather {
         id: model
     }

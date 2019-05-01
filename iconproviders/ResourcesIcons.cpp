@@ -1,45 +1,65 @@
 #include "ResourcesIcons.hpp"
 #include <map>
+#include <QRegExp>
 
-static std::map<QString, QUrl> LigthThemeMap
+using IconsStore = std::map<QString, QUrl> ;
+
+static IconsStore ThemeMap
 {
-        { Icons::Keys::Sunny                , Icons::Paths::OldIcons::Sunny                }
-    ,   { Icons::Keys::SunnyVeryFewClouds   , Icons::Paths::OldIcons::SunnyVeryFewClouds   }
-    ,   { Icons::Keys::FewClouds            , Icons::Paths::OldIcons::FewClouds            }
-    ,   { Icons::Keys::Overcast             , Icons::Paths::OldIcons::Overcast             }
-    ,   { Icons::Keys::Showers              , Icons::Paths::OldIcons::Showers              }
-    ,   { Icons::Keys::Thundershower        , Icons::Paths::OldIcons::ThunderShower        }
-    ,   { Icons::Keys::Snow                 , Icons::Paths::OldIcons::Snow                 }
-    ,   { Icons::Keys::Fog                  , Icons::Paths::OldIcons::Fog                  }
-    ,   { Icons::Keys::Unknown              , Icons::Paths::OldIcons::Unknown              }
+        { Icons::Keys::Sunny                , Icons::Paths::Sunny                }
+    ,   { Icons::Keys::SunnyVeryFewClouds   , Icons::Paths::SunnyVeryFewClouds   }
+    ,   { Icons::Keys::FewClouds            , Icons::Paths::FewClouds            }
+    ,   { Icons::Keys::Overcast             , Icons::Paths::Overcast             }
+    ,   { Icons::Keys::Showers              , Icons::Paths::Showers              }
+    ,   { Icons::Keys::Thundershower        , Icons::Paths::ThunderShower        }
+    ,   { Icons::Keys::Snow                 , Icons::Paths::Snow                 }
+    ,   { Icons::Keys::Fog                  , Icons::Paths::Fog                  }
+    ,   { Icons::Keys::Unknown              , Icons::Paths::Unknown              }
 };
 
+namespace
+{
+    QString getUrlFromThemeMap(
+        const QString& iconKey
+    ,   const IconsStore& iconsHolder
+    ,   const QString& regexFilter
+    )
 
-QUrl Icons::Resources::Utility::getIconUrl( const QString& iconId, ApplicationTheme theme )
+    {
+        QString iconString;
+        if( auto iconIt = iconsHolder.find( iconKey ); iconIt!= iconsHolder.end() )
+            iconString= iconIt->second.toLocalFile();
+        else
+            iconString = iconsHolder.at( Icons::Keys::Unknown ).toLocalFile();
+
+        QRegExp regex { Icons::Paths::ThemePath::MatchRegex };
+        iconString.replace( regex, regexFilter );
+
+        return iconString;
+    }
+}
+
+QString Icons::Resources::Utility::getIconPath( const QString& iconId, ApplicationTheme::Theme theme )
 {
     switch ( theme )
     {
 
-    case ApplicationTheme::Dark:
+    case ApplicationTheme::Theme::Dark:
     {
-        return QUrl("");
+        return getUrlFromThemeMap( iconId, ThemeMap, Icons::Paths::ThemePath::DarkTheme );
     }
     break;
 
-    case ApplicationTheme::Light:
+    case ApplicationTheme::Theme::Light:
     {
-        if( auto it = LigthThemeMap.find( iconId ); it != LigthThemeMap.end() )
-        {
-            return it->second;
-        }
-        return LigthThemeMap.at("weather-unknown");
+        return getUrlFromThemeMap( iconId, ThemeMap, Icons::Paths::ThemePath::LightTheme );
     }
     break;
 
     default:
     {
         Q_ASSERT(false);
-        return QUrl("");
+        return QString("");
     }
 
     }
