@@ -12,6 +12,7 @@ public:
     static QString dailyForecstApi();
     static QString historicalWeatherApi();
 
+    static QString historicalApiKey();
     static QString apiKey();
 
 private:

@@ -29,6 +29,11 @@ QString ApiConfig::historicalWeatherApi()
     return ApiConfig::settings().value(Resources::Settings::HistoricalWeatherApiService).toString();
 }
 
+QString ApiConfig::historicalApiKey()
+{
+    return ApiConfig::settings().value(Resources::Settings::HistoricalApiKey).toString();
+}
+
 QString ApiConfig::apiKey()
 {
     return ApiConfig::settings().value(Resources::Settings::ApiKey).toString();
