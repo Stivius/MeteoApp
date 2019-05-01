@@ -19,8 +19,7 @@ Rectangle{
         anchors.top: parent.top
         Component.onCompleted:
         {
-            var isCheked = ThemeController.currentAppTheme!= AppThemeEnum.Light ? true:false
-            switchItem.checked = isCheked;
+            switchItem.checked = ThemeController.currentAppTheme!= AppThemeEnum.Light;
         }
         onClicked:
         {
