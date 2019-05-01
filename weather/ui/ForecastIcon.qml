@@ -1,5 +1,6 @@
 import QtQuick 2.0
-
+import CommonSettings 1.0
+import FontSizes 1.0
 Item {
     id: top
 
@@ -12,7 +13,9 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         width: top.width
         text: top.topText
-
+        font.pointSize: FontSizes.smallTinyFontSize
+        font.family: CommonSettings.themeFont
+        color: CommonSettings.fontColor
         anchors.top: parent.top
         anchors.topMargin: top.height / 5 - dayText.paintedHeight
         anchors.horizontalCenter: parent.horizontalCenter
@@ -41,6 +44,9 @@ Item {
         horizontalAlignment: Text.AlignHCenter
         width: top.width
         text: top.bottomText
+        font.pointSize: FontSizes.smallTinyFontSize
+        font.family: CommonSettings.themeFont
+        color: CommonSettings.fontColor
 
         anchors.bottom: parent.bottom
         anchors.bottomMargin: top.height / 5 - tempText.paintedHeight

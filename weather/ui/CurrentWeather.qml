@@ -6,33 +6,27 @@ import CommonSettings 1.0
 
 import WeatherWindowSettings 1.0
 import ApplicationTheme 1.0
+import ThemeController 1.0
 
-Item {
+Rectangle{
+    anchors.fill: parent
+
+    color: CommonSettings.backgroundColor
+
     Switch {
         id:switchItem;
         anchors.right: parent.right
         anchors.top: parent.top
-        text: qsTr("Black theme");
         Component.onCompleted:
         {
-            var isCheked = weatherIconsProvider.CurrentTheme != AppThemeEnum.Light ? true:false
+            var isCheked = ThemeController.currentAppTheme!= AppThemeEnum.Light ? true:false
             switchItem.checked = isCheked;
         }
         onClicked:
         {
             var newTheme = switchItem.checked? AppThemeEnum.Dark : AppThemeEnum.Light
-            weatherIconsProvider.CurrentTheme = newTheme
-
+            ThemeController.changeTheme( newTheme )
             console.log("Clicked, checked = ", newTheme )
-        }
-        Connections
-        {
-            target: weatherIconsProvider
-            onThemeChanged:
-            {
-                var isCheked = weatherIconsProvider.CurrentTheme != AppThemeEnum.Light ? true:false;
-                switchItem.checked = isCheked;
-            }
         }
        }
     Column {

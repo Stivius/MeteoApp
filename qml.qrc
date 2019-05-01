@@ -62,5 +62,7 @@
         <file>iconproviders/icons/light-theme/weather-sunny-very-few-clouds.png</file>
         <file>iconproviders/icons/light-theme/weather-thundershower.png</file>
         <file>iconproviders/icons/light-theme/weather-unknown.png</file>
+        <file>CornDemo-Regular.ttf</file>
+        <file>ThemeController.qml</file>
     </qresource>
 </RCC>

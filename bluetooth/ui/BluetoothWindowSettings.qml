@@ -5,17 +5,17 @@ import CommonSettings 1.0
 
 Item {
     // Colors
-    readonly property color backgroundColor: "#2d3037"
-    readonly property color buttonColor: "#202227"
-    readonly property color buttonPressedColor: "#6ccaf2"
+    readonly property color backgroundColor: CommonSettings.backgroundColor
+    readonly property color buttonColor: Qt.darker(CommonSettings.backgroundColor, 1.5)
+    readonly property color buttonPressedColor: Qt.darker(CommonSettings.backgroundColor, 1.5)
     readonly property color disabledButtonColor: "#555555"
-    readonly property color viewColor: "#202227"
+    readonly property color viewColor: Qt.darker(CommonSettings.backgroundColor, 1.3)
     readonly property color delegate1Color: Qt.darker(viewColor, 1.2)
     readonly property color delegate2Color: Qt.lighter(viewColor, 1.2)
-    readonly property color textColor: "#ffffff"
-    readonly property color textDarkColor: "#232323"
+    readonly property color textColor: Qt.lighter(CommonSettings.fontColor, 1.2 )
+    readonly property color messageCenterTextColor: "#ffffff"
+    readonly property color textDarkColor:  Qt.darker( CommonSettings.fontColor , 1.8 )
     readonly property color disabledTextColor: "#777777"
-    readonly property color sliderColor: "#6ccaf2"
     readonly property color errorColor: "#ba3f62"
     readonly property color infoColor: "#3fba62"
 

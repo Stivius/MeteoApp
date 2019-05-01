@@ -1,6 +1,7 @@
 import QtQuick 2.9
 import BluetoothWindowSettings 1.0
 import FontSizes 1.0
+import CommonSettings 1.0
 
 Item {
     anchors.fill: parent
@@ -34,8 +35,9 @@ Item {
             verticalAlignment: Text.AlignVCenter
             minimumPixelSize: 5
             font.pixelSize: FontSizes.smallFontSize
+            font.family: CommonSettings.themeFont
             fontSizeMode: Text.Fit
-            color: BluetoothWindowSettings.textColor
+            color: BluetoothWindowSettings.messageCenterTextColor
             text: hasError ? errorMessage : infoMessage
         }
     }

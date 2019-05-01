@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import BluetoothWindowSettings 1.0
+import CommonSettings 1.0
 import FontSizes 1.0
 
 Rectangle {
@@ -7,8 +8,6 @@ Rectangle {
     width: parent.width - BluetoothWindowSettings.fieldMargin*2
     color: BluetoothWindowSettings.viewColor
     radius: BluetoothWindowSettings.buttonRadius
-    border.color: Qt.lighter(BluetoothWindowSettings.viewColor)
-    border.width: parent.width * 0.01
     Text {
         id: title
         width: parent.width
@@ -17,8 +16,8 @@ Rectangle {
         verticalAlignment: Text.AlignVCenter
         color: BluetoothWindowSettings.textColor
         font.pixelSize: FontSizes.mediumFontSize
+        font.family: CommonSettings.themeFont
         text: qsTr("FOUND DEVICES")
-
         Rectangle {
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.bottom: parent.bottom
@@ -62,6 +61,7 @@ Rectangle {
                 id: device
                 font.pixelSize: FontSizes.smallFontSize
                 text: modelData.deviceName
+                font.family: CommonSettings.themeFont
                 anchors.top: parent.top
                 anchors.topMargin: parent.height * 0.1
                 anchors.leftMargin: parent.height * 0.1
@@ -72,6 +72,7 @@ Rectangle {
             Text {
                 id: deviceAddress
                 font.pixelSize: FontSizes.smallFontSize
+                font.family: CommonSettings.themeFont
                 text: modelData.deviceAddress
                 anchors.bottom: parent.bottom
                 anchors.bottomMargin: parent.height * 0.2
@@ -87,7 +88,7 @@ Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin:  BluetoothWindowSettings.fieldMargin *.2
-        width: parent.width - parent.border.width
+        width: parent.width
         height: BluetoothWindowSettings.fieldHeight
         enabled: !deviceFinder.scanning
         onClicked: deviceFinder.startSearch()
@@ -95,6 +96,7 @@ Rectangle {
             anchors.centerIn: parent
             font.pixelSize: FontSizes.tinyFontSize
             text: qsTr("START SEARCH")
+            font.family: CommonSettings.themeFont
             color: searchButton.enabled? BluetoothWindowSettings.textColor: BluetoothWindowSettings.disabledTextColor
         }
     }

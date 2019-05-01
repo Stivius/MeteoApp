@@ -1,9 +1,10 @@
 import QtQuick 2.0
 import WeatherWindowSettings 1.0
 import FontSizes 1.0
+import CommonSettings 1.0
+
 Item {
     id: current
-
     property string topText: "20*"
     property string bottomText: "Mostly cloudy"
     property string weatherIcon: "01d"
@@ -12,6 +13,8 @@ Item {
     Text {
         text: current.topText
         font.pointSize: FontSizes.largeFontSize
+        color: CommonSettings.fontColor
+        font.family: CommonSettings.themeFont
         anchors {
             top: current.top
             left: current.left
@@ -31,8 +34,11 @@ Item {
     Text {
         text: current.bottomText
         font.pointSize: FontSizes.mediumFontSize
+        font.family: CommonSettings.themeFont
         wrapMode: Text.WordWrap
         width: parent.width
+        color: CommonSettings.fontColor
+
         horizontalAlignment: Text.AlignRight
         anchors {
             bottom: current.bottom
