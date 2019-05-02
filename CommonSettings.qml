@@ -14,4 +14,22 @@ Item {
             case 2: return "historical/ui/HistoricalWeather.qml"
         }
     }
+
+     FontLoader {
+        id: applicationFont;
+        source: "CornDemo-Regular.ttf"
+    }
+
+    readonly property color darkBackgroundColor: "#503247"
+    readonly property color darkDigitsColor: "#7a90c2"
+
+    readonly property color lightBackgroundColor: "#538e8c"
+    readonly property color lightDigitsColor: "#aaf0f0"
+
+    property color backgroundColor: darkBackgroundColor
+    property color digitsColor: darkDigitsColor
+
+    property color fontColor: darkDigitsColor
+
+    property string themeFont: applicationFont.name
 }

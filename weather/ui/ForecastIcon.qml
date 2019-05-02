@@ -1,39 +1,34 @@
 import QtQuick 2.0
-
 import CommonSettings 1.0
 import FontSizes 1.0
-
 Item {
-    id: current
+    id: top
 
-    property string dayOfWeek: "Mon"
-    property string icon: "01d"
-    property int minTemperature: 22
-    property int maxTemperature: 23
+    property string topText: "Mon"
+    property string weatherIcon: "01d"
+    property string bottomText: "22*/23*"
 
     Text { 
         id: dayText
         horizontalAlignment: Text.AlignHCenter
-        width: current.width
-        text: current.dayOfWeek
-
+        width: top.width
+        text: top.topText
         font.pointSize: FontSizes.smallTinyFontSize
         font.family: CommonSettings.themeFont
         color: CommonSettings.fontColor
-
         anchors.top: parent.top
-        anchors.topMargin: current.height / 5 - dayText.paintedHeight
+        anchors.topMargin: top.height / 5 - dayText.paintedHeight
         anchors.horizontalCenter: parent.horizontalCenter
     }
 
     WeatherIcon {
         id: icon
-        weatherIcon: current.icon
+        weatherIcon: top.weatherIcon
 
         property real side: {
-            var iconHight = current.height * .6
-            if (current.width < iconHight)
-                current.width;
+            var iconHight = top.height * .6
+            if (top.width < iconHight)
+                top.width;
             else
                 iconHight;
         }
@@ -47,15 +42,14 @@ Item {
     Text {
         id: tempText
         horizontalAlignment: Text.AlignHCenter
-        width: current.width
-        text: current.minTemperature + "°/" + current.maxTemperature + "°"
-
+        width: top.width
+        text: top.bottomText
         font.pointSize: FontSizes.smallTinyFontSize
         font.family: CommonSettings.themeFont
         color: CommonSettings.fontColor
 
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: current.height / 5 - tempText.paintedHeight
+        anchors.bottomMargin: top.height / 5 - tempText.paintedHeight
         anchors.horizontalCenter: parent.horizontalCenter
     }
 }

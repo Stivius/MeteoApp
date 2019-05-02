@@ -27,13 +27,13 @@ SOURCES += \
     core/ApiConfig.cpp \
     core/GeoPositioning.cpp \
     core/WeatherModel.cpp \
+    core/WeatherBaseApi.cpp \
     weather/model/QmlWeatherData.cpp \
     weather/model/CurrentWeatherApi.cpp \
     weather/model/ForecastWeatherApi.cpp \
     weather/model/CurrentWeatherModel.cpp \
     weather/model/CurrentWeatherParser.cpp \
     weather/model/ForecastWeatherModel.cpp \
-    core/WeatherBaseApi.cpp \
     weather/model/ForecastWeatherParser.cpp
 
 RESOURCES += qml.qrc
@@ -58,26 +58,25 @@ HEADERS += \
     bluetooth/model/DeviceHandler.hpp \
     bluetooth/model/DeviceInfo.hpp \
     bluetooth/model/IReceivedDataParser.hpp \
-    bluetooth/model/ChunkedDataParser.hpp \
-    bluetooth/model/BluetoothModelResources.hpp \
     bluetooth/model/simulator-config.hpp \
     bluetooth/model/BluetoothModelResources.hpp\
     bluetooth/model/ChunkedDataParser.hpp\
     iconproviders/WeatherIconsProvider.hpp \
     iconproviders/ResourcesIcons.hpp \
+    iconproviders/ApplicationTheme.hpp \
     Resources.hpp \
-    weather/model/PrivateWeatherAccessor.hpp \
-    weather/model/WeatherData.hpp \
     core/ApiConfig.hpp \
     core/GeoPositioning.hpp \
     core/WeatherModel.hpp \
+    core/WeatherBaseApi.hpp \
+    core/WeatherApiData.hpp \
+    core/WeatherDataParser.hpp \
     weather/model/QmlWeatherData.hpp \
     weather/model/CurrentWeatherApi.hpp \
     weather/model/ForecastWeatherApi.hpp \
     weather/model/CurrentWeatherModel.hpp \
     weather/model/CurrentWeatherParser.hpp \
     weather/model/ForecastWeatherModel.hpp \
-    core/WeatherBaseApi.hpp \
-    core/WeatherApiData.hpp \
     weather/model/ForecastWeatherParser.hpp \
-    core/WeatherDataParser.hpp
+    weather/model/PrivateWeatherAccessor.hpp \
+    weather/model/WeatherData.hpp

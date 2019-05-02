@@ -4,16 +4,35 @@
 #include <QImage>
 
 #include "ResourcesIcons.hpp"
+#include "ApplicationTheme.hpp"
 
 class WeatherIconsProvider
-        :   public QQuickImageProvider
+        :   public QObject
+        ,   public QQuickImageProvider
 {
+
+    Q_OBJECT
 
 public:
 
     WeatherIconsProvider();
+    ~WeatherIconsProvider() override = default;
+
+public:
+
+    Q_PROPERTY( ApplicationTheme::Theme CurrentTheme WRITE setTheme READ getTheme NOTIFY themeChanged )
+
+signals:
+
+    void themeChanged( ApplicationTheme::Theme );
+
+public:
 
     QImage requestImage( const QString& id, QSize* size , const  QSize& requestedSize ) override;
+
+    void setTheme( ApplicationTheme::Theme newTheme );
+
+    ApplicationTheme::Theme getTheme() const;
 
 private:
 
@@ -21,5 +40,5 @@ private:
 
 private:
 
-    ApplicationTheme m_currentTheme;
+    ApplicationTheme::Theme currentTheme;
 };

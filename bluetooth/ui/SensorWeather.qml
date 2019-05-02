@@ -3,13 +3,14 @@ import QtQuick.Window 2.2
 import QtCharts 2.1
 import QtQuick.Layouts 1.3
 import BluetoothWindowSettings 1.0
+import CommonSettings 1.0
 
 Rectangle {
     visible: true
     width: parent.width
     height: parent.height
 
-    color: BluetoothWindowSettings.backgroundColor
+    color: CommonSettings.backgroundColor
 
     GridLayout {
         id: columnLayout
