@@ -17,7 +17,8 @@ public:
                  std::unique_ptr<WeatherDataParser>&& dataParser,
                  QObject* parent = nullptr);
 
-    Q_INVOKABLE void locationUpdated(const QString& location);
+public slots:
+    void locationUpdated(const QString& location);
 
 protected:
     virtual void updateModel(const WeatherDataCollection& data) = 0;
