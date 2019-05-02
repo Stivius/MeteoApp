@@ -7,7 +7,6 @@
 #include "bluetooth/model/DeviceHandler.hpp"
 #include "bluetooth/model/ChunkedDataParser.hpp"
 
-#include "weather/model/QmlWeatherData.hpp"
 #include "weather/model/CurrentWeatherModel.hpp"
 #include "weather/model/ForecastWeatherModel.hpp"
 
@@ -30,7 +29,6 @@ int main(int argc, char *argv[])
     CurrentWeatherModel::registerQmlType();
     ForecastWeatherModel::registerQmlType();
     qmlRegisterUncreatableType<DeviceHandler>("DeviceHandler", 1, 0, "AddressType", "Enum is not a type");
-    qmlRegisterType<QmlWeatherData>("WeatherData", 1, 0, "WeatherData");
     qmlRegisterSingletonType(QUrl("qrc:/CommonSettings.qml"), "CommonSettings", 1, 0, "CommonSettings" );
     qmlRegisterSingletonType(QUrl("qrc:/ThemeController.qml"), "ThemeController", 1, 0, "ThemeController" );
     qmlRegisterSingletonType(QUrl("qrc:/FontSizes.qml"), "FontSizes", 1, 0, "FontSizes" );

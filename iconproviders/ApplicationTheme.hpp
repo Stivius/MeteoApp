@@ -12,7 +12,7 @@ namespace ApplicationTheme
         ,   Dark
     };
 
-    static void registerType()
+    inline void registerType()
     {
         qmlRegisterUncreatableMetaObject(
                 ApplicationTheme::staticMetaObject

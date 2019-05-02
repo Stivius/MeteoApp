@@ -1,8 +1,7 @@
 #pragma once
 
 #include <QString>
-#include <QDateTime>
-#include <vector>
+#include <QVector>
 
 struct WeatherApiData
 {
@@ -18,4 +17,4 @@ struct WeatherApiData
     int humidity;
 };
 
-using WeatherDataCollection = std::vector<WeatherApiData>;
+using WeatherDataCollection = QVector<WeatherApiData>;

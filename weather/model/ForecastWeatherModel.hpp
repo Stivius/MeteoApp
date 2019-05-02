@@ -2,28 +2,40 @@
 
 #include "core/WeatherModel.hpp"
 
-class ForecastWeatherModel : public WeatherModel
+#include <QAbstractListModel>
+
+class ForecastWeatherModel : public WeatherModel<ForecastWeatherModel, QAbstractListModel>
 {
     Q_OBJECT
-    Q_PROPERTY(QVariantList forecast READ getForecast NOTIFY forecastChanged)
+    Q_ENUMS(ForecastRoles)
 
 signals:
     void forecastChanged(const QVariantList& forecast);
 
 public:
+    enum ForecastRoles {
+        DayOfWeek = Qt::UserRole + 1,
+        MinTemperature,
+        MaxTemperature,
+        WeatherIcon
+    };
+
     ForecastWeatherModel(QObject* parent = nullptr);
 
     static void registerQmlType();
-    QVariantList getForecast() const;
+
+    QHash<int,QByteArray> roleNames() const override;
+    int rowCount(const QModelIndex& parent = QModelIndex{}) const override;
+    QVariant data(const QModelIndex& index, int role = Qt::DisplayRole) const override;
 
 protected:
     void updateModel(const WeatherDataCollection& data) override;
 
 private:
-    void setForecast(const QVariantList& forecast);
+    bool isIndexValid(const QModelIndex& index) const;
 
 private:
-    QVariantList m_forecast;
+    WeatherDataCollection m_forecast;
 
 };
 

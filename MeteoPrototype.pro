@@ -26,16 +26,14 @@ SOURCES += \
     main.cpp \
     core/ApiConfig.cpp \
     core/GeoPositioning.cpp \
-    core/WeatherModel.cpp \
     core/WeatherBaseApi.cpp \
-    weather/model/QmlWeatherData.cpp \
+    core/GlobalSettings.cpp \
     weather/model/CurrentWeatherApi.cpp \
-    weather/model/ForecastWeatherApi.cpp \
     weather/model/CurrentWeatherModel.cpp \
     weather/model/CurrentWeatherParser.cpp \
+    weather/model/ForecastWeatherApi.cpp \
     weather/model/ForecastWeatherModel.cpp \
     weather/model/ForecastWeatherParser.cpp \
-    core/GlobalSettings.cpp
 
 RESOURCES += qml.qrc
 
@@ -72,13 +70,10 @@ HEADERS += \
     core/WeatherBaseApi.hpp \
     core/WeatherApiData.hpp \
     core/WeatherDataParser.hpp \
-    weather/model/QmlWeatherData.hpp \
+    core/GlobalSettings.hpp \
     weather/model/CurrentWeatherApi.hpp \
-    weather/model/ForecastWeatherApi.hpp \
     weather/model/CurrentWeatherModel.hpp \
     weather/model/CurrentWeatherParser.hpp \
+    weather/model/ForecastWeatherApi.hpp \
     weather/model/ForecastWeatherModel.hpp \
-    weather/model/ForecastWeatherParser.hpp \
-    weather/model/PrivateWeatherAccessor.hpp \
-    weather/model/WeatherData.hpp \
-    core/GlobalSettings.hpp
+    weather/model/ForecastWeatherParser.hpp

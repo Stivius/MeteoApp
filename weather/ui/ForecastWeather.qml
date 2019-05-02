@@ -14,23 +14,19 @@ Item {
         height: parent.height
 
         Repeater {
-            model: 4
+            model: ForecastWeatherModel { }
 
-            ForecastItem {
+            delegate: ForecastItem {
                 width: iconWidth
                 height: iconHeight
 
-                dayOfWeek: model.forecast[index].dayOfWeek
-                minTemperature: model.forecast[index].minTemperature
-                maxTemperature: model.forecast[index].maxTemperature
-                icon: model.forecast[index].weatherIcon
+                dayOfWeek: model.dayOfWeek
+                minTemperature: model.minTemperature
+                maxTemperature: model.maxTemperature
+                icon: model.weatherIcon
             }
         }
     }
-
-//    ForecastWeatherModel {
-//        id: model
-//    }
 }
 
 

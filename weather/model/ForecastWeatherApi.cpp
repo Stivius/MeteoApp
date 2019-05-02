@@ -7,7 +7,7 @@ QUrl ForecastWeatherApi::formRequest(const QString& city)
     std::map<QString, QString> params = {
         {"q", city},
         {"units", "metric"},
-        {"cnt", "5"},
+        {"cnt", "4"},
         {"appid", ApiConfig::apiKey()}
     };
 
@@ -20,7 +20,7 @@ QUrl ForecastWeatherApi::formRequest(double latitude, double longitude)
         {"lat", QString::number(latitude)},
         {"lon", QString::number(longitude)},
         {"units", "metric"},
-        {"cnt", "5"},
+        {"cnt", "4"},
         {"appid", ApiConfig::apiKey()}
     };
 

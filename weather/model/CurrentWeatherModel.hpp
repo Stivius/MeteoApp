@@ -2,7 +2,7 @@
 
 #include "core/WeatherModel.hpp"
 
-class CurrentWeatherModel : public WeatherModel
+class CurrentWeatherModel : public WeatherModel<CurrentWeatherModel>
 {
     Q_OBJECT
 

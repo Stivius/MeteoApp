@@ -15,14 +15,11 @@ GeoPositioning::GeoPositioning(QObject *parent) :
 
 void GeoPositioning::requestUpdates()
 {
-    qDebug() << "requested updated";
     m_positioningSource->requestUpdate();
 }
 
 void GeoPositioning::positionUpdated(QGeoPositionInfo gpsPosition)
 {
-    qDebug() << "position updated";
-
     auto coords = gpsPosition.coordinate();
 
     emit coordsUpdated(coords.latitude(), coords.longitude());
