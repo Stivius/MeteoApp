@@ -25,13 +25,6 @@ Rectangle {
             height: parent.height * 0.05
             radius: height*0.5
         }
-
-        MessageCenter
-        {
-            id: connectionNotifications
-            errorMessage: deviceFinder.error
-            infoMessage: deviceFinder.info
-        }
     }
 
 

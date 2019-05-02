@@ -18,7 +18,7 @@ Item {
             onThemeChanged:
             {
                 img.source = ""
-                img.source = getWeatherIcon(container.weatherIcon);
+                img.source = Qt.binding( function( ) { return getWeatherIcon( container.weatherIcon ) })
             }
         }
     }
