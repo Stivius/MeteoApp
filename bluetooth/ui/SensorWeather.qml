@@ -11,7 +11,6 @@ Rectangle {
     height: parent.height
 
     color: CommonSettings.backgroundColor
-
     GridLayout {
         id: columnLayout
         anchors.fill: parent
@@ -50,5 +49,13 @@ Rectangle {
             Layout.fillWidth: true
             Layout.fillHeight: true
         }
+    }
+    MessageCenter
+    {
+        id: connectionNotifications
+        width: parent.width
+        height: parent.height
+        errorMessage: deviceFinder.error
+        infoMessage: deviceFinder.info
     }
 }
