@@ -21,14 +21,18 @@ SOURCES += \
     bluetooth/model/DeviceHandler.cpp \
     bluetooth/model/DeviceInfo.cpp \
     bluetooth/model/ChunkedDataParser.cpp \
+    historical/model/ChartSource.cpp \
     core/api/ApiManager.cpp \
     core/api/ApiRequest.cpp \
     core/api/WeatherApi.cpp \
     core/api/WeatherJsonParser.cpp \
     core/api/ApiConfig.cpp \
+    core/api/HistoricalWeatherApi.cpp \
+    core/api/HistoricalWeatherJsonParser.cpp \
     core/model/QMLWeatherData.cpp\
     core/model/GeoPositioning.cpp \
     core/model/WeatherModel.cpp \
+    core/model/HistoricalWeatherModel.cpp \
     iconproviders/WeatherIconsProvider.cpp \
     iconproviders/ResourcesIcons.cpp \
     main.cpp \
@@ -59,17 +63,23 @@ HEADERS += \
     bluetooth/model/simulator-config.hpp \
     bluetooth/model/BluetoothModelResources.hpp\
     bluetooth/model/ChunkedDataParser.hpp\
+    historical/model/ChartSource.hpp \
     core/api/ApiManager.hpp \
     core/api/ApiRequest.hpp \
     core/api/WeatherApi.hpp \
     core/api/WeatherInfo.hpp \
     core/api/WeatherJsonParser.hpp \
     core/api/ApiConfig.hpp \
+    core/api/HistoricalWeatherApi.hpp \
+    core/api/HistoricalWeatherJsonParser.hpp \
+    core/api/HistoricalWeatherMode.hpp \
     core/model/GeoPositioning.hpp \
     core/model/WeatherData.hpp \
     core/model/WeatherModel.hpp \
     core/model/QMLWeatherData.hpp \
     core/model/PrivateWeatherAccessor.hpp\
+    core/model/HistoricalWeatherWrappers.hpp \
+    core/model/HistoricalWeatherModel.hpp \
     iconproviders/WeatherIconsProvider.hpp\
     Resources.hpp \
     iconproviders/ResourcesIcons.hpp \

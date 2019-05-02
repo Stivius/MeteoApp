@@ -14,6 +14,18 @@ QString Resources::getApiService(WeatherInfo info)
     return QString{};
 }
 
+QString Resources::getTimeInterval(HistoricalWeatherMode mode)
+{
+    switch (mode)
+    {
+        case HistoricalWeatherMode::Day: return "1";
+        case HistoricalWeatherMode::Week: return "6";
+        case HistoricalWeatherMode::Month: return "24";
+    }
+
+    return QString{};
+}
+
 QUrl Resources::formRequestUrl(const QString& apiService, const std::map<QString, QString>& params)
 {
     QUrl apiRequest{apiService};

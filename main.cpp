@@ -3,10 +3,12 @@
 #include <QApplication>
 
 #include "core/model/WeatherModel.hpp"
+#include "core/model/HistoricalWeatherModel.hpp"
 #include "bluetooth/model/ConnectionHandler.hpp"
 #include "bluetooth/model/DeviceFinder.hpp"
 #include "bluetooth/model/DeviceHandler.hpp"
 #include "bluetooth/model/ChunkedDataParser.hpp"
+#include "historical/model/ChartSource.hpp"
 #include "core/model/QMLWeatherData.hpp"
 #include "iconproviders/WeatherIconsProvider.hpp"
 #include "iconproviders/ApplicationTheme.hpp"
@@ -21,15 +23,20 @@ int main(int argc, char *argv[])
     DeviceHandler deviceHandler( std::make_unique<ChunkedDataParser>() );
     DeviceFinder deviceFinder(&deviceHandler);
 
+    ChartSource chartSource;
+
     qmlRegisterUncreatableType<DeviceHandler>("DeviceHandler", 1, 0, "AddressType", "Enum is not a type");
     qmlRegisterType<WeatherModel>("CurrentWeather", 1, 0, "CurrentWeather");
     qmlRegisterType<AWeatherData>("WeatherData", 1, 0, "WeatherData");
+    qmlRegisterType<HistoricalWeatherModel>("HistoricalWeather", 1, 0, "HistoricalWeather");
     qmlRegisterSingletonType(QUrl("qrc:/CommonSettings.qml"), "CommonSettings", 1, 0, "CommonSettings" );
     qmlRegisterSingletonType(QUrl("qrc:/ThemeController.qml"), "ThemeController", 1, 0, "ThemeController" );
     qmlRegisterSingletonType(QUrl("qrc:/FontSizes.qml"), "FontSizes", 1, 0, "FontSizes" );
     qmlRegisterSingletonType(QUrl("qrc:/bluetooth/ui/BluetoothWindowSettings.qml"), "BluetoothWindowSettings", 1, 0, "BluetoothWindowSettings" );
     qmlRegisterSingletonType(QUrl("qrc:/weather/ui/WeatherWindowSettings.qml"), "WeatherWindowSettings", 1, 0, "WeatherWindowSettings" );
     QQmlApplicationEngine engine;
+
+    engine.rootContext()->setContextProperty("chartSource", &chartSource);
 
     engine.rootContext()->setContextProperty("connectionHandler", &connectionHandler);
     engine.rootContext()->setContextProperty("deviceFinder", &deviceFinder);

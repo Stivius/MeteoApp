@@ -6,6 +6,7 @@
 #include <map>
 
 #include "core/api/WeatherInfo.hpp"
+#include "core/api/HistoricalWeatherMode.hpp"
 
 namespace Resources
 {
@@ -22,5 +23,6 @@ namespace Resources
     }
 
     QString getApiService(WeatherInfo info);
+    QString getTimeInterval(HistoricalWeatherMode mode);
     QUrl formRequestUrl(const QString& apiSerivce, const std::map<QString, QString>& params);
 }
