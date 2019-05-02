@@ -29,9 +29,9 @@ WeatherApiData CurrentWeatherParser::parseJsonObject(const QJsonObject& data)
     weather.description = weatherInfo["description"].toString();
     weather.weatherIcon = weatherInfo["icon"].toString();
 
-    weather.temperature = data["main"]["temp"].toDouble();
-    weather.temperatureMin = data["main"]["temp_min"].toDouble();
-    weather.temperatureMax = data["main"]["temp_max"].toDouble();
+    weather.temperature = static_cast<int>(data["main"]["temp"].toDouble());
+    weather.temperatureMin = static_cast<int>(data["main"]["temp_min"].toDouble());
+    weather.temperatureMax = static_cast<int>(data["main"]["temp_max"].toDouble());
 
     weather.pressure = data["main"]["pressure"].toInt();
     weather.humidity = data["main"]["humidity"].toInt();

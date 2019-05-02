@@ -34,7 +34,8 @@ SOURCES += \
     weather/model/CurrentWeatherModel.cpp \
     weather/model/CurrentWeatherParser.cpp \
     weather/model/ForecastWeatherModel.cpp \
-    weather/model/ForecastWeatherParser.cpp
+    weather/model/ForecastWeatherParser.cpp \
+    core/GlobalSettings.cpp
 
 RESOURCES += qml.qrc
 
@@ -79,4 +80,5 @@ HEADERS += \
     weather/model/ForecastWeatherModel.hpp \
     weather/model/ForecastWeatherParser.hpp \
     weather/model/PrivateWeatherAccessor.hpp \
-    weather/model/WeatherData.hpp
+    weather/model/WeatherData.hpp \
+    core/GlobalSettings.hpp

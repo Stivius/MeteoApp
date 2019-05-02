@@ -28,9 +28,9 @@ Item {
         }
     }
 
-    ForecastWeatherModel {
-        id: model
-    }
+//    ForecastWeatherModel {
+//        id: model
+//    }
 }
 
 

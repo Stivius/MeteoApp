@@ -7,7 +7,6 @@
 
 namespace Icons::Resources::Utility
 {
-
     QString getIconPath( const QString& iconId, ApplicationTheme::Theme theme );
 }
 

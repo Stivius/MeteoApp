@@ -40,7 +40,6 @@ ApplicationTheme::Theme WeatherIconsProvider::getTheme() const
     return currentTheme;
 }
 
-
 bool WeatherIconsProvider::isImageNeedResize( const  QSize& requestedSize )
 {
     return requestedSize.width() > 0 && requestedSize.height() > 0;

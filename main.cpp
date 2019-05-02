@@ -14,6 +14,8 @@
 #include "iconproviders/WeatherIconsProvider.hpp"
 #include "iconproviders/ApplicationTheme.hpp"
 
+#include "core/GlobalSettings.hpp"
+
 int main(int argc, char *argv[])
 {
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
@@ -40,7 +42,7 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("deviceFinder", &deviceFinder);
     engine.rootContext()->setContextProperty("deviceHandler", &deviceHandler);
     engine.rootContext()->setContextProperty("locationListModel", &locationListModel);
-
+    engine.rootContext()->setContextProperty("appSettings", &GlobalSettings::get());
 
     ApplicationTheme::registerType();
     WeatherIconsProvider* iconsProvider = new WeatherIconsProvider();

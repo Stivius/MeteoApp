@@ -1,13 +1,12 @@
 import QtQuick.Controls 2.5
+import QtQml 2.9
 
 ComboBox {
-    signal locationChanged(string location)
-
     textRole: "display"
     model: locationListModel
 
     onCurrentTextChanged: {
-        locationChanged(currentText)
+        appSettings.location = currentText;
     }
 }
 

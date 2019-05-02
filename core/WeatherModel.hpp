@@ -1,8 +1,6 @@
 #pragma once
 
 #include <QObject>
-#include <QStringListModel>
-#include <memory>
 
 #include "core/WeatherBaseApi.hpp"
 #include "core/GeoPositioning.hpp"
@@ -18,14 +16,17 @@ public:
                  QObject* parent = nullptr);
 
 public slots:
-    void locationUpdated(const QString& location);
+    void locationChanged(const QString& location);
 
 protected:
     virtual void updateModel(const WeatherDataCollection& data) = 0;
 
 private slots:
     void coordsUpdated(double latitude, double longitude);
+    void geoLocationError(const QString& error);
+
     void responseReceived(const QByteArray& response);
+    void responseError(const QString& error);
 
 private:
     GeoPositioning m_geoPositioning;
