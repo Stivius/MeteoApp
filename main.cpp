@@ -10,6 +10,7 @@
 #include "weather/model/CurrentWeatherModel.hpp"
 #include "weather/model/ForecastWeatherModel.hpp"
 
+#include "historical/model/ChartSource.hpp"
 #include "historical/model/HistoricalWeatherModel.hpp"
 
 #include "iconproviders/ApplicationTheme.hpp"
@@ -33,12 +34,16 @@ int main(int argc, char *argv[])
     ForecastWeatherModel::registerQmlType();
     HistoricalWeatherModel::registerQmlType();
     qmlRegisterUncreatableType<DeviceHandler>("DeviceHandler", 1, 0, "AddressType", "Enum is not a type");
+
     qmlRegisterSingletonType(QUrl("qrc:/CommonSettings.qml"), "CommonSettings", 1, 0, "CommonSettings" );
     qmlRegisterSingletonType(QUrl("qrc:/ThemeController.qml"), "ThemeController", 1, 0, "ThemeController" );
     qmlRegisterSingletonType(QUrl("qrc:/FontSizes.qml"), "FontSizes", 1, 0, "FontSizes" );
     qmlRegisterSingletonType(QUrl("qrc:/bluetooth/ui/BluetoothWindowSettings.qml"), "BluetoothWindowSettings", 1, 0, "BluetoothWindowSettings" );
     qmlRegisterSingletonType(QUrl("qrc:/weather/ui/WeatherScreenSettings.qml"), "WeatherScreenSettings", 1, 0, "WeatherScreenSettings" );
     QQmlApplicationEngine engine;
+
+    ChartSource chartSource;
+    engine.rootContext()->setContextProperty("chartSource", &chartSource);
 
     engine.rootContext()->setContextProperty("connectionHandler", &connectionHandler);
     engine.rootContext()->setContextProperty("deviceFinder", &deviceFinder);
