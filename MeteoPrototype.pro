@@ -21,18 +21,20 @@ SOURCES += \
     bluetooth/model/DeviceHandler.cpp \
     bluetooth/model/DeviceInfo.cpp \
     bluetooth/model/ChunkedDataParser.cpp \
-    core/api/ApiManager.cpp \
-    core/api/ApiRequest.cpp \
-    core/api/WeatherApi.cpp \
-    core/api/WeatherJsonParser.cpp \
-    core/api/ApiConfig.cpp \
-    core/model/QMLWeatherData.cpp\
-    core/model/GeoPositioning.cpp \
-    core/model/WeatherModel.cpp \
     iconproviders/WeatherIconsProvider.cpp \
     iconproviders/ResourcesIcons.cpp \
     main.cpp \
-    Resources.cpp
+    core/ApiConfig.cpp \
+    core/GeoPositioning.cpp \
+    core/WeatherModel.cpp \
+    weather/model/QmlWeatherData.cpp \
+    weather/model/CurrentWeatherApi.cpp \
+    weather/model/ForecastWeatherApi.cpp \
+    weather/model/CurrentWeatherModel.cpp \
+    weather/model/CurrentWeatherParser.cpp \
+    weather/model/ForecastWeatherModel.cpp \
+    core/WeatherBaseApi.cpp \
+    weather/model/ForecastWeatherParser.cpp
 
 RESOURCES += qml.qrc
 
@@ -61,17 +63,21 @@ HEADERS += \
     bluetooth/model/simulator-config.hpp \
     bluetooth/model/BluetoothModelResources.hpp\
     bluetooth/model/ChunkedDataParser.hpp\
-    core/api/ApiManager.hpp \
-    core/api/ApiRequest.hpp \
-    core/api/WeatherApi.hpp \
-    core/api/WeatherInfo.hpp \
-    core/api/WeatherJsonParser.hpp \
-    core/api/ApiConfig.hpp \
-    core/model/GeoPositioning.hpp \
-    core/model/WeatherData.hpp \
-    core/model/WeatherModel.hpp \
-    core/model/QMLWeatherData.hpp \
-    core/model/PrivateWeatherAccessor.hpp \
     iconproviders/WeatherIconsProvider.hpp \
     iconproviders/ResourcesIcons.hpp \
-    Resources.hpp
+    Resources.hpp \
+    weather/model/PrivateWeatherAccessor.hpp \
+    weather/model/WeatherData.hpp \
+    core/ApiConfig.hpp \
+    core/GeoPositioning.hpp \
+    core/WeatherModel.hpp \
+    weather/model/QmlWeatherData.hpp \
+    weather/model/CurrentWeatherApi.hpp \
+    weather/model/ForecastWeatherApi.hpp \
+    weather/model/CurrentWeatherModel.hpp \
+    weather/model/CurrentWeatherParser.hpp \
+    weather/model/ForecastWeatherModel.hpp \
+    core/WeatherBaseApi.hpp \
+    core/WeatherApiData.hpp \
+    weather/model/ForecastWeatherParser.hpp \
+    core/WeatherDataParser.hpp

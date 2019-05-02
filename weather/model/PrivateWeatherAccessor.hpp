@@ -6,7 +6,7 @@
 #include <QtQml/QQmlListProperty>
 #include <QtNetwork>
 
-#include "core/model/QMLWeatherData.hpp"
+#include "QmlWeatherData.hpp"
 
 class PrivateWeatherAccessor
 {
@@ -14,7 +14,7 @@ public:
 
     explicit PrivateWeatherAccessor() = default;
 
-    AWeatherData now;
-    std::vector<std::unique_ptr<AWeatherData>> forecast;
-    std::unique_ptr<QQmlListProperty<AWeatherData>> fcProp;
+    QmlWeatherData now;
+    std::vector<std::unique_ptr<QmlWeatherData>> forecast;
+    std::unique_ptr<QQmlListProperty<QmlWeatherData>> fcProp;
 };

@@ -13,10 +13,7 @@
         <file>bluetooth/ui/resources/icons/thermometer.png</file>
         <file>weather/ui/CurrentWeather.qml</file>
         <file>historical/ui/HistoricalWeather.qml</file>
-        <file>weather/ui/BigForecastIcon.qml</file>
         <file>weather/ui/WeatherIcon.qml</file>
-        <file>weather/ui/ForecastIcon.qml</file>
-        <file>weather/ui/WeatherWindowSettings.qml</file>
         <file>FontSizes.qml</file>
         <file>settings.conf</file>
         <file>iconproviders/icons/old-icons/weather-few-clouds.png</file>
@@ -32,5 +29,10 @@
         <file>iconproviders/icons/old-icons/weather-sunny-very-few-clouds.png</file>
         <file>iconproviders/icons/old-icons/weather-thundershower.png</file>
         <file>iconproviders/icons/old-icons/weather-unknown.png</file>
+        <file>weather/ui/WeatherScreen.qml</file>
+        <file>weather/ui/ForecastWeather.qml</file>
+        <file>weather/ui/WeatherScreenSettings.qml</file>
+        <file>weather/ui/ForecastItem.qml</file>
+        <file>weather/ui/LocationList.qml</file>
     </qresource>
 </RCC>

@@ -1,11 +1,11 @@
 #pragma once
 
-#include <QtCore/QObject>
-#include <QtCore/QString>
-#include <QtQml/QQmlListProperty>
-#include "WeatherData.hpp"
+#include <QObject>
+#include <QString>
+#include <QQmlListProperty>
 
-class AWeatherData : public QObject {
+class QmlWeatherData : public QObject
+{
     Q_OBJECT
     Q_PROPERTY(QString dayOfWeek
                READ dayOfWeek WRITE setDayOfWeek
@@ -36,8 +36,8 @@ class AWeatherData : public QObject {
                NOTIFY dataChanged)
 
 public:
-    explicit AWeatherData(QObject *parent = nullptr);
-    AWeatherData(const AWeatherData &other);
+    explicit QmlWeatherData(QObject *parent = nullptr);
+    QmlWeatherData(const QmlWeatherData &other);
 
     QString dayOfWeek() const;
     QString city() const;
@@ -74,4 +74,4 @@ private:
     int m_humidity;
 };
 
-Q_DECLARE_METATYPE(AWeatherData)
+Q_DECLARE_METATYPE(QmlWeatherData)

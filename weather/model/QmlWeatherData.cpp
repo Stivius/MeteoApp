@@ -1,11 +1,11 @@
-#include "QMLWeatherData.hpp"
+#include "QmlWeatherData.hpp"
 
-AWeatherData::AWeatherData(QObject *parent) :
+QmlWeatherData::QmlWeatherData(QObject *parent) :
         QObject(parent)
 {
 }
 
-AWeatherData::AWeatherData(const AWeatherData &other) :
+QmlWeatherData::QmlWeatherData(const QmlWeatherData &other) :
         QObject(nullptr),
         m_dayOfWeek(other.m_dayOfWeek),
         m_weatherIcon(other.m_weatherIcon),
@@ -15,100 +15,100 @@ AWeatherData::AWeatherData(const AWeatherData &other) :
 {
 }
 
-QString AWeatherData::dayOfWeek() const
+QString QmlWeatherData::dayOfWeek() const
 {
     return m_dayOfWeek;
 }
 
-QString AWeatherData::city() const
+QString QmlWeatherData::city() const
 {
     return m_city;
 }
 
-QString AWeatherData::weatherIcon() const
+QString QmlWeatherData::weatherIcon() const
 {
     return m_weatherIcon;
 }
 
-QString AWeatherData::weatherDescription() const
+QString QmlWeatherData::weatherDescription() const
 {
     return m_weatherDescription;
 }
 
-QString AWeatherData::condition() const
+QString QmlWeatherData::condition() const
 {
     return m_condition;
 }
 
-int AWeatherData::maxTemperature() const
+int QmlWeatherData::maxTemperature() const
 {
     return m_maxTemperature;
 }
 
-int AWeatherData::minTemperature() const
+int QmlWeatherData::minTemperature() const
 {
     return m_minTemperature;
 }
 
-double AWeatherData::pressure() const
+double QmlWeatherData::pressure() const
 {
     return m_pressure;
 }
 
-int AWeatherData::humidity() const
+int QmlWeatherData::humidity() const
 {
     return m_humidity;
 }
 
-void AWeatherData::setDayOfWeek(const QString &value)
+void QmlWeatherData::setDayOfWeek(const QString &value)
 {
     m_dayOfWeek = value;
     emit dataChanged();
 }
 
-void AWeatherData::setCity(const QString &value)
+void QmlWeatherData::setCity(const QString &value)
 {
     m_city = value;
     emit dataChanged();
 }
 
-void AWeatherData::setWeatherIcon(const QString &value)
+void QmlWeatherData::setWeatherIcon(const QString &value)
 {
     m_weatherIcon = value;
     emit dataChanged();
 }
 
-void AWeatherData::setWeatherDescription(const QString &value)
+void QmlWeatherData::setWeatherDescription(const QString &value)
 {
     m_weatherDescription = value;
     emit dataChanged();
 }
 
-void AWeatherData::setCondition(const QString &value)
+void QmlWeatherData::setCondition(const QString &value)
 {
     m_condition = value;
     emit dataChanged();
 }
 
-void AWeatherData::setMaxTemperature(int value)
+void QmlWeatherData::setMaxTemperature(int value)
 {
     m_maxTemperature = value;
     emit dataChanged();
 }
 
-void AWeatherData::setMinTemperature(int value)
+void QmlWeatherData::setMinTemperature(int value)
 {
     m_minTemperature = value;
     emit dataChanged();
 }
 
-void AWeatherData::setPressure(double value)
+void QmlWeatherData::setPressure(double value)
 {
     m_pressure = value;
     emit dataChanged();
 }
 
-void AWeatherData::setHumidity(int value)
+void QmlWeatherData::setHumidity(int value)
 {
     m_humidity = value;
     emit dataChanged();

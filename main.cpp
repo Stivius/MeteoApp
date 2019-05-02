@@ -2,12 +2,15 @@
 #include <QQmlContext>
 #include <QApplication>
 
-#include "core/model/WeatherModel.hpp"
 #include "bluetooth/model/ConnectionHandler.hpp"
 #include "bluetooth/model/DeviceFinder.hpp"
 #include "bluetooth/model/DeviceHandler.hpp"
 #include "bluetooth/model/ChunkedDataParser.hpp"
-#include "core/model/QMLWeatherData.hpp"
+
+#include "weather/model/QmlWeatherData.hpp"
+#include "weather/model/CurrentWeatherModel.hpp"
+#include "weather/model/ForecastWeatherModel.hpp"
+
 #include "iconproviders/WeatherIconsProvider.hpp"
 
 int main(int argc, char *argv[])
@@ -16,24 +19,27 @@ int main(int argc, char *argv[])
 
     QApplication app(argc, argv);
 
+    QStringListModel locationListModel{QStringList{"Current", "Kharkiv", "Kiev", "London"}};
     ConnectionHandler connectionHandler;
     DeviceHandler deviceHandler( std::make_unique<ChunkedDataParser>() );
     DeviceFinder deviceFinder(&deviceHandler);
 
+    CurrentWeatherModel::registerQmlType();
+    ForecastWeatherModel::registerQmlType();
     qmlRegisterUncreatableType<DeviceHandler>("DeviceHandler", 1, 0, "AddressType", "Enum is not a type");
-    qmlRegisterType<WeatherModel>("CurrentWeather", 1, 0, "CurrentWeather");
-    qmlRegisterType<AWeatherData>("WeatherData", 1, 0, "WeatherData");
+    qmlRegisterType<QmlWeatherData>("WeatherData", 1, 0, "WeatherData");
     qmlRegisterSingletonType(QUrl("qrc:/CommonSettings.qml"), "CommonSettings", 1, 0, "CommonSettings" );
     qmlRegisterSingletonType(QUrl("qrc:/FontSizes.qml"), "FontSizes", 1, 0, "FontSizes" );
     qmlRegisterSingletonType(QUrl("qrc:/bluetooth/ui/BluetoothWindowSettings.qml"), "BluetoothWindowSettings", 1, 0, "BluetoothWindowSettings" );
-    qmlRegisterSingletonType(QUrl("qrc:/weather/ui/WeatherWindowSettings.qml"), "WeatherWindowSettings", 1, 0, "WeatherWindowSettings" );
+    qmlRegisterSingletonType(QUrl("qrc:/weather/ui/WeatherScreenSettings.qml"), "WeatherScreenSettings", 1, 0, "WeatherScreenSettings" );
     QQmlApplicationEngine engine;
 
     engine.rootContext()->setContextProperty("connectionHandler", &connectionHandler);
     engine.rootContext()->setContextProperty("deviceFinder", &deviceFinder);
     engine.rootContext()->setContextProperty("deviceHandler", &deviceHandler);
+    engine.rootContext()->setContextProperty("locationListModel", &locationListModel);
 
-    engine.addImageProvider( "weathericonsprovider", new WeatherIconsProvider() );
+    engine.addImageProvider("weathericonsprovider", new WeatherIconsProvider() );
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
