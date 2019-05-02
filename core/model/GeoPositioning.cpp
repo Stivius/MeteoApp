@@ -11,6 +11,8 @@ GeoPositioning::GeoPositioning(QObject *parent) :
             QOverload<QGeoPositionInfoSource::Error>::of(&QGeoPositionInfoSource::error),
             this,
             &GeoPositioning::positionError);
+
+    m_positioningSource->startUpdates();
 }
 
 void GeoPositioning::requestUpdates()

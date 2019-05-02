@@ -2,7 +2,7 @@
 
 #include <QString>
 #include <QUrl>
-#include "ApplicationTheme.hpp "
+#include "ApplicationTheme.hpp"
 
 namespace Icons::Resources::Utility
 {

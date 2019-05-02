@@ -56,7 +56,7 @@ Rectangle{
                 height: iconRow.iconHeight
 
                 topText: model.forecast[1].dayOfWeek
-                bottomText: model.forecast[1].minTemperature + "°/" + model.forecast[0].maxTemperature + "°"
+                bottomText: model.forecast[1].minTemperature + "°/" + model.forecast[1].maxTemperature + "°"
                 weatherIcon: model.forecast[1].weatherIcon
             }
             ForecastIcon {
@@ -90,7 +90,7 @@ Rectangle{
 
         ComboBox {
             id: cityList
-            model: ["Current", "London", "Kharkiv", "Kiev"]
+            model: ["Kharkiv", "Kiev", "London", "Current"]
 
             onCurrentTextChanged: {
                 if(cityList.currentText == "Current") {
