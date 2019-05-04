@@ -1,4 +1,3 @@
-#include "simulator-config.hpp"
 #include "ConnectionHandler.hpp"
 
 #include <QtBluetooth/qtbluetooth-config.h>

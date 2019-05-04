@@ -1,5 +1,10 @@
 #include "ChunkedDataParser.hpp"
 
+#include "BluetoothModelResources.hpp"
+#include "BadPacketException.hpp"
+
+#include <QRegExp>
+
 float ChunkedDataParser::getHumidity() const
 {
     return m_humidity;
@@ -21,7 +26,12 @@ float ChunkedDataParser::getFloatValueByKey( const QString& _key , const QString
     auto contentLength = _getFrom.length() - substringIdx;
     QStringRef substr ( &_getFrom, substringIdx, contentLength );
 
-    return substr.toFloat();
+    QRegExp digitsChecker("\\d*");
+
+    if( digitsChecker.exactMatch( substr.toString() ) )
+        return substr.toFloat();
+
+    throw BadPacketException( Resources :: BluetoothMessages::Errors::BadPacket );
 }
 
 void ChunkedDataParser::tryParseValue( const QString& _toParse )
@@ -40,6 +50,6 @@ void ChunkedDataParser::tryParseValue( const QString& _toParse )
     }
     else
     {
-        assert( false );
+        throw BadPacketException( Resources :: BluetoothMessages::Errors::BadPacket );
     }
 }

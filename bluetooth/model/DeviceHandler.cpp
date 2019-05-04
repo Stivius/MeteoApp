@@ -1,7 +1,8 @@
-#include "simulator-config.hpp"
 #include "DeviceHandler.hpp"
 #include "DeviceInfo.hpp"
+
 #include "BluetoothModelResources.hpp"
+#include "BadPacketException.hpp"
 
 static const QString CC2540_UUID {"0000ffe0-0000-1000-8000-00805f9b34fb"};
 static const QString CC2540_RW_CHAR{"0000ffe1-0000-1000-8000-00805f9b34fb"};
@@ -84,7 +85,6 @@ void DeviceHandler::serviceDiscovered(const QBluetoothUuid& gatt)
 {
     if ( gatt == QBluetoothUuid( CC2540_UUID ) )
     {
-        setInfo( Resources::BluetoothMessages::Info::ServiceDiscovered );
         m_foundBleWeatherService = true;
     }
 }
@@ -122,7 +122,6 @@ void DeviceHandler::serviceScanDone()
             ,   this
             ,   &DeviceHandler::confirmedDescriptorWrite
         );
-
         m_service->discoverDetails();
     }
     else
@@ -195,7 +194,16 @@ void DeviceHandler::updtateWeatherData(const QLowEnergyCharacteristic& c, const 
 
     QByteArray received = value;
     QString toParse( received );
-    m_resultsParser->tryParseValue( toParse );
+
+    try
+    {
+        m_resultsParser->tryParseValue( toParse );
+    }
+    catch( const BadPacketException& _ex )
+    {
+        setError( _ex.getMessage() );
+        return;
+    }
 
     m_temperatureValue = m_resultsParser->getTemperature();
     m_humidityValue = m_resultsParser->getHumidity();
@@ -227,7 +235,10 @@ void DeviceHandler::disconnectService()
     else
     {
         if ( m_control )
+        {
             m_control->disconnectFromDevice();
+            m_control.reset();
+        }
 
         m_service.reset();
     }
@@ -300,8 +311,30 @@ void DeviceHandler::connectLowEnergyControllerSignals()
         ,   [ this ]
             {
                 setError( Resources::BluetoothMessages::Errors::BleControllerDisconnected );
+                disconnectService();
             }
         );
+    connect(
+            m_control.get()
+        ,   QOverload<QLowEnergyController::Error>::of(&QLowEnergyController::error)
+        ,   this
+        ,   [ this ]( const QLowEnergyController::Error& _error )
+            {
+                Q_UNUSED( _error );
+                setError( m_control->errorString() );
+            }
+        );
+    connect(
+            m_control.get()
+        ,   &QLowEnergyController::discoveryFinished
+        ,   this
+        ,   [ this ]
+            {
+                QString infoString =
+                    Resources::BluetoothMessages::Info::ConnectedTo.arg( m_control->remoteName() );
+                setInfo( infoString );
+            }
+    );
 }
 
 bool DeviceHandler::isNotificationDescriptorValid(

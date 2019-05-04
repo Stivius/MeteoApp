@@ -56,7 +56,6 @@ HEADERS += \
     bluetooth/model/DeviceHandler.hpp \
     bluetooth/model/DeviceInfo.hpp \
     bluetooth/model/IReceivedDataParser.hpp \
-    bluetooth/model/simulator-config.hpp \
     bluetooth/model/BluetoothModelResources.hpp\
     bluetooth/model/ChunkedDataParser.hpp\
     core/api/ApiManager.hpp \
@@ -73,5 +72,6 @@ HEADERS += \
     iconproviders/WeatherIconsProvider.hpp\
     Resources.hpp \
     iconproviders/ResourcesIcons.hpp \
-    iconproviders/ApplicationTheme.hpp
+    iconproviders/ApplicationTheme.hpp \
+    bluetooth/model/BadPacketException.hpp
 

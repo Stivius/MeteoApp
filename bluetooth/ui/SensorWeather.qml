@@ -52,10 +52,18 @@ Rectangle {
     }
     MessageCenter
     {
-        id: connectionNotifications
+        id: finderNotifications
         width: parent.width
         height: parent.height
         errorMessage: deviceFinder.error
         infoMessage: deviceFinder.info
+    }
+    MessageCenter
+    {
+        id: connectionNotifications
+        width: parent.width
+        height: parent.height
+        errorMessage: deviceHandler.error
+        infoMessage: deviceHandler.info
     }
 }
