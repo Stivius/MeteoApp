@@ -3,13 +3,16 @@
 #include <QApplication>
 
 #include "core/model/WeatherModel.hpp"
+#include "core/model/QMLWeatherData.hpp"
+
 #include "bluetooth/model/ConnectionHandler.hpp"
 #include "bluetooth/model/DeviceFinder.hpp"
 #include "bluetooth/model/DeviceHandler.hpp"
 #include "bluetooth/model/ChunkedDataParser.hpp"
-#include "core/model/QMLWeatherData.hpp"
-#include "iconproviders/WeatherIconsProvider.hpp"
+
 #include "iconproviders/ApplicationTheme.hpp"
+#include "iconproviders/BluetoothIconsProvider.hpp"
+#include "iconproviders/WeatherIconsProvider.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -36,9 +39,16 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("deviceHandler", &deviceHandler);
 
     ApplicationTheme::registerType();
-    WeatherIconsProvider* iconsProvider = new WeatherIconsProvider();
-    engine.rootContext()->setContextProperty( "weatherIconsProvider", iconsProvider );
-    engine.addImageProvider( "weathericonsprovider", iconsProvider );
+    qmlRegisterType<BaseIconsProvider>();
+
+    WeatherIconsProvider* weatherIconsProvider = new WeatherIconsProvider();
+    engine.rootContext()->setContextProperty( "weatherIconsProvider", weatherIconsProvider );
+    engine.addImageProvider( "weathericonsprovider", weatherIconsProvider );
+
+    BluetoothIconsProvider* bluetoothIconsProvider = new BluetoothIconsProvider();
+    engine.rootContext()->setContextProperty( "bluetoothIconsProvider", bluetoothIconsProvider );
+    engine.addImageProvider( "bluetoothiconsprovider", bluetoothIconsProvider );
+
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())

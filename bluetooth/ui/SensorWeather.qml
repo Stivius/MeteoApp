@@ -24,7 +24,7 @@ Rectangle {
                     id:temperatureWidget
                     Layout.preferredHeight: BluetoothWindowSettings.fieldHeight
                     Layout.preferredWidth: BluetoothWindowSettings.fieldHeight
-                    iconPath:"resources/icons/thermometer.png"
+                    iconPath:"image://bluetoothiconsprovider/temperature-icon"
                     displayedText: deviceHandler.temperature
                 }
 
@@ -32,7 +32,7 @@ Rectangle {
                     id:humidityWidget
                     Layout.preferredHeight: BluetoothWindowSettings.fieldHeight
                     Layout.preferredWidth: BluetoothWindowSettings.fieldHeight
-                    iconPath:"resources/icons/humidity.png"
+                    iconPath:"image://bluetoothiconsprovider/humidity-icon"
                     displayedText: deviceHandler.humidity
                 }
 
@@ -40,7 +40,7 @@ Rectangle {
                     id:pressureWidget
                     Layout.preferredHeight: BluetoothWindowSettings.fieldHeight
                     Layout.preferredWidth: BluetoothWindowSettings.fieldHeight
-                    iconPath:"resources/icons/gauge.png"
+                    iconPath:"image://bluetoothiconsprovider/pressure-icon"
                     displayedText: deviceHandler.pressure
                 }
             }

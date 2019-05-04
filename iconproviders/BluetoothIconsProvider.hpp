@@ -2,7 +2,7 @@
 
 #include "BaseIconsProvider.hpp"
 
-class WeatherIconsProvider
+class BluetoothIconsProvider
         :   public BaseIconsProvider
 {
 
@@ -10,7 +10,7 @@ class WeatherIconsProvider
 
 public:
 
-    ~WeatherIconsProvider() override = default;
+    ~BluetoothIconsProvider() override = default;
 
 public:
 

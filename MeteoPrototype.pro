@@ -32,7 +32,9 @@ SOURCES += \
     iconproviders/WeatherIconsProvider.cpp \
     iconproviders/ResourcesIcons.cpp \
     main.cpp \
-    Resources.cpp
+    Resources.cpp \
+    iconproviders/BaseIconsProvider.cpp \
+    iconproviders/BluetoothIconsProvider.cpp
 
 RESOURCES += qml.qrc
 
@@ -73,5 +75,7 @@ HEADERS += \
     Resources.hpp \
     iconproviders/ResourcesIcons.hpp \
     iconproviders/ApplicationTheme.hpp \
-    bluetooth/model/BadPacketException.hpp
+    bluetooth/model/BadPacketException.hpp \
+    iconproviders/BaseIconsProvider.hpp \
+    iconproviders/BluetoothIconsProvider.hpp
 
