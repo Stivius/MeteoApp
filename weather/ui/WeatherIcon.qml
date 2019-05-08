@@ -1,25 +1,22 @@
-import QtQuick 2.0
+import QtQuick 2.9
+
 import ApplicationTheme 1.0
 
-Item {
-    id: container
-
+Image {
     property string weatherIcon
-    Image {
-        id: img
-        cache: false
-        asynchronous: true
-        source: getWeatherIcon( weatherIcon )
-        smooth: true
-        anchors.fill: parent
-        Connections
+
+    id: img
+    cache: false
+    asynchronous: true
+    source: getWeatherIcon( weatherIcon )
+    smooth: true
+    Connections
+    {
+        target: weatherIconsProvider
+        onThemeChanged:
         {
-            target: weatherIconsProvider
-            onThemeChanged:
-            {
-                img.source = ""
-                img.source = Qt.binding( function( ) { return getWeatherIcon( container.weatherIcon ) })
-            }
+            img.source = ""
+            img.source = Qt.binding( function( ) { return getWeatherIcon( weatherIcon ) })
         }
     }
 
@@ -28,43 +25,33 @@ Item {
         switch (requestedIcon) {
         case "01d":
         case "01n":
-             return "image://weathericonsprovider/weather-sunny"
-            break;
+            return "image://weathericonsprovider/weather-sunny"
         case "02d":
         case "02n":
             return "image://weathericonsprovider/weather-sunny-very-few-clouds"
-            break;
         case "03d":
         case "03n":
             return "image://weathericonsprovider/weather-few-clouds"
-            break;
         case "04d":
         case "04n":
             return "image://weathericonsprovider/weather-overcast"
-            break;
         case "09d":
         case "09n":
             return "image://weathericonsprovider/weather-showers"
-            break;
         case "10d":
         case "10n":
             return "image://weathericonsprovider/weather-showers"
-            break;
         case "11d":
         case "11n":
             return "image://weathericonsprovider/weather-thundershower"
-            break;
         case "13d":
         case "13n":
             return "image://weathericonsprovider/weather-snow"
-            break;
         case "50d":
         case "50n":
             return "image://weathericonsprovider/weather-fog"
-            break;
         default:
             return "image://weathericonsprovider/weather-unknown"
-            break;
         }
     }
 }

@@ -1,9 +1,6 @@
 #include "WeatherIconsProvider.hpp"
 
 #include "ResourcesIcons.hpp"
-#include <QFile>
-#include <QFileInfo>
-#include <QDebug>
 
 QImage WeatherIconsProvider::requestImage(
         const QString& id

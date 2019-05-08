@@ -5,7 +5,6 @@
 #include <QUrlQuery>
 #include <map>
 
-#include "core/api/WeatherInfo.hpp"
 
 namespace Resources
 {
@@ -19,7 +18,4 @@ namespace Resources
         const QString HistoricalWeatherApiService = "HistoricalWeatherApi";
         const QString ApiKey = "ApiKey";
     }
-
-    QString getApiService(WeatherInfo info);
-    QUrl formRequestUrl(const QString& apiSerivce, const std::map<QString, QString>& params);
 }

@@ -21,18 +21,19 @@ SOURCES += \
     bluetooth/model/DeviceHandler.cpp \
     bluetooth/model/DeviceInfo.cpp \
     bluetooth/model/ChunkedDataParser.cpp \
-    core/api/ApiManager.cpp \
-    core/api/ApiRequest.cpp \
-    core/api/WeatherApi.cpp \
-    core/api/WeatherJsonParser.cpp \
-    core/api/ApiConfig.cpp \
-    core/model/QMLWeatherData.cpp\
-    core/model/GeoPositioning.cpp \
-    core/model/WeatherModel.cpp \
     iconproviders/WeatherIconsProvider.cpp \
     iconproviders/ResourcesIcons.cpp \
     main.cpp \
-    Resources.cpp \
+    core/ApiConfig.cpp \
+    core/GeoPositioning.cpp \
+    core/WeatherBaseApi.cpp \
+    core/GlobalSettings.cpp \
+    weather/model/CurrentWeatherApi.cpp \
+    weather/model/CurrentWeatherModel.cpp \
+    weather/model/CurrentWeatherParser.cpp \
+    weather/model/ForecastWeatherApi.cpp \
+    weather/model/ForecastWeatherModel.cpp \
+    weather/model/ForecastWeatherParser.cpp \
     iconproviders/BaseIconsProvider.cpp \
     iconproviders/BluetoothIconsProvider.cpp
 
@@ -60,22 +61,23 @@ HEADERS += \
     bluetooth/model/IReceivedDataParser.hpp \
     bluetooth/model/BluetoothModelResources.hpp\
     bluetooth/model/ChunkedDataParser.hpp\
-    core/api/ApiManager.hpp \
-    core/api/ApiRequest.hpp \
-    core/api/WeatherApi.hpp \
-    core/api/WeatherInfo.hpp \
-    core/api/WeatherJsonParser.hpp \
-    core/api/ApiConfig.hpp \
-    core/model/GeoPositioning.hpp \
-    core/model/WeatherData.hpp \
-    core/model/WeatherModel.hpp \
-    core/model/QMLWeatherData.hpp \
-    core/model/PrivateWeatherAccessor.hpp\
-    iconproviders/WeatherIconsProvider.hpp\
-    Resources.hpp \
+    iconproviders/WeatherIconsProvider.hpp \
     iconproviders/ResourcesIcons.hpp \
-    iconproviders/ApplicationTheme.hpp \
     bluetooth/model/BadPacketException.hpp \
+    iconproviders/ApplicationTheme.hpp \
     iconproviders/BaseIconsProvider.hpp \
-    iconproviders/BluetoothIconsProvider.hpp
-
+    iconproviders/BluetoothIconsProvider.hpp \
+    Resources.hpp \
+    core/ApiConfig.hpp \
+    core/GeoPositioning.hpp \
+    core/WeatherModel.hpp \
+    core/WeatherBaseApi.hpp \
+    core/WeatherApiData.hpp \
+    core/WeatherDataParser.hpp \
+    core/GlobalSettings.hpp \
+    weather/model/CurrentWeatherApi.hpp \
+    weather/model/CurrentWeatherModel.hpp \
+    weather/model/CurrentWeatherParser.hpp \
+    weather/model/ForecastWeatherApi.hpp \
+    weather/model/ForecastWeatherModel.hpp \
+    weather/model/ForecastWeatherParser.hpp
