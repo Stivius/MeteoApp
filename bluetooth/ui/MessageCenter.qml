@@ -5,7 +5,6 @@ import FontSizes 1.0
 import CommonSettings 1.0
 
 Item {
-    anchors.fill: parent
 
     property string errorMessage: ""
     property string infoMessage: ""
@@ -22,11 +21,12 @@ Item {
 
     Rectangle {
         id: msg
-        anchors.top: parent.bottom
+        anchors.top: parent.top
         anchors.left: parent.left
         anchors.right: parent.right
         height: BluetoothWindowSettings.fieldHeight
         color: hasError ? BluetoothWindowSettings.errorColor : BluetoothWindowSettings.infoColor
+        opacity: 0.9
         visible: hasError || hasInfo
 
         Text {
