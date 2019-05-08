@@ -17,6 +17,4 @@ public:
 private:
     static QSettings& settings();
 
-private:
-
 };

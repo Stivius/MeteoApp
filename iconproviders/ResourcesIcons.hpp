@@ -2,11 +2,11 @@
 
 #include <QString>
 #include <QUrl>
+
 #include "ApplicationTheme.hpp"
 
 namespace Icons::Resources::Utility
 {
-
     QString getIconPath( const QString& iconId, ApplicationTheme::Theme theme );
 }
 

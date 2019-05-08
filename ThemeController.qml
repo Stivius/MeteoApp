@@ -1,6 +1,6 @@
 pragma Singleton
-
 import QtQuick 2.9
+
 import CommonSettings 1.0
 import ApplicationTheme 1.0
 

@@ -11,14 +11,16 @@
         <file>bluetooth/ui/resources/icons/gauge.png</file>
         <file>bluetooth/ui/resources/icons/humidity.png</file>
         <file>bluetooth/ui/resources/icons/thermometer.png</file>
-        <file>weather/ui/CurrentWeather.qml</file>
         <file>historical/ui/HistoricalWeather.qml</file>
-        <file>weather/ui/BigForecastIcon.qml</file>
-        <file>weather/ui/WeatherIcon.qml</file>
-        <file>weather/ui/ForecastIcon.qml</file>
-        <file>weather/ui/WeatherWindowSettings.qml</file>
         <file>FontSizes.qml</file>
         <file>settings.conf</file>
+        <file>weather/ui/WeatherIcon.qml</file>
+        <file>weather/ui/WeatherScreen.qml</file>
+        <file>weather/ui/ForecastWeather.qml</file>
+        <file>weather/ui/WeatherScreenSettings.qml</file>
+        <file>weather/ui/ForecastItem.qml</file>
+        <file>weather/ui/LocationList.qml</file>
+        <file>weather/ui/CurrentWeather.qml</file>
         <file>iconproviders/icons/old-icons/weather-few-clouds.png</file>
         <file>iconproviders/icons/old-icons/weather-fog.png</file>
         <file>iconproviders/icons/old-icons/weather-haze.png</file>

@@ -1,4 +1,5 @@
 import QtQuick 2.9
+
 import BluetoothWindowSettings 1.0
 import FontSizes 1.0
 import CommonSettings 1.0

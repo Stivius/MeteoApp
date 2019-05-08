@@ -29,7 +29,5 @@ void GeoPositioning::positionUpdated(QGeoPositionInfo gpsPosition)
 
 void GeoPositioning::positionError(QGeoPositionInfoSource::Error)
 {
-    m_positioningSource->deleteLater();
-
     emit error("GeoPositioning error");
 }
