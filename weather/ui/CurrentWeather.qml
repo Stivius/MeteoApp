@@ -26,6 +26,7 @@ Item {
     }
 
     WeatherIcon {
+        id: currentWeatherIcon
         weatherIcon: model.icon
         anchors.centerIn: parent
         anchors.verticalCenterOffset: -15
@@ -44,7 +45,7 @@ Item {
 
         horizontalAlignment: Text.AlignRight
         anchors {
-            bottom: current.bottom
+            top: currentWeatherIcon.bottom
             right: current.right
             rightMargin: 5
         }
