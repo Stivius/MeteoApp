@@ -30,8 +30,7 @@ Rectangle {
         anchors.centerIn: parent
 
         CurrentWeather {
-            Layout.leftMargin : WeatherScreenSettings.currentWeatherWidth * 0.04
-            Layout.rightMargin: WeatherScreenSettings.currentWeatherWidth * 0.04
+            Layout.alignment: Qt.AlignHCenter
             width: WeatherScreenSettings.currentWeatherWidth
             height: WeatherScreenSettings.currentWeatherHeight
         }
@@ -39,7 +38,7 @@ Rectangle {
         ForecastWeather{
             Layout.topMargin: WeatherScreenSettings.forecastHeight * 0.45
             Layout.fillWidth: true;
-            Layout.leftMargin : WeatherScreenSettings.forecastWidth * 0.08
+            Layout.alignment: Qt.AlignHCenter
             width: WeatherScreenSettings.forecastWidth
             height: WeatherScreenSettings.forecastHeight
 
@@ -48,10 +47,8 @@ Rectangle {
         }
 
         LocationList {
-            Layout.fillWidth: true;
             Layout.topMargin: WeatherScreenSettings.locationListHeight * 0.1
-            Layout.leftMargin : WeatherScreenSettings.locationListWidth * 0.01
-            Layout.rightMargin: WeatherScreenSettings.locationListWidth * 0.01
+            Layout.alignment: Qt.AlignHCenter
             width: WeatherScreenSettings.locationListWidth
             height: WeatherScreenSettings.locationListHeight
         }
