@@ -4,6 +4,7 @@ import QtQuick 2.9
 
 import CommonSettings 1.0
 import FontSizes 1.0
+
 Rectangle
 {
     id: current
@@ -13,28 +14,6 @@ Rectangle
     color: Qt.darker(CommonSettings.backgroundColor, 1.2)
     radius: CommonSettings.wWidth *0.01
 
-    Text {
-        anchors.left: parent.left
-        anchors.verticalCenter: parent.verticalCenter
-        text: "V";
-        anchors.margins: CommonSettings.wWidth *0.04
-        font.pixelSize: FontSizes.largeFontSize;
-        font.family: CommonSettings.themeFont
-        rotation: 90
-        color: CommonSettings.fontColor
-     }
-
-    Text {
-        anchors.right: parent.right
-        anchors.verticalCenter: parent.verticalCenter
-        text: "V";
-        rotation: 270
-        anchors.margins: CommonSettings.wWidth *0.04
-        font.pixelSize: FontSizes.largeFontSize;
-        font.family: CommonSettings.themeFont
-        color: CommonSettings.fontColor
-     }
-
     Component
     {
         id:pathViewDelegate
@@ -42,7 +21,7 @@ Rectangle
         {
             antialiasing: true
             height: current.height;
-            width: current.width* 0.95;
+            width: current.width - previousCityButton.width - nextCityButton.width;
             color: "transparent"
             Text {
                 anchors.horizontalCenter: parent.horizontalCenter
@@ -55,6 +34,7 @@ Rectangle
         }
     }
     PathView {
+        id:citiesView
         anchors.fill: parent
         model:locationListModel
 
@@ -75,6 +55,29 @@ Rectangle
         onCurrentIndexChanged:
         {
             appSettings.location = locationListModel.data(locationListModel.index(this.currentIndex ,0 ) );
+        }
+    }
+
+    SwitchSityButton
+    {
+        id: previousCityButton
+        displayedText:"V"
+        rotationAngle: 90
+        onClicked:
+        {
+            citiesView.decrementCurrentIndex();
+        }
+    }
+    SwitchSityButton
+    {
+        id: nextCityButton
+        anchors.right: parent.right
+        anchors.verticalCenter: parent.verticalCenter
+        displayedText:"V"
+        rotationAngle: 270
+        onClicked:
+        {
+            citiesView.incrementCurrentIndex();
         }
     }
 }
