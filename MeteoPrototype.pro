@@ -23,6 +23,8 @@ SOURCES += \
     bluetooth/model/ChunkedDataParser.cpp \
     iconproviders/WeatherIconsProvider.cpp \
     iconproviders/ResourcesIcons.cpp \
+    iconproviders/BaseIconsProvider.cpp \
+    iconproviders/BluetoothIconsProvider.cpp \
     main.cpp \
     core/ApiConfig.cpp \
     core/GeoPositioning.cpp \
@@ -34,8 +36,8 @@ SOURCES += \
     weather/model/ForecastWeatherApi.cpp \
     weather/model/ForecastWeatherModel.cpp \
     weather/model/ForecastWeatherParser.cpp \
-    iconproviders/BaseIconsProvider.cpp \
-    iconproviders/BluetoothIconsProvider.cpp
+    historical/model/HistoricalWeatherApi.cpp \
+    historical/model/HistoricalWeatherParser.cpp
 
 RESOURCES += qml.qrc
 
@@ -80,4 +82,7 @@ HEADERS += \
     weather/model/CurrentWeatherParser.hpp \
     weather/model/ForecastWeatherApi.hpp \
     weather/model/ForecastWeatherModel.hpp \
-    weather/model/ForecastWeatherParser.hpp
+    weather/model/ForecastWeatherParser.hpp \
+    historical/model/HistoricalWeatherApi.hpp \
+    historical/model/HistoricalWeatherData.hpp \
+    historical/model/HistoricalWeatherParser.hpp
