@@ -37,7 +37,8 @@ SOURCES += \
     weather/model/ForecastWeatherModel.cpp \
     weather/model/ForecastWeatherParser.cpp \
     historical/model/HistoricalWeatherApi.cpp \
-    historical/model/HistoricalWeatherParser.cpp
+    historical/model/HistoricalWeatherParser.cpp \
+    historical/model/HistoricalWeatherModel.cpp
 
 RESOURCES += qml.qrc
 
@@ -85,4 +86,5 @@ HEADERS += \
     weather/model/ForecastWeatherParser.hpp \
     historical/model/HistoricalWeatherApi.hpp \
     historical/model/HistoricalWeatherData.hpp \
-    historical/model/HistoricalWeatherParser.hpp
+    historical/model/HistoricalWeatherParser.hpp \
+    historical/model/HistoricalWeatherModel.hpp
