@@ -17,13 +17,11 @@ void CurrentWeatherModel::registerQmlType()
     qmlRegisterType<CurrentWeatherModel>("CurrentWeatherModel", 1, 0, "CurrentWeatherModel");
 }
 
-void CurrentWeatherModel::updateModel(const WeatherDataCollection& data)
+void CurrentWeatherModel::updateModel(const WeatherApiData& data)
 {
-    auto&& weatherData = data.front();
-
-    setCondition(weatherData.condition);
-    setTemperature(weatherData.temperature);
-    setIcon(weatherData.weatherIcon);
+    setCondition(data.condition);
+    setTemperature(data.temperature);
+    setIcon(data.weatherIcon);
 }
 
 QString CurrentWeatherModel::condition() const

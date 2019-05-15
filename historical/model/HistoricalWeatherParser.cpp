@@ -3,11 +3,6 @@
 #include <QJsonDocument>
 #include <QJsonObject>
 
-HistoricalWeatherParser::HistoricalWeatherParser(QObject *parent) :
-    QObject(parent)
-{
-}
-
 HistoricalWeatherData HistoricalWeatherParser::parse(const QByteArray& data)
 {
     HistoricalWeatherData weather;

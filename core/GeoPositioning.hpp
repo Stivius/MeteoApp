@@ -1,5 +1,4 @@
-#ifndef GEOPOSITIONING_HPP
-#define GEOPOSITIONING_HPP
+#pragma once
 
 #include <QObject>
 #include <QtPositioning>
@@ -13,7 +12,7 @@ signals:
     void error(const QString& error);
 
 public:
-    explicit GeoPositioning(QObject *parent = nullptr);
+    explicit GeoPositioning(QObject* parent = nullptr);
 
     void requestUpdates();
 
@@ -25,5 +24,3 @@ private:
     QGeoPositionInfoSource* m_positioningSource = nullptr;
 
 };
-
-#endif // GEOPOSITIONING_HPP

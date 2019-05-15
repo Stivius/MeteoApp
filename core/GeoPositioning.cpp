@@ -1,6 +1,6 @@
 #include "GeoPositioning.hpp"
 
-GeoPositioning::GeoPositioning(QObject *parent) :
+GeoPositioning::GeoPositioning(QObject* parent) :
     QObject(parent)
 {
     m_positioningSource = QGeoPositionInfoSource::createDefaultSource(this);

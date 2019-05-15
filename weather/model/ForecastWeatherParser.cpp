@@ -5,11 +5,6 @@
 #include <QJsonObject>
 #include <QDateTime>
 
-ForecastWeatherParser::ForecastWeatherParser(QObject *parent) :
-    QObject(parent)
-{
-}
-
 WeatherDataCollection ForecastWeatherParser::parse(const QByteArray& data)
 {
     auto json = QJsonDocument::fromJson(data);
@@ -33,6 +28,11 @@ WeatherDataCollection ForecastWeatherParser::parse(const QByteArray& data)
     }
 }
 
+static qint64 toMSSinceEpoch(QJsonValue&& value)
+{
+    return static_cast<qint64>(value.toDouble() * 1000);
+}
+
 WeatherApiData ForecastWeatherParser::parseJsonObject(const QJsonObject& data)
 {
     WeatherApiData weather;
@@ -49,9 +49,4 @@ WeatherApiData ForecastWeatherParser::parseJsonObject(const QJsonObject& data)
     weather.temperatureMax = static_cast<int>(data["temp"]["max"].toDouble());
 
     return weather;
-}
-
-qint64 ForecastWeatherParser::toMSSinceEpoch(QJsonValue&& value) const
-{
-    return static_cast<qint64>(value.toDouble() * 1000);
 }

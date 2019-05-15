@@ -5,41 +5,31 @@
 #include <QJsonObject>
 #include <QDateTime>
 
-CurrentWeatherParser::CurrentWeatherParser(QObject *parent) :
-    QObject(parent)
+static qint64 toMSSinceEpoch(const QJsonValue&& value)
 {
+    return static_cast<qint64>(value.toDouble() * 1000);
 }
 
-WeatherDataCollection CurrentWeatherParser::parse(const QByteArray& data)
+WeatherApiData CurrentWeatherParser::parse(const QByteArray& data)
 {
     auto json = QJsonDocument::fromJson(data);
 
-    return {parseJsonObject(json.object())};
-}
-
-WeatherApiData CurrentWeatherParser::parseJsonObject(const QJsonObject& data)
-{
     WeatherApiData weather;
-    auto weatherInfo = data["weather"].toArray().first().toObject();
+    auto weatherInfo = json["weather"].toArray().first().toObject();
 
-    QDateTime date = QDateTime::fromMSecsSinceEpoch(toMSSinceEpoch(data["dt"]));
+    QDateTime date = QDateTime::fromMSecsSinceEpoch(toMSSinceEpoch(json["dt"]));
 
     weather.dayOfTheWeek = date.date().toString(QStringLiteral("ddd"));
     weather.condition = weatherInfo["main"].toString();
     weather.description = weatherInfo["description"].toString();
     weather.weatherIcon = weatherInfo["icon"].toString();
 
-    weather.temperature = static_cast<int>(data["main"]["temp"].toDouble());
-    weather.temperatureMin = static_cast<int>(data["main"]["temp_min"].toDouble());
-    weather.temperatureMax = static_cast<int>(data["main"]["temp_max"].toDouble());
+    weather.temperature = static_cast<int>(json["main"]["temp"].toDouble());
+    weather.temperatureMin = static_cast<int>(json["main"]["temp_min"].toDouble());
+    weather.temperatureMax = static_cast<int>(json["main"]["temp_max"].toDouble());
 
-    weather.pressure = data["main"]["pressure"].toInt();
-    weather.humidity = data["main"]["humidity"].toInt();
+    weather.pressure = json["main"]["pressure"].toInt();
+    weather.humidity = json["main"]["humidity"].toInt();
 
     return weather;
-}
-
-qint64 CurrentWeatherParser::toMSSinceEpoch(QJsonValue&& value) const
-{
-    return static_cast<qint64>(value.toDouble() * 1000);
 }

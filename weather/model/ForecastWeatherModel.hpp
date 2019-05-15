@@ -1,10 +1,11 @@
 #pragma once
 
 #include "core/WeatherModel.hpp"
+#include "weather/model/WeatherData.hpp"
 
 #include <QAbstractListModel>
 
-class ForecastWeatherModel : public WeatherModel<ForecastWeatherModel, QAbstractListModel>
+class ForecastWeatherModel : public WeatherModel<ForecastWeatherModel, WeatherDataCollection, QAbstractListModel>
 {
     Q_OBJECT
     Q_ENUMS(ForecastRoles)

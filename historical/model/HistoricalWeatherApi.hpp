@@ -1,31 +1,22 @@
 #pragma once
 
-#include <QDate>
-#include <QObject>
-#include <QNetworkAccessManager>
-
 #include "core/WeatherBaseApi.hpp"
 
-class HistoricalWeatherApi : public QObject
-{
-    Q_OBJECT
+#include <memory>
 
-signals:
-    void responseReceived(const QByteArray& data);
-    void error(const QString& error);
+class HistoricalWeatherApi : public WeatherBaseApi
+{
+private:
+    using DateCallback = std::function<std::pair<QDate, QDate>()>;
 
 public:
-    explicit HistoricalWeatherApi(QObject* parent = nullptr);
+    HistoricalWeatherApi(DateCallback callback, QObject* parent = nullptr);
 
-    void requestWeather(const QString &city, const QDate& first, const QDate& last);
-
-private:
-    void sendRequest(const QUrl& url);
-
-private slots:
-    void requestFinished();
-    void sslErrors(const QList<QSslError>& errors);
+protected:
+    QUrl formRequest(const QString& city) override;
+    QUrl formRequest(double latitude, double longitude) override;
 
 private:
-    QNetworkAccessManager m_networkAccessManager;
+    DateCallback m_dateDelegate;
+    static const QString ms_dateFormat;
 };

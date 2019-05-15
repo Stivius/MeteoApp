@@ -74,9 +74,9 @@ HEADERS += \
     core/GeoPositioning.hpp \
     core/WeatherModel.hpp \
     core/WeatherBaseApi.hpp \
-    core/WeatherApiData.hpp \
     core/WeatherDataParser.hpp \
     core/GlobalSettings.hpp \
+    weather/model/WeatherData.hpp \
     weather/model/CurrentWeatherApi.hpp \
     weather/model/CurrentWeatherModel.hpp \
     weather/model/CurrentWeatherParser.hpp \

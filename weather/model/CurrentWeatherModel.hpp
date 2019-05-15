@@ -1,8 +1,9 @@
 #pragma once
 
 #include "core/WeatherModel.hpp"
+#include "weather/model/WeatherData.hpp"
 
-class CurrentWeatherModel : public WeatherModel<CurrentWeatherModel>
+class CurrentWeatherModel : public WeatherModel<CurrentWeatherModel, WeatherApiData>
 {
     Q_OBJECT
 
@@ -25,7 +26,7 @@ public:
     int temperature() const;
 
 protected:
-    void updateModel(const WeatherDataCollection& data) override;
+    void updateModel(const WeatherApiData& data) override;
 
 private:
     void setCondition(const QString& condition);
