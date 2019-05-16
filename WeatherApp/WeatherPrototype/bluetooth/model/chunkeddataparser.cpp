@@ -27,8 +27,8 @@ float ChunkedDataParser::getFloatValueByKey( const QString& _key , const QString
     QStringRef substr ( &_getFrom, substringIdx, contentLength );
 
     QRegExp digitsChecker("\\d*");
-
-    if( digitsChecker.exactMatch( substr.toString() ) )
+    QRegExp negativeDigitsChecker("\\-\\d*");
+    if( digitsChecker.exactMatch( substr.toString() ) || negativeDigitsChecker.exactMatch( substr.toString() ) )
         return substr.toFloat();
 
     throw BadPacketException( Resources :: BluetoothMessages::Errors::BadPacket );
