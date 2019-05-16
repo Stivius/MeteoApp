@@ -1,6 +1,6 @@
 #include "GlobalSettings.hpp"
 
-GlobalSettings::GlobalSettings(QObject *parent) :
+GlobalSettings::GlobalSettings(QObject* parent) :
     QObject(parent)
 {
 }

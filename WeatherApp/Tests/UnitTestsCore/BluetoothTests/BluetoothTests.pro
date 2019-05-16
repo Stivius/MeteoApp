@@ -5,7 +5,7 @@ CONFIG -= app_bundle
 
 CONFIG += c++17
 
-QMAKE_CXXFLAGS += /std:c++17
+#QMAKE_CXXFLAGS += /std:c++17
 
 TEMPLATE = app
 

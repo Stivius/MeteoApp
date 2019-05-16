@@ -1,19 +1,11 @@
 #pragma once
 
-#include <QObject>
-
 #include "core/WeatherDataParser.hpp"
+#include "weather/model/WeatherData.hpp"
 
-class CurrentWeatherParser : public QObject, public WeatherDataParser
+class CurrentWeatherParser : public WeatherDataParser<WeatherApiData>
 {
-    Q_OBJECT
 public:
-    explicit CurrentWeatherParser(QObject *parent = nullptr);
-
-    WeatherDataCollection parse(const QByteArray& data) override;
-
-private:
-    WeatherApiData parseJsonObject(const QJsonObject& data);
-    qint64 toMSSinceEpoch(QJsonValue&& value) const;
+    WeatherApiData parse(const QByteArray& data) override;
 
 };

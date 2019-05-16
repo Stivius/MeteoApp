@@ -1,11 +1,12 @@
 #pragma once
 
-#include "core/WeatherApiData.hpp"
+#include <QByteArray>
 
+template <typename WeatherData>
 class WeatherDataParser
 {
 public:
     virtual ~WeatherDataParser() = default;
-    virtual WeatherDataCollection parse(const QByteArray& data) = 0;
+    virtual WeatherData parse(const QByteArray& data) = 0;
 
 };

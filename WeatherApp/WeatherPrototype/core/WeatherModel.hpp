@@ -7,12 +7,14 @@
 #include "core/WeatherDataParser.hpp"
 #include "core/GlobalSettings.hpp"
 
-template <typename Derrived, typename Base = QObject>
+template <typename Derrived, typename WeatherData, typename Base = QObject>
 class WeatherModel : public Base
 {
 public:
+    using ParserType = WeatherDataParser<WeatherData>;
+
     WeatherModel(std::unique_ptr<WeatherBaseApi>&& weatherApi,
-                 std::unique_ptr<WeatherDataParser>&& dataParser,
+                 std::unique_ptr<ParserType>&& dataParser,
                  QObject* parent = nullptr)  :
         Base(parent),
         m_weatherApi(std::move(weatherApi)),
@@ -42,7 +44,7 @@ public slots:
     }
 
 protected:
-    virtual void updateModel(const WeatherDataCollection& data) = 0;
+    virtual void updateModel(const WeatherData& data) = 0;
 
 private slots:
     void coordsUpdated(double latitude, double longitude)
@@ -74,6 +76,6 @@ private:
 private:
     GeoPositioning m_geoPositioning;
     std::unique_ptr<WeatherBaseApi> m_weatherApi;
-    std::unique_ptr<WeatherDataParser> m_dataParser;
+    std::unique_ptr<ParserType> m_dataParser;
 
 };
