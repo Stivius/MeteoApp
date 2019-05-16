@@ -23,7 +23,7 @@ Rectangle {
                     id:temperatureWidget
                     Layout.preferredHeight: BluetoothWindowSettings.fieldHeight
                     Layout.preferredWidth: BluetoothWindowSettings.fieldHeight
-                    iconPath:"resources/icons/thermometer.png"
+                    iconPath:"image://bluetoothiconsprovider/temperature-icon"
                     displayedText: deviceHandler.temperature
                 }
 
@@ -31,7 +31,7 @@ Rectangle {
                     id:humidityWidget
                     Layout.preferredHeight: BluetoothWindowSettings.fieldHeight
                     Layout.preferredWidth: BluetoothWindowSettings.fieldHeight
-                    iconPath:"resources/icons/humidity.png"
+                    iconPath:"image://bluetoothiconsprovider/humidity-icon"
                     displayedText: deviceHandler.humidity
                 }
 
@@ -39,7 +39,7 @@ Rectangle {
                     id:pressureWidget
                     Layout.preferredHeight: BluetoothWindowSettings.fieldHeight
                     Layout.preferredWidth: BluetoothWindowSettings.fieldHeight
-                    iconPath:"resources/icons/gauge.png"
+                    iconPath:"image://bluetoothiconsprovider/pressure-icon"
                     displayedText: deviceHandler.pressure
                 }
             }
@@ -51,10 +51,18 @@ Rectangle {
     }
     MessageCenter
     {
-        id: connectionNotifications
+        id: finderNotifications
         width: parent.width
         height: parent.height
         errorMessage: deviceFinder.error
         infoMessage: deviceFinder.info
+    }
+    MessageCenter
+    {
+        id: connectionNotifications
+        width: parent.width
+        height: parent.height
+        errorMessage: deviceHandler.error
+        infoMessage: deviceHandler.info
     }
 }

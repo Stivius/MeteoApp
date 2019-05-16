@@ -1,6 +1,5 @@
 #pragma once
 
-#include "simulator-config.hpp"
 #include "BluetoothBaseClass.hpp"
 
 #include <QVariant>

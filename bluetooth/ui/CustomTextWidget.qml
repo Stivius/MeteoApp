@@ -5,6 +5,7 @@ import FontSizes 1.0
 import CommonSettings 1.0
 
 Image {
+    id:icon
     property string iconPath:""
     property string displayedText:""
     source: iconPath;
@@ -16,5 +17,14 @@ Image {
         font.pixelSize: FontSizes.largeFontSize
         color: BluetoothWindowSettings.textColor
         anchors.left: parent.right
+    }
+    Connections
+    {
+        target: bluetoothIconsProvider
+        onThemeChanged:
+        {
+            icon.source = ""
+            icon.source = Qt.binding( function( ) { return iconPath })
+        }
     }
 }

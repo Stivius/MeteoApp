@@ -20,6 +20,7 @@ Item {
     function onThemeChanged( newTheme )
     {
         weatherIconsProvider.CurrentTheme = currentAppTheme;
+        bluetoothIconsProvider.CurrentTheme = currentAppTheme;
 
         switch( currentAppTheme )
         {

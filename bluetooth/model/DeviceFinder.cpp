@@ -87,8 +87,6 @@ void DeviceFinder::connectToService(const QString& address)
     if ( currentDevice )
     {
         m_deviceHandler->setDevice( currentDevice );
-        QString infoString = Resources::BluetoothMessages::Info::ConnectedTo.arg( currentDevice->getName() );
-        setInfo( infoString );
     }
 
     clearMessages();

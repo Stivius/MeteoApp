@@ -1,8 +1,6 @@
-#include "WeatherIconsProvider.hpp"
+#include "BluetoothIconsProvider.hpp"
 
-#include "ResourcesIcons.hpp"
-
-QImage WeatherIconsProvider::requestImage(
+QImage BluetoothIconsProvider::requestImage(
         const QString& id
     ,   QSize* size
     ,   const  QSize& requestedSize
@@ -13,8 +11,8 @@ QImage WeatherIconsProvider::requestImage(
     QImage result (
         Icons::Resources::Utility::getIconPath(
                 id
-            ,   WeatherThemeMap
-            ,   Icons::Weather::Keys::Unknown
+            ,   BluetoothThemeMap
+            ,   Icons::Bluetooth::Keys::Unknown
             ,   BaseIconsProvider::getTheme()
             )
         );

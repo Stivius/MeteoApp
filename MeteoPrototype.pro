@@ -34,6 +34,8 @@ SOURCES += \
     weather/model/ForecastWeatherApi.cpp \
     weather/model/ForecastWeatherModel.cpp \
     weather/model/ForecastWeatherParser.cpp \
+    iconproviders/BaseIconsProvider.cpp \
+    iconproviders/BluetoothIconsProvider.cpp
 
 RESOURCES += qml.qrc
 
@@ -57,12 +59,14 @@ HEADERS += \
     bluetooth/model/DeviceHandler.hpp \
     bluetooth/model/DeviceInfo.hpp \
     bluetooth/model/IReceivedDataParser.hpp \
-    bluetooth/model/simulator-config.hpp \
     bluetooth/model/BluetoothModelResources.hpp\
     bluetooth/model/ChunkedDataParser.hpp\
     iconproviders/WeatherIconsProvider.hpp \
     iconproviders/ResourcesIcons.hpp \
+    bluetooth/model/BadPacketException.hpp \
     iconproviders/ApplicationTheme.hpp \
+    iconproviders/BaseIconsProvider.hpp \
+    iconproviders/BluetoothIconsProvider.hpp \
     Resources.hpp \
     core/ApiConfig.hpp \
     core/GeoPositioning.hpp \

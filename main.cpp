@@ -10,8 +10,9 @@
 #include "weather/model/CurrentWeatherModel.hpp"
 #include "weather/model/ForecastWeatherModel.hpp"
 
-#include "iconproviders/WeatherIconsProvider.hpp"
 #include "iconproviders/ApplicationTheme.hpp"
+#include "iconproviders/BluetoothIconsProvider.hpp"
+#include "iconproviders/WeatherIconsProvider.hpp"
 
 #include "core/GlobalSettings.hpp"
 
@@ -43,9 +44,16 @@ int main(int argc, char *argv[])
     engine.rootContext()->setContextProperty("appSettings", &GlobalSettings::get());
 
     ApplicationTheme::registerType();
-    WeatherIconsProvider* iconsProvider = new WeatherIconsProvider();
-    engine.rootContext()->setContextProperty( "weatherIconsProvider", iconsProvider );
-    engine.addImageProvider( "weathericonsprovider", iconsProvider );
+    qmlRegisterType<BaseIconsProvider>();
+
+    WeatherIconsProvider* weatherIconsProvider = new WeatherIconsProvider();
+    engine.rootContext()->setContextProperty( "weatherIconsProvider", weatherIconsProvider );
+    engine.addImageProvider( "weathericonsprovider", weatherIconsProvider );
+
+    BluetoothIconsProvider* bluetoothIconsProvider = new BluetoothIconsProvider();
+    engine.rootContext()->setContextProperty( "bluetoothIconsProvider", bluetoothIconsProvider );
+    engine.addImageProvider( "bluetoothiconsprovider", bluetoothIconsProvider );
+
 
     engine.load(QUrl(QStringLiteral("qrc:/main.qml")));
     if (engine.rootObjects().isEmpty())
