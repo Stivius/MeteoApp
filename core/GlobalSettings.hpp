@@ -19,7 +19,7 @@ public:
     QString location() const;
 
 private:
-    GlobalSettings(QObject *parent = nullptr);
+    GlobalSettings(QObject* parent = nullptr);
 
 private:
     QString m_location;

@@ -10,6 +10,8 @@
 #include "weather/model/CurrentWeatherModel.hpp"
 #include "weather/model/ForecastWeatherModel.hpp"
 
+#include "historical/model/HistoricalWeatherModel.hpp"
+
 #include "iconproviders/ApplicationTheme.hpp"
 #include "iconproviders/BluetoothIconsProvider.hpp"
 #include "iconproviders/WeatherIconsProvider.hpp"
@@ -29,6 +31,7 @@ int main(int argc, char *argv[])
 
     CurrentWeatherModel::registerQmlType();
     ForecastWeatherModel::registerQmlType();
+    HistoricalWeatherModel::registerQmlType();
     qmlRegisterUncreatableType<DeviceHandler>("DeviceHandler", 1, 0, "AddressType", "Enum is not a type");
     qmlRegisterSingletonType(QUrl("qrc:/CommonSettings.qml"), "CommonSettings", 1, 0, "CommonSettings" );
     qmlRegisterSingletonType(QUrl("qrc:/ThemeController.qml"), "ThemeController", 1, 0, "ThemeController" );

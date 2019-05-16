@@ -16,6 +16,7 @@ namespace Resources
         const QString HourlyForecastApiService = "HourlyForecastApi";
         const QString DailyForecastApiService = "DailyForecastApi";
         const QString HistoricalWeatherApiService = "HistoricalWeatherApi";
+        const QString HistoricalApiKey = "HistoricalApiKey";
         const QString ApiKey = "ApiKey";
     }
 }
