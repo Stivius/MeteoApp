@@ -22,11 +22,6 @@ If applicable, add logs to help explain your problem.
 **Screenshots**
 If applicable, add screenshots to help explain your problem.
 
-**Desktop (please complete the following information):**
- - OS: [e.g. iOS]
- - Browser [e.g. chrome, safari]
- - Version [e.g. 22]
-
 **Environment (please complete the following information):**
  - Device: [e.g. iPhone 6, Samsung Galaxy J7, etc.]
  - OS: [e.g. iOS 8.1, Android 7.0, etc.]
