@@ -1,5 +1,6 @@
 #include "ForecastWeatherParser.hpp"
 
+#include <iostream>
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
@@ -14,7 +15,13 @@ static qint64 toMSSinceEpoch(QJsonValue&& value)
 
 WeatherDataCollection ForecastWeatherParser::parse(const QByteArray& data)
 {
-    auto json = QJsonDocument::fromJson(data);
+    QJsonDocument json{};
+    QJsonParseError error{};
+    json = json.fromJson(data, &error);
+
+    if(error.error != QJsonParseError::NoError)
+       std::cerr << error.errorString().toStdString();
+
     auto root = json.object();
 
     if(root.contains("list"))
