@@ -5,6 +5,9 @@ GeoPositioning::GeoPositioning(QObject* parent) :
 {
     m_positioningSource = QGeoPositionInfoSource::createDefaultSource(this);
 
+    if(!m_positioningSource)
+        return;
+
     connect(m_positioningSource, &QGeoPositionInfoSource::positionUpdated, this, &GeoPositioning::positionUpdated);
 
     connect(m_positioningSource,
@@ -17,7 +20,8 @@ GeoPositioning::GeoPositioning(QObject* parent) :
 
 void GeoPositioning::requestUpdates()
 {
-    m_positioningSource->requestUpdate();
+    if(m_positioningSource)
+        m_positioningSource->requestUpdate();
 }
 
 void GeoPositioning::positionUpdated(QGeoPositionInfo gpsPosition)

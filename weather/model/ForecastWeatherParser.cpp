@@ -5,6 +5,13 @@
 #include <QJsonObject>
 #include <QDateTime>
 
+constexpr int DaysNeeded = 4;
+
+static qint64 toMSSinceEpoch(QJsonValue&& value)
+{
+    return static_cast<qint64>(value.toDouble() * 1000);
+}
+
 WeatherDataCollection ForecastWeatherParser::parse(const QByteArray& data)
 {
     auto json = QJsonDocument::fromJson(data);
@@ -15,9 +22,20 @@ WeatherDataCollection ForecastWeatherParser::parse(const QByteArray& data)
         WeatherDataCollection collection;
 
         auto array = root["list"].toArray();
+
+        int k = 0;
         for(QJsonValueRef value : array)
         {
-            collection.push_back(parseJsonObject(value.toObject()));
+            auto data = value.toObject();
+
+            if(data["dt_txt"].toString().right(8) == "12:00:00")
+            {
+                collection.push_back(parseJsonObject(value.toObject()));
+                ++k;
+            }
+
+            if(k == DaysNeeded)
+                break;
         }
 
         return collection;
@@ -26,11 +44,6 @@ WeatherDataCollection ForecastWeatherParser::parse(const QByteArray& data)
     {
         return {parseJsonObject(root)};
     }
-}
-
-static qint64 toMSSinceEpoch(QJsonValue&& value)
-{
-    return static_cast<qint64>(value.toDouble() * 1000);
 }
 
 WeatherApiData ForecastWeatherParser::parseJsonObject(const QJsonObject& data)
@@ -45,8 +58,8 @@ WeatherApiData ForecastWeatherParser::parseJsonObject(const QJsonObject& data)
     weather.description = weatherInfo["description"].toString();
     weather.weatherIcon = weatherInfo["icon"].toString();
 
-    weather.temperatureMin = static_cast<int>(data["temp"]["min"].toDouble());
-    weather.temperatureMax = static_cast<int>(data["temp"]["max"].toDouble());
+    weather.temperatureMin = static_cast<int>(data["main"]["temp_min"].toDouble());
+    weather.temperatureMax = static_cast<int>(data["main"]["temp_max"].toDouble());
 
     return weather;
 }

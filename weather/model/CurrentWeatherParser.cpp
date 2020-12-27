@@ -12,10 +12,14 @@ static qint64 toMSSinceEpoch(const QJsonValue&& value)
 
 WeatherApiData CurrentWeatherParser::parse(const QByteArray& data)
 {
-    auto json = QJsonDocument::fromJson(data);
+    //auto json = QJsonDocument::fromJson(data);
+
+    QJsonDocument json;
+    QJsonParseError error;
+    json = json.fromJson(data, &error);
 
     WeatherApiData weather;
-    auto weatherInfo = json["weather"].toArray().first().toObject();
+    auto weatherInfo = json["weather"].toArray().first();
 
     QDateTime date = QDateTime::fromMSecsSinceEpoch(toMSSinceEpoch(json["dt"]));
 

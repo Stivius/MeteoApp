@@ -1,3 +1,4 @@
+#include "ApiConfig.hpp"
 #include "WeatherBaseApi.hpp"
 
 #include <QNetworkReply>
@@ -35,7 +36,11 @@ QUrl WeatherBaseApi::formRequestUrl(const QString& apiService, const std::map<QS
 
 void WeatherBaseApi::sendRequestImpl(const QUrl& url)
 {
-    auto reply = m_networkAccessManager.get(QNetworkRequest{url});
+    QNetworkRequest nrq(url);
+    nrq.setRawHeader("x-rapidapi-key", ApiConfig::apiKey().toStdString().c_str());
+    nrq.setRawHeader("x-rapidapi-host", "community-open-weather-map.p.rapidapi.com");
+
+    auto reply = m_networkAccessManager.get(nrq);
 
     connect(reply, &QNetworkReply::finished, this, &WeatherBaseApi::requestFinished);
     connect(reply, &QNetworkReply::sslErrors, this, &WeatherBaseApi::sslErrors);
