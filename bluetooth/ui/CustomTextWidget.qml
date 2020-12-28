@@ -21,8 +21,7 @@ Image {
     Connections
     {
         target: bluetoothIconsProvider
-        onThemeChanged:
-        {
+        function onThemeChanged(){
             icon.source = ""
             icon.source = Qt.binding( function( ) { return iconPath })
         }
