@@ -57,8 +57,7 @@ Item {
     Connections
     {
         target: messageText
-        onTextChanged:
-        {
+        function onTextChanged(){
             expiringTimer.restart();
             isAnimationCompleted = false;
         }
@@ -77,10 +76,9 @@ Item {
    Connections
    {
        target: rectAnimation
-       onFinished:
-       {
-           rectOpacityAnimator.target.opacity = 0.9;
-           isAnimationCompleted = true;
-       }
+       function onFinished(){
+            rectOpacityAnimator.target.opacity = 0.9;
+            isAnimationCompleted = true;
+        }
    }
 }

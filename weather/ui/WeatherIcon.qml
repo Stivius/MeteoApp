@@ -13,7 +13,7 @@ Image {
     Connections
     {
         target: weatherIconsProvider
-        onThemeChanged:
+        function onThemeChanged()
         {
             img.source = ""
             img.source = Qt.binding( function( ) { return getWeatherIcon( weatherIcon ) })
