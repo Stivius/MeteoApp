@@ -1,10 +1,12 @@
+#include "ApiConfig.hpp"
 #include "WeatherBaseApi.hpp"
 
 #include <QNetworkReply>
 #include <QUrlQuery>
 
-WeatherBaseApi::WeatherBaseApi(QObject* parent) :
-    QObject(parent)
+WeatherBaseApi::WeatherBaseApi(const QString& apiService, QObject* parent) :
+    QObject(parent),
+    m_apiService(apiService)
 {
 }
 
@@ -18,9 +20,9 @@ void WeatherBaseApi::requestByCoords(double latitude, double longitude)
     sendRequestImpl(formRequest(latitude, longitude));
 }
 
-QUrl WeatherBaseApi::formRequestUrl(const QString& apiService, const std::map<QString, QString>& params)
+QUrl WeatherBaseApi::formRequestUrl(const std::map<QString, QString>& params)
 {
-    QUrl apiRequest{apiService};
+    QUrl apiRequest{m_apiService};
     QUrlQuery query;
 
     for(auto [name, value] : params)
@@ -33,9 +35,14 @@ QUrl WeatherBaseApi::formRequestUrl(const QString& apiService, const std::map<QS
     return apiRequest;
 }
 
+QNetworkRequest WeatherBaseApi::prepareNetworkRequest(const QUrl &url)
+{
+    return QNetworkRequest{url};
+}
+
 void WeatherBaseApi::sendRequestImpl(const QUrl& url)
 {
-    auto reply = m_networkAccessManager.get(QNetworkRequest{url});
+    auto reply = m_networkAccessManager.get(prepareNetworkRequest(url));
 
     connect(reply, &QNetworkReply::finished, this, &WeatherBaseApi::requestFinished);
     connect(reply, &QNetworkReply::sslErrors, this, &WeatherBaseApi::sslErrors);

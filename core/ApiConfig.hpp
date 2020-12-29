@@ -7,13 +7,13 @@ class ApiConfig
     Q_DISABLE_COPY(ApiConfig)
 
 public:
-    static QString currentWeatherApi();
-    static QString hourlyForecstApi();
-    static QString dailyForecstApi();
-    static QString historicalWeatherApi();
+    static QString currentWeatherApiService();
+    static QString forecstWeatherApiService();
+    static QString historicalWeatherApiService();
 
-    static QString historicalApiKey();
-    static QString apiKey();
+    static QString currentWeatherApiKey();
+    static QString forecastWeatherApiKey();
+    static QString historicalWeatherApiKey();
 
 private:
     static QSettings& settings();

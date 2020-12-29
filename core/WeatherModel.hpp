@@ -35,10 +35,12 @@ public slots:
     {
         if(location == "Current")
         {
+            qDebug() << "Current location. Updating weather info...";
             m_geoPositioning.requestUpdates();
         }
         else
         {
+            qDebug() << "Location changed. Updating weather info...";
             m_weatherApi->requestByCity(location);
         }
     }
@@ -49,6 +51,7 @@ protected:
 private slots:
     void coordsUpdated(double latitude, double longitude)
     {
+        qDebug() << "Coords changed. Updating weather info...";
         m_weatherApi->requestByCoords(latitude, longitude);
     }
 

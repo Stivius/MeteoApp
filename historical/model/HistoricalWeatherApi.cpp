@@ -3,7 +3,7 @@
 #include "core/ApiConfig.hpp"
 
 HistoricalWeatherApi::HistoricalWeatherApi(DateCallback callback, QObject* parent) :
-    WeatherBaseApi(parent),
+    WeatherBaseApi(ApiConfig::historicalWeatherApiService(), parent),
     m_dateDelegate{callback}
 {
 }
@@ -29,10 +29,10 @@ QUrl HistoricalWeatherApi::formRequest(const QString& city)
         {"date", date.toString(ms_dateFormat)},
         {"enddate", enddate.toString(ms_dateFormat)},
         {"tp", getTimeInterval(date, enddate)},
-        {"key", ApiConfig::historicalApiKey()}
+        {"key", ApiConfig::historicalWeatherApiKey()}
     };
 
-    return formRequestUrl(ApiConfig::historicalWeatherApi(), params);
+    return formRequestUrl(params);
 }
 
 QUrl HistoricalWeatherApi::formRequest(double latitude, double longitude)
@@ -45,10 +45,10 @@ QUrl HistoricalWeatherApi::formRequest(double latitude, double longitude)
         {"date", date.toString(ms_dateFormat)},
         {"enddate", enddate.toString(ms_dateFormat)},
         {"tp", getTimeInterval(date, enddate)},
-        {"key", ApiConfig::historicalApiKey()}
+        {"key", ApiConfig::historicalWeatherApiKey()}
     };
 
-    return formRequestUrl(ApiConfig::historicalWeatherApi(), params);
+    return formRequestUrl(params);
 }
 
 const QString HistoricalWeatherApi::ms_dateFormat = "yyyy-MM-dd";

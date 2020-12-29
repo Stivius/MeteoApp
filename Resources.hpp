@@ -12,11 +12,11 @@ namespace Resources
     {
         const QString File = ":/settings.conf";
 
-        const QString CurrentWeatherApiService = "CurrentWeatherApi";
-        const QString HourlyForecastApiService = "HourlyForecastApi";
-        const QString DailyForecastApiService = "DailyForecastApi";
-        const QString HistoricalWeatherApiService = "HistoricalWeatherApi";
-        const QString HistoricalApiKey = "HistoricalApiKey";
-        const QString ApiKey = "ApiKey";
+        const QString CurrentWeatherApiService = "CurrentWeatherApiService";
+        const QString ForecastWeatherApiService = "ForecastWeatherApiService";
+        const QString HistoricalWeatherApiService = "HistoricalWeatherApiService";
+        const QString CurrentWeatherApiKey = "CurrentWeatherApiKey";
+        const QString ForecastWeatherApiKey = "ForecastWeatherApiKey";
+        const QString HistoricalWeatherApiKey = "HistoricalWeatherApiKey";
     }
 }

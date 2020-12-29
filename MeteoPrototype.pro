@@ -21,6 +21,7 @@ SOURCES += \
     bluetooth/model/DeviceHandler.cpp \
     bluetooth/model/DeviceInfo.cpp \
     bluetooth/model/ChunkedDataParser.cpp \
+    core/RapidWeatherApi.cpp \
     iconproviders/WeatherIconsProvider.cpp \
     iconproviders/ResourcesIcons.cpp \
     iconproviders/BaseIconsProvider.cpp \
@@ -66,6 +67,7 @@ HEADERS += \
     bluetooth/model/BluetoothModelResources.hpp \
     bluetooth/model/ChunkedDataParser.hpp \
     bluetooth/model/BadPacketException.hpp \
+    core/RapidWeatherApi.hpp \
     iconproviders/WeatherIconsProvider.hpp\
     iconproviders/ResourcesIcons.hpp \
     iconproviders/ApplicationTheme.hpp \

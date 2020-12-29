@@ -1,5 +1,6 @@
 #include "CurrentWeatherParser.hpp"
 
+#include <iostream>
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
@@ -12,10 +13,17 @@ static qint64 toMSSinceEpoch(const QJsonValue&& value)
 
 WeatherApiData CurrentWeatherParser::parse(const QByteArray& data)
 {
-    auto json = QJsonDocument::fromJson(data);
+    QJsonParseError error;
+    auto json = QJsonDocument::fromJson(data, &error);
+
+    if(error.error != QJsonParseError::NoError)
+    {
+       qCritical() << error.errorString();
+       return WeatherApiData{};
+    }
 
     WeatherApiData weather;
-    auto weatherInfo = json["weather"].toArray().first().toObject();
+    auto weatherInfo = json["weather"].toArray().first();
 
     QDateTime date = QDateTime::fromMSecsSinceEpoch(toMSSinceEpoch(json["dt"]));
 
