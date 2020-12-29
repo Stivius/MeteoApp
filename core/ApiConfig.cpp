@@ -9,33 +9,32 @@ QSettings& ApiConfig::settings()
     return confSettings;
 }
 
-QString ApiConfig::currentWeatherApi()
+QString ApiConfig::currentWeatherApiService()
 {
     return ApiConfig::settings().value(Resources::Settings::CurrentWeatherApiService).toString();
 }
 
-QString ApiConfig::hourlyForecstApi()
+QString ApiConfig::forecstWeatherApiService()
 {
-    return ApiConfig::settings().value(Resources::Settings::HourlyForecastApiService).toString();
+    return ApiConfig::settings().value(Resources::Settings::ForecastWeatherApiService).toString();
 }
 
-QString ApiConfig::dailyForecstApi()
-{
-    return ApiConfig::settings().value(Resources::Settings::DailyForecastApiService).toString();
-}
-
-QString ApiConfig::historicalWeatherApi()
+QString ApiConfig::historicalWeatherApiService()
 {
     return ApiConfig::settings().value(Resources::Settings::HistoricalWeatherApiService).toString();
 }
 
-QString ApiConfig::historicalApiKey()
+QString ApiConfig::currentWeatherApiKey()
 {
-    return ApiConfig::settings().value(Resources::Settings::HistoricalApiKey).toString();
+    return ApiConfig::settings().value(Resources::Settings::CurrentWeatherApiKey).toString();
 }
 
-QString ApiConfig::apiKey()
+QString ApiConfig::forecastWeatherApiKey()
 {
-    return ApiConfig::settings().value(Resources::Settings::ApiKey).toString();
+    return ApiConfig::settings().value(Resources::Settings::ForecastWeatherApiKey).toString();
 }
 
+QString ApiConfig::historicalWeatherApiKey()
+{
+    return ApiConfig::settings().value(Resources::Settings::HistoricalWeatherApiKey).toString();
+}

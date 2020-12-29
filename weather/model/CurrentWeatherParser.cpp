@@ -13,14 +13,13 @@ static qint64 toMSSinceEpoch(const QJsonValue&& value)
 
 WeatherApiData CurrentWeatherParser::parse(const QByteArray& data)
 {
-    QJsonDocument json{};
-    QJsonParseError error{};
-    json = json.fromJson(data, &error);
+    QJsonParseError error;
+    auto json = QJsonDocument::fromJson(data, &error);
 
     if(error.error != QJsonParseError::NoError)
     {
-       std::cerr << error.errorString().toStdString();
-       return WeatherApiData();
+       qCritical() << error.errorString();
+       return WeatherApiData{};
     }
 
     WeatherApiData weather;

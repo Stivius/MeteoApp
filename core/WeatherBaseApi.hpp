@@ -12,7 +12,7 @@ signals:
     void error(const QString& error);
 
 public:
-    explicit WeatherBaseApi(QObject* parent = nullptr);
+    explicit WeatherBaseApi(const QString& apiService, QObject* parent = nullptr);
 
     void requestByCity(const QString& city);
     void requestByCoords(double latitude, double longitude);
@@ -21,7 +21,8 @@ protected:
     virtual QUrl formRequest(const QString& city) = 0;
     virtual QUrl formRequest(double latitude, double longitude) = 0;
 
-    QUrl formRequestUrl(const QString& apiSerivce, const std::map<QString, QString>& params);
+    QUrl formRequestUrl(const std::map<QString, QString>& params);
+    virtual QNetworkRequest prepareNetworkRequest(const QUrl& url);
 
 private:
     void sendRequestImpl(const QUrl& url);
@@ -31,6 +32,7 @@ private slots:
     void sslErrors(const QList<QSslError>& errors);
 
 private:
+    QString m_apiService;
     QNetworkAccessManager m_networkAccessManager;
 
 };

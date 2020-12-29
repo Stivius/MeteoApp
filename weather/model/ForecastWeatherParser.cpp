@@ -6,21 +6,28 @@
 #include <QJsonObject>
 #include <QDateTime>
 
-constexpr int DaysNeeded = 4;
+constexpr const int DaysNeeded = 4;
 
-static qint64 toMSSinceEpoch(QJsonValue&& value)
+static qint64 toMSSinceEpoch(const QJsonValue& value)
 {
     return static_cast<qint64>(value.toDouble() * 1000);
 }
 
+static bool isMidday(const QJsonValue& value)
+{
+    return QDateTime::fromMSecsSinceEpoch(toMSSinceEpoch(value), Qt::UTC).time().hour() == 12;
+}
+
 WeatherDataCollection ForecastWeatherParser::parse(const QByteArray& data)
 {
-    QJsonDocument json{};
-    QJsonParseError error{};
-    json = json.fromJson(data, &error);
+    QJsonParseError error;
+    auto json = QJsonDocument::fromJson(data, &error);
 
     if(error.error != QJsonParseError::NoError)
-       std::cerr << error.errorString().toStdString();
+    {
+       qCritical() << error.errorString();
+       return WeatherDataCollection{};
+    }
 
     auto root = json.object();
 
@@ -30,18 +37,15 @@ WeatherDataCollection ForecastWeatherParser::parse(const QByteArray& data)
 
         auto array = root["list"].toArray();
 
-        int k = 0;
         for(QJsonValueRef value : array)
         {
             auto data = value.toObject();
-
-            if(data["dt_txt"].toString().right(8) == "12:00:00")
+            if(isMidday(data["dt"]))
             {
                 collection.push_back(parseJsonObject(value.toObject()));
-                ++k;
             }
 
-            if(k == DaysNeeded)
+            if(collection.size() == DaysNeeded)
                 break;
         }
 

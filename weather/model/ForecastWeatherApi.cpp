@@ -2,6 +2,11 @@
 
 #include "core/ApiConfig.hpp"
 
+ForecastWeatherApi::ForecastWeatherApi() :
+    RapidWeatherApi{ApiConfig::forecastWeatherApiKey(), ApiConfig::forecstWeatherApiService()}
+{
+}
+
 QUrl ForecastWeatherApi::formRequest(const QString& city)
 {
     std::map<QString, QString> params = {
@@ -9,7 +14,7 @@ QUrl ForecastWeatherApi::formRequest(const QString& city)
         {"units", "metric"}
     };
 
-    return formRequestUrl(ApiConfig::dailyForecstApi(), params);
+    return formRequestUrl(params);
 }
 
 QUrl ForecastWeatherApi::formRequest(double latitude, double longitude)
@@ -20,5 +25,5 @@ QUrl ForecastWeatherApi::formRequest(double latitude, double longitude)
         {"units", "metric"}
     };
 
-    return formRequestUrl(ApiConfig::dailyForecstApi(), params);
+    return formRequestUrl(params);
 }
