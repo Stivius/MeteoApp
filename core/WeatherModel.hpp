@@ -48,6 +48,11 @@ public slots:
 protected:
     virtual void updateModel(const WeatherData& data) = 0;
 
+    WeatherBaseApi& api()
+    {
+        return *m_weatherApi;
+    }
+
 private slots:
     void coordsUpdated(double latitude, double longitude)
     {
