@@ -11,19 +11,21 @@ class HistoricalWeatherModel : public WeatherModel<HistoricalWeatherModel, Histo
     Q_PROPERTY(int minTemperature MEMBER m_temperatureMin NOTIFY minTemperatureChanged)
     Q_PROPERTY(QString maxTemperatureDate MEMBER m_tMaxDate NOTIFY maxTemperatureDateChanged)
     Q_PROPERTY(QString minTemperatureDate MEMBER m_tMinDate NOTIFY minTemperatureDateChanged)
+    Q_PROPERTY(QString city MEMBER m_city NOTIFY cityChanged)
+    Q_PROPERTY(QList<int> temperatureDots MEMBER m_temperatureDots NOTIFY temperatureDotsChanged)
 
 signals:
     void maxTemperatureChanged(int temperature);
     void minTemperatureChanged(int temperature);
     void maxTemperatureDateChanged(const QString& date);
     void minTemperatureDateChanged(const QString& date);
+    void cityChanged(const QString& city);
+    void temperatureDotsChanged(const QList<int>& dots);
 
 public:
     HistoricalWeatherModel(QObject* parent = nullptr);
 
-    Q_INVOKABLE void setDayDate(int day, int month, int year);
-    Q_INVOKABLE void setWeekDate(int week, int year);
-    Q_INVOKABLE void setMonthDate(int month, int year);
+    Q_INVOKABLE void request(const QDate& startDate, const QDate& endDate);
 
     static void registerQmlType();
 
@@ -33,11 +35,13 @@ protected:
 private:
     int m_temperatureMax = 0;
     int m_temperatureMin = 0;
-    QString m_tMaxDate   = "";
-    QString m_tMinDate   = "";
+    QString m_tMaxDate;
+    QString m_tMinDate;
+    QString m_city;
+    QList<int> m_temperatureDots;
 
 private:
     QDate m_startDate;
-    QDate m_finishDate;
+    QDate m_endDate;
 
 };

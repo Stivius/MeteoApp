@@ -37,7 +37,6 @@ SOURCES += \
     weather/model/ForecastWeatherApi.cpp \
     weather/model/ForecastWeatherModel.cpp \
     weather/model/ForecastWeatherParser.cpp \
-    historical/model/ChartSource.cpp \
     historical/model/HistoricalWeatherApi.cpp \
     historical/model/HistoricalWeatherParser.cpp \
     historical/model/HistoricalWeatherModel.cpp
@@ -87,7 +86,6 @@ HEADERS += \
     weather/model/ForecastWeatherApi.hpp \
     weather/model/ForecastWeatherModel.hpp \
     weather/model/ForecastWeatherParser.hpp \
-    historical/model/ChartSource.hpp \
     historical/model/HistoricalWeatherApi.hpp \
     historical/model/HistoricalWeatherData.hpp \
     historical/model/HistoricalWeatherParser.hpp \
