@@ -90,12 +90,42 @@ Rectangle {
                 text: "Ok"
 
                 onClicked: {
-                    model.request(startDatePicker.enteredDate, endDatePicker.enteredDate)
+                    const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+                    const daysDifference = Math.floor((endDatePicker.enteredDate - startDatePicker.enteredDate) / _MS_PER_DAY);
+                    if (daysDifference >= 35) {
+                        dialog.open()
+                    }
+                    else {
+                        model.request(startDatePicker.enteredDate, endDatePicker.enteredDate)
+                    }
                 }
             }
 
         }
 
+        Dialog {
+            id: dialog
+            anchors.centerIn: parent
+
+            height: CommonSettings.wHeight * .25
+
+            title: "Date Error"
+            background: Rectangle {
+                anchors.fill: parent
+                color: CommonSettings.backgroundColor
+            }
+            contentItem: Rectangle {
+                anchors.fill: parent
+                color: CommonSettings.backgroundColor
+                Text {
+                    text: "Date diff should be less than 35 days"
+                    color: CommonSettings.fontColor
+                    font: CommonSettings.themeFont
+                    anchors.centerIn: parent
+                }
+            }
+            standardButtons: Dialog.Ok
+        }
     }
 
     HistoricalWeatherModel {
