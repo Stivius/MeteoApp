@@ -13,6 +13,7 @@ Row {
         width: CommonSettings.wWidth * .25
         from: 1
         to: 31
+        value:  new Date().getDay()
         editable: true
     }
 
@@ -29,6 +30,7 @@ Row {
         width: CommonSettings.wWidth * .3
         from: 2008
         to: new Date().getFullYear()
+        value: new Date().getFullYear()
         editable: true
     }
 }

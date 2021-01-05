@@ -93,7 +93,7 @@ Rectangle {
                     const _MS_PER_DAY = 1000 * 60 * 60 * 24;
                     const daysDifference = Math.floor((endDatePicker.enteredDate - startDatePicker.enteredDate) / _MS_PER_DAY);
                     if (daysDifference >= 35) {
-                        dialog.open()
+                        errorDateDialog.open()
                     }
                     else {
                         model.request(startDatePicker.enteredDate, endDatePicker.enteredDate)
@@ -102,30 +102,19 @@ Rectangle {
             }
 
         }
+    }
 
-        Dialog {
-            id: dialog
-            anchors.centerIn: parent
+    InfoDialog {
+        id: errorDateDialog
+        title: "Date Error"
+        message: "Date diff should be less than 35 days"
+    }
 
-            height: CommonSettings.wHeight * .25
 
-            title: "Date Error"
-            background: Rectangle {
-                anchors.fill: parent
-                color: CommonSettings.backgroundColor
-            }
-            contentItem: Rectangle {
-                anchors.fill: parent
-                color: CommonSettings.backgroundColor
-                Text {
-                    text: "Date diff should be less than 35 days"
-                    color: CommonSettings.fontColor
-                    font: CommonSettings.themeFont
-                    anchors.centerIn: parent
-                }
-            }
-            standardButtons: Dialog.Ok
-        }
+    InfoDialog {
+        id: emptyDataDialog
+        title: "Empty Data"
+        message: "Server gave no data for this period"
     }
 
     HistoricalWeatherModel {
@@ -136,8 +125,13 @@ Rectangle {
             axisY.min = minTemperature
             axisY.max = maxTemperature
             dotsSeries.clear()
-            for (var i = 0; i < temperatureDots.length; ++i) {
-                dotsSeries.append(i, dots[i])
+            if (temperatureDots.length > 0) {
+                for (var i = 0; i < temperatureDots.length; ++i) {
+                    dotsSeries.append(i, dots[i])
+                }
+            }
+            else {
+                emptyDataDialog.open()
             }
         }
     }
