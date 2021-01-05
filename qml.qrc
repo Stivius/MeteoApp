@@ -73,5 +73,6 @@
         <file>iconproviders/icons/light-theme/bluetooth-view/pressure.png</file>
         <file>iconproviders/icons/light-theme/bluetooth-view/temperature.png</file>
         <file>weather/ui/SwitchSityButton.qml</file>
+        <file>historical/ui/DatePicker.qml</file>
     </qresource>
 </RCC>
