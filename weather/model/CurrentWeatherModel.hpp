@@ -1,9 +1,9 @@
 #pragma once
 
-#include "core/WeatherModel.hpp"
+#include "core/WeatherGeoModel.hpp"
 #include "weather/model/WeatherData.hpp"
 
-class CurrentWeatherModel : public WeatherModel<CurrentWeatherModel, WeatherApiData>
+class CurrentWeatherModel : public WeatherGeoModel<WeatherApiData>
 {
     Q_OBJECT
 

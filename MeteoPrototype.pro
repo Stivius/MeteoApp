@@ -67,6 +67,7 @@ HEADERS += \
     bluetooth/model/ChunkedDataParser.hpp \
     bluetooth/model/BadPacketException.hpp \
     core/RapidWeatherApi.hpp \
+    core/WeatherGeoModel.hpp \
     iconproviders/WeatherIconsProvider.hpp\
     iconproviders/ResourcesIcons.hpp \
     iconproviders/ApplicationTheme.hpp \

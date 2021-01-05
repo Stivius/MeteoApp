@@ -27,30 +27,33 @@ void HistoricalWeatherModel::registerQmlType()
 
 void HistoricalWeatherModel::updateModel(const HistoricalWeatherData& data)
 {
-    if(data.days.empty())
-        return;
+    if (data.days.size()) {
+        auto maxIt = std::max_element(
+                data.days.cbegin(),
+                data.days.cend(),
+                [](auto& left, auto& right) {
+                    return left.maxTemperature < right.maxTemperature;
+                }
+        );
 
-    auto maxIt = std::max_element(
-            data.days.cbegin(),
-            data.days.cend(),
-            [](auto& left, auto& right) {
-                return left.maxTemperature < right.maxTemperature;
-            }
-    );
+        auto minIt = std::min_element(
+                data.days.cbegin(),
+                data.days.cend(),
+                [](auto& left, auto& right) {
+                     return left.minTemperature < right.minTemperature;
+                }
+        );
 
-    auto minIt = std::min_element(
-            data.days.cbegin(),
-            data.days.cend(),
-            [](auto& left, auto& right) {
-                 return left.minTemperature < right.minTemperature;
-            }
-    );
-
-    const QString format("yyyy-MM-dd");
-    m_temperatureMax = maxIt->maxTemperature;
-    m_temperatureMin = minIt->minTemperature;
-    m_tMaxDate = maxIt->date.toString(format);
-    m_tMinDate = minIt->date.toString(format);
+        const QString DateFormat("yyyy-MM-dd");
+        m_temperatureMax = maxIt->maxTemperature;
+        m_temperatureMin = minIt->minTemperature;
+        m_tMaxDate = maxIt->date.toString(DateFormat);
+        m_tMinDate = minIt->date.toString(DateFormat);
+    }
+    else {
+        m_temperatureMin = m_temperatureMax = 0;
+        m_tMinDate = m_tMaxDate = "";
+    }
     m_city = data.city;
 
     m_temperatureDots.clear();

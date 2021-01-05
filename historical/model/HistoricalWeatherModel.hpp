@@ -3,7 +3,7 @@
 #include "core/WeatherModel.hpp"
 #include "historical/model/HistoricalWeatherData.hpp"
 
-class HistoricalWeatherModel : public WeatherModel<HistoricalWeatherModel, HistoricalWeatherData>
+class HistoricalWeatherModel : public WeatherModel<HistoricalWeatherData>
 {
     Q_OBJECT
 

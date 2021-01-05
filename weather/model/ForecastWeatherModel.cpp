@@ -6,9 +6,9 @@
 #include <QQmlEngine>
 
 ForecastWeatherModel::ForecastWeatherModel(QObject* parent) :
-    WeatherModel(std::make_unique<ForecastWeatherApi>(),
-                 std::make_unique<ForecastWeatherParser>(),
-                 parent)
+    WeatherGeoModel(std::make_unique<ForecastWeatherApi>(),
+                    std::make_unique<ForecastWeatherParser>(),
+                    parent)
 {
 }
 
