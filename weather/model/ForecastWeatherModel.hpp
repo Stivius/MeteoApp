@@ -11,7 +11,7 @@ class ForecastWeatherModel : public WeatherGeoModel<WeatherDataCollection, QAbst
     Q_ENUMS(ForecastRoles)
 
 signals:
-    void forecastChanged(const QVariantList& forecast);
+    void dataUpdated();
 
 public:
     enum ForecastRoles {

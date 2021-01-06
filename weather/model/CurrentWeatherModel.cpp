@@ -22,6 +22,8 @@ void CurrentWeatherModel::updateModel(const WeatherApiData& data)
     setCondition(data.condition);
     setTemperature(data.temperature);
     setIcon(data.weatherIcon);
+
+    emit dataUpdated();
 }
 
 QString CurrentWeatherModel::condition() const

@@ -1,5 +1,6 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.5
+import QtQml.StateMachine 1.15 as DSM
 
 import CurrentWeatherModel 1.0
 import FontSizes 1.0
@@ -11,7 +12,7 @@ Item {
     property real smallSide: (current.width < current.height ? current.width : current.height)
 
     Text {
-        text: model.temperature + "°"
+        text: loadedState.active ? model.temperature + "°" : ""
 
         font.pointSize: FontSizes.largeFontSize
         font.family: CommonSettings.themeFont
@@ -27,7 +28,7 @@ Item {
 
     WeatherIcon {
         id: currentWeatherIcon
-        weatherIcon: model.icon
+        weatherIcon: loadedState.active ? model.icon : ""
         anchors.centerIn: parent
         anchors.verticalCenterOffset: -15
         width: current.smallSide
@@ -35,7 +36,7 @@ Item {
     }
 
     Text {
-        text: model.condition
+        text: loadedState.active ? model.condition : ""
         width: parent.width
         wrapMode: Text.WordWrap
 
@@ -50,6 +51,23 @@ Item {
             rightMargin: 5
         }
     }
+
+    DSM.StateMachine {
+       id: stateMachine
+       initialState: loadingState
+       running: true
+       DSM.State {
+           id: loadingState
+
+           DSM.SignalTransition {
+               targetState: loadedState
+               signal: model.dataUpdated
+           }
+       }
+       DSM.State {
+           id: loadedState
+       }
+   }
 
     CurrentWeatherModel {
         id: model

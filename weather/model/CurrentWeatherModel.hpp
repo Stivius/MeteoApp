@@ -15,6 +15,7 @@ signals:
     void conditionChanged(const QString& condition);
     void iconChanged(const QString& icon);
     void temperatureChanged(int temperature);
+    void dataUpdated();
 
 public:
     CurrentWeatherModel(QObject* parent = nullptr);

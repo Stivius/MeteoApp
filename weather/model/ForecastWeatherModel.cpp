@@ -57,6 +57,7 @@ void ForecastWeatherModel::updateModel(const WeatherDataCollection& data)
     beginResetModel();
 
     m_forecast = std::move(data);
+    emit dataUpdated();
 
     endResetModel();
 }
