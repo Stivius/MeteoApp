@@ -2,12 +2,14 @@ import QtQuick 2.0
 import QtQuick.Controls 2.5
 
 import CommonSettings 1.0
+import FontSizes 1.0
 
 Dialog {
     anchors.centerIn: parent
 
     property string message
 
+    width: CommonSettings.wWidth* .8
     height: CommonSettings.wHeight * .25
 
     background: Rectangle {
@@ -19,8 +21,10 @@ Dialog {
         color: CommonSettings.backgroundColor
         Text {
             text: message
+            wrapMode: Text.WordWrap
             color: CommonSettings.fontColor
-            font: CommonSettings.themeFont
+            font.family: CommonSettings.themeFont
+            font.pixelSize: FontSizes.miniFontSize
             anchors.centerIn: parent
         }
     }
