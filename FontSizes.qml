@@ -6,6 +6,7 @@ import CommonSettings 1.0
 Item {
     // Font sizes
     property real microFontSize: hugeFontSize * 0.2
+    property real miniFontSize: hugeFontSize * 0.35
     property real tinyFontSize: hugeFontSize * 0.4
     property real smallTinyFontSize: hugeFontSize * 0.5
     property real smallFontSize: hugeFontSize * 0.6

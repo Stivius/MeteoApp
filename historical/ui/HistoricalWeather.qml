@@ -1,6 +1,7 @@
 import QtQuick 2.9
 import QtQuick.Controls 2.5
 import QtCharts 2.3
+import QtQuick.Layouts 1.12
 
 import HistoricalWeatherModel 1.0
 import CommonSettings 1.0
@@ -10,48 +11,46 @@ Rectangle {
     anchors.fill: parent
     color: CommonSettings.backgroundColor
 
+    ColumnLayout {
+        spacing: CommonSettings.wHeight * 0.016
 
-    Rectangle {
-        width: parent.width - 10
-        height: parent.height / 3;
+        Rectangle {
+            Layout.preferredWidth: CommonSettings.wWidth
+            Layout.preferredHeight: CommonSettings.wHeight / 3;
 
-        ChartView {
-            id: chartView
-            anchors.fill: parent
-            antialiasing: true
-            theme: ChartView.ChartThemeDark
-            animationOptions: ChartView.NoAnimation
-            backgroundColor: CommonSettings.backgroundColor
+            ChartView {
+                id: chartView
+                anchors.fill: parent
+                antialiasing: true
+                theme: ChartView.ChartThemeDark
+                animationOptions: ChartView.NoAnimation
+                backgroundColor: CommonSettings.backgroundColor
 
-            ValueAxis {
-                 id: axisX
-                 min: 0
-                 max: 10
-                 labelsVisible: false
-                 gridVisible: false
-             }
+                ValueAxis {
+                     id: axisX
+                     min: 0
+                     max: 10
+                     labelsVisible: false
+                     gridVisible: false
+                 }
 
-             ValueAxis {
-                 id: axisY
-                 min: -0.5
-                 max: 1.5
-             }
+                 ValueAxis {
+                     id: axisY
+                     min: -0.5
+                     max: 1.5
+                 }
 
-             LineSeries {
-                 id: dotsSeries
-                 name: "temperature"
-                 axisX: axisX
-                 axisY: axisY
-             }
+                 LineSeries {
+                     id: dotsSeries
+                     name: "Temperature"
+                     axisX: axisX
+                     axisY: axisY
+                 }
+            }
         }
-    }
 
-    Column {
-        anchors.centerIn: parent
-        spacing: 10
-
-        Column {
-            spacing: 10
+        ColumnLayout {
+            spacing: CommonSettings.wHeight * 0.008
 
             Text {
                 font: CommonSettings.themeFont
@@ -62,45 +61,44 @@ Rectangle {
             Text {
                 font: CommonSettings.themeFont
                 color: CommonSettings.fontColor
-                text: qsTr("MaxTemperature: ") + model.minTemperature + " [" + model.minTemperatureDate + "]"
+                text: qsTr("Max Temperature: ") + model.minTemperature + " [" + model.minTemperatureDate + "]"
             }
 
             Text {
                 font: CommonSettings.themeFont
                 color: CommonSettings.fontColor
-                text: qsTr("MinTemperature: ") + model.maxTemperature + " [" + model.maxTemperatureDate + "]"
+                text: qsTr("Min Temperature: ") + model.maxTemperature + " [" + model.maxTemperatureDate + "]"
             }
          }
 
-        DatePicker {
-            id: startDatePicker
-        }
+        RowLayout {
+            Layout.alignment: Qt.AlignHCenter
 
-        DatePicker {
-            id: endDatePicker
-        }
-
-
-        Column {
-            spacing: 10
-
-            Button {
-                id: okButton
-                font: CommonSettings.themeFont
-                text: "Ok"
-
-                onClicked: {
-                    const _MS_PER_DAY = 1000 * 60 * 60 * 24;
-                    const daysDifference = Math.floor((endDatePicker.enteredDate - startDatePicker.enteredDate) / _MS_PER_DAY);
-                    if (daysDifference >= 35) {
-                        errorDateDialog.open()
-                    }
-                    else {
-                        model.request(startDatePicker.enteredDate, endDatePicker.enteredDate)
-                    }
-                }
+            DatePicker {
+                id: startDatePicker
             }
 
+            DatePicker {
+                id: endDatePicker
+            }
+        }
+
+        Button {
+            id: okButton
+            Layout.alignment: Qt.AlignHCenter
+            font: CommonSettings.themeFont
+            text: "Ok"
+
+            onClicked: {
+                const _MS_PER_DAY = 1000 * 60 * 60 * 24;
+                const daysDifference = Math.floor((endDatePicker.enteredDate - startDatePicker.enteredDate) / _MS_PER_DAY);
+                if (daysDifference >= 35) {
+                    errorDateDialog.open()
+                }
+                else {
+                    model.request(startDatePicker.enteredDate, endDatePicker.enteredDate)
+                }
+            }
         }
     }
 
