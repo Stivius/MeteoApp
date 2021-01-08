@@ -12,7 +12,7 @@ ColumnLayout {
     SpinBox {
         id: day
         font: CommonSettings.themeFont
-        Layout.preferredWidth: CommonSettings.wWidth * .3
+        Layout.preferredWidth: CommonSettings.wWidth * .45
         from: 1
         to: 31
         value:  new Date().getDay()
@@ -29,10 +29,13 @@ ColumnLayout {
     SpinBox {
         id: year
         font: CommonSettings.themeFont
-        Layout.preferredWidth: CommonSettings.wWidth * .4
+        Layout.preferredWidth: CommonSettings.wWidth * .45
         from: 2008
         to: new Date().getFullYear()
         value: new Date().getFullYear()
+        textFromValue: function(value) {
+            return value;
+        }
         editable: true
     }
 }
