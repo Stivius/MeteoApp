@@ -27,8 +27,7 @@ ApplicationWindow {
                 source: CommonSettings.getPage(index)
             }
         }
-        background: Rectangle
-        {
+        background: Rectangle {
             anchors.fill: parent
             color: CommonSettings.backgroundColor
         }

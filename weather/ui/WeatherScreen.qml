@@ -31,16 +31,16 @@ Rectangle {
 
         CurrentWeather {
             Layout.alignment: Qt.AlignHCenter
-            width: WeatherScreenSettings.currentWeatherWidth
-            height: WeatherScreenSettings.currentWeatherHeight
+            Layout.preferredWidth: WeatherScreenSettings.currentWeatherWidth
+            Layout.preferredHeight: WeatherScreenSettings.currentWeatherHeight
         }
 
         ForecastWeather{
             Layout.topMargin: WeatherScreenSettings.forecastHeight * 0.45
             Layout.fillWidth: true;
             Layout.alignment: Qt.AlignHCenter
-            width: WeatherScreenSettings.forecastWidth
-            height: WeatherScreenSettings.forecastHeight
+            Layout.preferredWidth: WeatherScreenSettings.forecastWidth
+            Layout.preferredHeight: WeatherScreenSettings.forecastHeight
 
             iconWidth: WeatherScreenSettings.forecastIconWidth
             iconHeight: WeatherScreenSettings.forecastIconHeight
@@ -49,8 +49,8 @@ Rectangle {
         LocationList {
             Layout.topMargin: WeatherScreenSettings.locationListHeight * 0.1
             Layout.alignment: Qt.AlignHCenter
-            width: WeatherScreenSettings.locationListWidth
-            height: WeatherScreenSettings.locationListHeight
+            Layout.preferredWidth: WeatherScreenSettings.locationListWidth
+            Layout.preferredHeight: WeatherScreenSettings.locationListHeight
         }
     }
 }
