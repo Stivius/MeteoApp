@@ -54,7 +54,7 @@ qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
-include(android-openssl.pri)
+include(openssl/openssl.pri)
 
 HEADERS += \
     bluetooth/model/BluetoothBaseClass.hpp \
